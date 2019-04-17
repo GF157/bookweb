@@ -32,5 +32,5 @@ class douban(Document):
 
 
 # 测试是否连接成功
-# for i in douban.objects[:10]:
-#     print(i.标签[1])
+for i in douban.objects[:10]:
+    print(i.标签[1])
