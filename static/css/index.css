@@ -10,7 +10,6 @@
         a,
         p,
         div {
-            /*慎删*/
             padding: 0px;
             margin: 0px;
         }
@@ -26,7 +25,6 @@
         }
 
         .page {
-            /*谨删*/
             width: 100%;
             margin: 0;
         }
@@ -38,8 +36,6 @@
         #page2{
                 position:relative;
                 text-align:center;
-                color:#00F;
-                background-color:blue;
             }
         .div1{
                 position:absolute;
@@ -53,18 +49,15 @@
         }
         .div3{
                 position:absolute;
-              //background-color:red;
                 right:0px;
         }
         .div4{
                 position:absolute;
-              //background-color:yellow;
                 top:570px;
                 left:600px;
         }
         .div5{
                 position:absolute;
-                //background-color:yellow;
                 left:600px;
         }
         h1{

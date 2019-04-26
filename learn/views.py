@@ -10,10 +10,7 @@ from learn.models import douban
 def home(request):
     test = douban.objects[:1]
 
-    context = {
-        '标签':test[0].标签,
-    }
-    return render(request, 'list.html',context)
+    return render(request, 'list.html')
 
 # def home(request):
 #     article = invitation.objects
