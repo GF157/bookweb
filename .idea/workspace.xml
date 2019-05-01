@@ -4,7 +4,26 @@
     <list default="true" id="0b55a348-68b6-4385-af1e-7617a5ac7047" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learn/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/learn/templates/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/avatars/0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/avatars/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/avatars/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/avatars/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/10.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/11.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/12.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/13.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/14.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/15.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/16.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/5.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/6.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/7.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/8.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/content-management/9.jpeg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,14 +109,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="158" />
-          <entry key="html" value="2399" />
+          <entry key="html" value="2943" />
           <entry key="py" value="123" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="158" />
-          <entry key="HTML" value="2399" />
+          <entry key="HTML" value="2943" />
           <entry key="Python" value="123" />
         </counts>
       </usages-collector>
@@ -131,8 +150,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/learn/templates/list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="1254" column="40" selection-start-line="1254" selection-start-column="40" selection-end-line="1254" selection-end-column="40" />
+            <state relative-caret-position="319">
+              <caret line="1562" lean-forward="true" selection-start-line="1562" selection-end-line="1562" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -147,7 +166,6 @@
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#canvas#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -160,7 +178,9 @@
                 <element signature="n#script#5;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#6;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#7;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#7;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#9;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#8;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#0;n#html#0;n#!!top" />
                 <element signature="n#script#1;n#html#0;n#!!top" />
               </folding>
@@ -209,7 +229,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1764">
+            <state relative-caret-position="591">
               <caret line="84" column="9" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
             </state>
           </provider>
@@ -244,7 +264,13 @@
       <find>p2_x2</find>
       <find>x2_1</find>
       <find>豆瓣</find>
+      <find>x2_2</find>
       <find>p2_s2</find>
+      <find>_x3</find>
+      <find>折线</find>
+      <find>_z1</find>
+      <find>_s1</find>
+      <find>p2_z1</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -521,13 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1764">
-          <caret line="84" column="9" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/img/有效数据.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -537,10 +556,17 @@
     <entry file="file://$PROJECT_DIR$/static/img/全部数据.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="84" column="9" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/learn/templates/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="1254" column="40" selection-start-line="1254" selection-start-column="40" selection-end-line="1254" selection-end-column="40" />
+        <state relative-caret-position="319">
+          <caret line="1562" lean-forward="true" selection-start-line="1562" selection-end-line="1562" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -555,7 +581,6 @@
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#canvas#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -568,7 +593,9 @@
             <element signature="n#script#5;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#6;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#7;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#7;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#9;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#0;n#html#0;n#!!top" />
             <element signature="n#script#1;n#html#0;n#!!top" />
           </folding>

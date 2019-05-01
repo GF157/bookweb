@@ -83,9 +83,12 @@
                 top:0px;
             }
 
+            .left{}
+            .right{position:absolute;right:10px;width:520px;}
+
             #p2_s1{
             position:absolute;
-            top:100px;
+            top:80px;
             left:10px;
 			background-image:url('../../static/img/上一.png');
 			height:280px;
@@ -110,39 +113,35 @@
             #p2_s2{
             position:absolute;
 			background-image:url('../../static/img/上二.png');
-			top:100px;left:560px;
+			top:80px;left:560px;
 			height:480px;
 			width:820px;
             }
             #p2_s3{
-            position:absolute;
 			background-image:url('../../static/img/上三.png');
-			top:100px;right:20px;
+			top:80px;
 			height:380px;
-			width:500px;
             }
             #p2_x1{
             position:absolute;
 			background-image:url('../../static/img/下一.png');
-			top:390px;left:10px;
+			top:370px;left:10px;
 			height:280px;
 			width:530px;
             }
             #p2_x2{
             position:absolute;
 			background-image:url('../../static/img/下二.png');
-			top:600px;left:560px;
-			height:320px;
+			top:570px;left:560px;
+			height:350px;
 			width:820px;
             }
             #p2_x3{
-            position:absolute;
 			background-image:url('../../static/img/下三.png');
-			top:500px;right:20px;
-			height:380px;
-			width:500px;
+			top:470px;
+			height:400px;
             }
-            #x2_1{
+            #p2_x2 #x2_1{
             position:absolute;
 			background-image:url('../../static/img/下三.png');
             left:0px;
@@ -150,27 +149,26 @@
 			height:320px;
 			width:265px;
 			z-index: 1;
-            }#x2_2{
+            }#p2_x2 #x2_2{
             position:absolute;
 			background-image:url('../../static/img/下三.png');
+			left:270px;
 			height:320px;
 			width:265px;
-            }#x2_3{
+            }#p2_x2 #x2_3{
             position:absolute;
 			background-image:url('../../static/img/下三.png');
+			left:520px;
 			height:320px;
 			width:265px;
             }
             #p2_z1{
             position:absolute;
             background-image:url('../../static/img/下三.png');
-            top:600px;
-            height:300px;
-            width:265px;
-            }
-            .main2{
-            position:absolute;
-            top:10px;
+            top:660px;
+            left:10px;
+            height:280px;
+            width:530px;
             }
     </style>
 </head>
@@ -215,9 +213,9 @@
 
         <div style="background-color: #ffffff;position:relative" id="page2" class="page">
             <p style="position:absolute;top:25px;right:1600px;"><img src="../../static/img/数据分析2.png"></p>
-            <p style="position:absolute;top:10px;right:700px"><img width="80%" height="80%" src="../../static/img/全部数据.png"></p>
-            <p style="position:absolute;top:10px;right:300px"><img width="80%" height="80%" src="../../static/img/有效数据.png"></p>
-            <div id="p2_s1">
+            <p style="position:absolute;top:10px;right:350px"><img width="80%" height="80%" src="../../static/img/全部数据.png"></p>
+            <p style="position:absolute;top:10px;right:50px"><img width="80%" height="80%" src="../../static/img/有效数据.png"></p>
+            <div id="p2_s1" class="left">
                 <div id="p2_s11">
 
                 </div>
@@ -227,8 +225,8 @@
             </div>
 
             <div id="p2_s2">  </div>
-            <div id="p2_s3">  </div>
-            <div id="p2_x1">  </div>
+            <div id="p2_s3" class="right">  </div>
+            <div id="p2_x1" class="left">  </div>
             <div id="p2_x2">
                 <div id="x2_1">
 
@@ -240,8 +238,8 @@
 
                 </div>
             </div>
-            <div id="p2_x3">  </div>
-            <div id="p2_z1">  </div>
+            <div id="p2_x3" class="right">  </div>
+            <div id="p2_z1" class="left">  </div>
 
         </div>
 
@@ -358,14 +356,11 @@
     </div>
 </div>
 <script type="text/javascript">
-var dom = document.getElementById("p2_x1");
+var dom = document.getElementById("p2_x3");
 var myChart = echarts.init(dom,'walden');
 var app = {};
 option = null;
 option = {
-    title: {
-        text: '堆叠区域图'
-    },
     tooltip : {
         trigger: 'axis',
         axisPointer: {
@@ -450,7 +445,7 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
 
-</script>
+</script><!--p2_x1  堆叠区域图-->
 <script type="text/javascript">
 var dom = document.getElementById("");
 var myChart = echarts.init(dom,'walden');
@@ -612,7 +607,7 @@ if (option && typeof option === "object") {
 myChart.setOption(option, true);
 }
 
-</script>
+</script><!--空-->
 <script type="text/javascript">
 
         var chart = echarts.init(document.getElementById('p2_s3'),'walden');
@@ -741,17 +736,14 @@ myChart.setOption(option, true);
         window.onresize = chart.resize;
 
 
-</script>
+</script><!--p2_s3 词云-->
 <script type="text/javascript">
 
-        var myChart = echarts.init(document.getElementById(''),'walden');
+        var myChart = echarts.init(document.getElementById('p2_z1'),'walden');
 
         option = null;
         var app = {};
         option = {
-            title: {
-                text: '各标签每年出版数目'
-            },
             tooltip : {
                 trigger: 'axis',
                 axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -842,15 +834,15 @@ myChart.setOption(option, true);
         }
 
 
-</script>
+</script><!--空  堆积折线图-->
 <script type="text/javascript">
-var dom = document.getElementById("p2_z1");
+var dom = document.getElementById("p2_s1");
 var myChart = echarts.init(dom,'walden');
 var app = {};
 option = null;
 option = {
     title: {
-        text: '折线图堆叠'
+        text: ''
     },
     tooltip: {
         trigger: 'axis'
@@ -914,18 +906,16 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+       </script><!-- 折线图-->
 <script type="text/javascript">
-var dom = document.getElementById("p2_s1");
+var dom = document.getElementById("p2_x1");
 var myChart = echarts.init(dom,'walden');
 var app = {};
 option = null;
 option = {
-    title: {
-        text: '基础雷达图'
-    },
     tooltip: {},
     legend: {
+        x: 'left',
         data: ['预算分配', '实际开销']
     },
     radar: {
@@ -966,9 +956,147 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+       </script><!--x2_2 雷达图-->
 <script type="text/javascript">
-var dom = document.getElementById("p2_x3");
+var dom = document.getElementById("");
+var myChart = echarts.init(dom,'walden');
+var app = {};
+option = null;
+var weatherIcons = {
+    'Sunny': './data/asset/img/weather/sunny_128.png',
+    'Cloudy': './data/asset/img/weather/cloudy_128.png',
+    'Showers': './data/asset/img/weather/showers_128.png'
+};
+
+option = {
+    
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        // orient: 'vertical',
+        // top: 'middle',
+        bottom: 10,
+        left: 'center',
+        data: ['西凉', '益州','兖州','荆州','幽州']
+    },
+    series : [
+        {
+            type: 'pie',
+            radius : '65%',
+            center: ['50%', '50%'],
+            selectedMode: 'single',
+            data:[
+                {
+                    value:1548,
+                    name: '幽州',
+                    label: {
+                        normal: {
+                            formatter: [
+                                '{title|{b}}{abg|}',
+                                '  {weatherHead|天气}{valueHead|天数}{rateHead|占比}',
+                                '{hr|}',
+                                '  {Sunny|}{value|202}{rate|55.3%}',
+                                '  {Cloudy|}{value|142}{rate|38.9%}',
+                                '  {Showers|}{value|21}{rate|5.8%}'
+                            ].join('\n'),
+                            backgroundColor: '#eee',
+                            borderColor: '#777',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            rich: {
+                                title: {
+                                    color: '#eee',
+                                    align: 'center'
+                                },
+                                abg: {
+                                    backgroundColor: '#333',
+                                    width: '100%',
+                                    align: 'right',
+                                    height: 25,
+                                    borderRadius: [4, 4, 0, 0]
+                                },
+                                Sunny: {
+                                    height: 30,
+                                    align: 'left',
+                                    backgroundColor: {
+                                        image: weatherIcons.Sunny
+                                    }
+                                },
+                                Cloudy: {
+                                    height: 30,
+                                    align: 'left',
+                                    backgroundColor: {
+                                        image: weatherIcons.Cloudy
+                                    }
+                                },
+                                Showers: {
+                                    height: 30,
+                                    align: 'left',
+                                    backgroundColor: {
+                                        image: weatherIcons.Showers
+                                    }
+                                },
+                                weatherHead: {
+                                    color: '#333',
+                                    height: 24,
+                                    align: 'left'
+                                },
+                                hr: {
+                                    borderColor: '#777',
+                                    width: '100%',
+                                    borderWidth: 0.5,
+                                    height: 0
+                                },
+                                value: {
+                                    width: 20,
+                                    padding: [0, 20, 0, 30],
+                                    align: 'left'
+                                },
+                                valueHead: {
+                                    color: '#333',
+                                    width: 20,
+                                    padding: [0, 20, 0, 30],
+                                    align: 'center'
+                                },
+                                rate: {
+                                    width: 40,
+                                    align: 'right',
+                                    padding: [0, 10, 0, 0]
+                                },
+                                rateHead: {
+                                    color: '#333',
+                                    width: 40,
+                                    align: 'center',
+                                    padding: [0, 10, 0, 0]
+                                }
+                            }
+                        }
+                    }
+                },
+                {value:535, name: '荆州'},
+                {value:510, name: '兖州'},
+                {value:634, name: '益州'},
+                {value:735, name: '西凉'}
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script><!--p2_s1 饼图-->
+<script type="text/javascript">
+var dom = document.getElementById("x2_3");
 var myChart = echarts.init(dom,'walden');
 var app = {};
 option = null;
@@ -1108,7 +1236,7 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+       </script><!--饼图-->
 <script type="text/javascript">
 var dom = document.getElementById("x2_1");
 var myChart = echarts.init(dom,'walden');
@@ -1250,7 +1378,114 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+       </script><!--x2饼图-->
+
+<script type="text/javascript">
+var dom = document.getElementById("p2_x2");
+var myChart = echarts.init(dom,'walden');
+var app = {};
+option = null;
+app.title = '嵌套环形图';
+
+option = {
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'left',
+        data:['直达','营销广告','搜索引擎','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
+    },
+    series: [
+        {
+
+            type:'pie',
+            selectedMode: 'single',
+            radius: [0, '30%'],
+
+            label: {
+                normal: {
+                    position: 'inner'
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:[
+                {value:335, name:'直达', selected:true},
+                {value:679, name:'营销广告'},
+                {value:1548, name:'搜索引擎'}
+            ]
+        },
+        {
+
+            type:'pie',
+            radius: ['40%', '55%'],
+            label: {
+                normal: {
+                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                    backgroundColor: '#eee',
+                    borderColor: '#aaa',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    // shadowBlur:3,
+                    // shadowOffsetX: 2,
+                    // shadowOffsetY: 2,
+                    // shadowColor: '#999',
+                    // padding: [0, 7],
+                    rich: {
+                        a: {
+                            color: '#999',
+                            lineHeight: 22,
+                            align: 'center'
+                        },
+                        // abg: {
+                        //     backgroundColor: '#333',
+                        //     width: '100%',
+                        //     align: 'right',
+                        //     height: 22,
+                        //     borderRadius: [4, 4, 0, 0]
+                        // },
+                        hr: {
+                            borderColor: '#aaa',
+                            width: '100%',
+                            borderWidth: 0.5,
+                            height: 0
+                        },
+                        b: {
+                            fontSize: 16,
+                            lineHeight: 33
+                        },
+                        per: {
+                            color: '#eee',
+                            backgroundColor: '#334455',
+                            padding: [2, 4],
+                            borderRadius: 2
+                        }
+                    }
+                }
+            },
+            data:[
+                {value:335, name:'直达'},
+                {value:310, name:'邮件营销'},
+                {value:234, name:'联盟广告'},
+                {value:135, name:'视频广告'},
+                {value:1048, name:'百度'},
+                {value:251, name:'谷歌'},
+                {value:147, name:'必应'},
+                {value:102, name:'其他'}
+            ]
+        }
+    ]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script><!--嵌套环形图-->
+
 <script type="text/javascript">
 var dom = document.getElementById("p2_s2");
 var myChart = echarts.init(dom,'walden');
@@ -1325,111 +1560,9 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
        </script>
-<script type="text/javascript">
-var dom = document.getElementById("p2_z1");
-var myChart = echarts.init(dom);
-var app = {};
-option = null;
-app.title = '嵌套环形图';
 
-option = {
-    tooltip: {
-        trigger: 'item',
-        formatter: "{a} <br/>{b}: {c} ({d}%)"
-    },
-    legend: {
-        orient: 'vertical',
-        x: 'left',
-        data:['直达','营销广告','搜索引擎','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
-    },
-    series: [
-        {
-            name:'访问来源',
-            type:'pie',
-            selectedMode: 'single',
-            radius: [0, '30%'],
 
-            label: {
-                normal: {
-                    position: 'inner'
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            data:[
-                {value:335, name:'直达', selected:true},
-                {value:679, name:'营销广告'},
-                {value:1548, name:'搜索引擎'}
-            ]
-        },
-        {
-            name:'访问来源',
-            type:'pie',
-            radius: ['40%', '55%'],
-            label: {
-                normal: {
-                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
-                    backgroundColor: '#eee',
-                    borderColor: '#aaa',
-                    borderWidth: 1,
-                    borderRadius: 4,
-                    // shadowBlur:3,
-                    // shadowOffsetX: 2,
-                    // shadowOffsetY: 2,
-                    // shadowColor: '#999',
-                    // padding: [0, 7],
-                    rich: {
-                        a: {
-                            color: '#999',
-                            lineHeight: 22,
-                            align: 'center'
-                        },
-                        // abg: {
-                        //     backgroundColor: '#333',
-                        //     width: '100%',
-                        //     align: 'right',
-                        //     height: 22,
-                        //     borderRadius: [4, 4, 0, 0]
-                        // },
-                        hr: {
-                            borderColor: '#aaa',
-                            width: '100%',
-                            borderWidth: 0.5,
-                            height: 0
-                        },
-                        b: {
-                            fontSize: 16,
-                            lineHeight: 33
-                        },
-                        per: {
-                            color: '#eee',
-                            backgroundColor: '#334455',
-                            padding: [2, 4],
-                            borderRadius: 2
-                        }
-                    }
-                }
-            },
-            data:[
-                {value:335, name:'直达'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1048, name:'百度'},
-                {value:251, name:'谷歌'},
-                {value:147, name:'必应'},
-                {value:102, name:'其他'}
-            ]
-        }
-    ]
-};;
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
-       </script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
