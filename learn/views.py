@@ -1,16 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from learn.models import douban
 from django.core.paginator import Paginator # 分页
 # Create your views here.
-from learn.models import douban
+from learn.models import Modouban
+
 
 
 
 def home(request):
-    test = douban.objects[:1]
 
-    return render(request, 'list.html')
+    info = Modouban.objects[:1]
+
+    context = {
+        'title':info[0].title
+    }
+    return render(request, 'list.html', context)
 
 # def home(request):
 #     article = invitation.objects

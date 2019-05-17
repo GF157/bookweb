@@ -81,7 +81,8 @@ DATABASES = {
     }
 }
 from mongoengine import connect
-connect('book')
+connect('book', host='127.0.0.1', port=27017)
+
 
 
 

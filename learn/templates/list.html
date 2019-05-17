@@ -26,6 +26,23 @@
     <link rel="stylesheet" href="../../static/css/index.css">
 
     <title>计算机类图书信息分析</title>
+    <script type="text/javascript">
+        //弹出隐藏层
+        function ShowDiv(show_div, bg_div) {
+            document.getElementById(show_div).style.display = 'block';
+            document.getElementById(bg_div).style.display = 'block';
+            var bgdiv = document.getElementById(bg_div);
+            bgdiv.style.width = document.body.scrollWidth;  // bgdiv.style.height = $(document).height();
+
+            $("#" + bg_div).height($(document).height());
+        };
+        //关闭弹出层
+        function CloseDiv(show_div, bg_div) {
+            document.getElementById(show_div).style.display = 'none';
+            document.getElementById(bg_div).style.display = 'none';
+        };
+    </script>
+
 
     <style type="text/css">
             .player{
@@ -169,7 +186,63 @@
             left:10px;
             height:280px;
             width:530px;
+
+            <!--弹出层-->
+            #ShowDiv{
+                display:none;
+                width:300px;
+                height:100px;
+                border:1px solid #ccc;
+                border-right:2px solid #888;
+                border-bottom:2px solid #888;
+                background-color:#f9f9f9;
+                text-align:center;
+                padding-top:30px;
             }
+
+
+            <!---->
+            .black_overlay {
+                display: none;
+                position: absolute;
+                top: 0%;
+                left: 0%;
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                z-index: 1001;
+                -moz-opacity: 0.8;
+                opacity: .80;
+                filter: alpha(opacity=80);
+            }
+
+            .white_content {
+                display: none;
+                position: absolute;
+                top: 10%;
+                left: 10%;
+                width: 80%;
+                height: 80%;
+                border: 16px solid lightblue;
+                background-color: white;
+                z-index: 1002;
+                overflow: auto;
+            }
+
+            .white_content_small {
+                display: none;
+                position: absolute;
+                top: 20%;
+                left: 30%;
+                width: 40%;
+                height: 50%;
+                border: 16px solid lightblue;
+                background-color: white;
+                z-index: 1002;
+                overflow: auto;
+            }
+
+
     </style>
 </head>
 
@@ -245,6 +318,13 @@
 
         <div id="page3" class="page" style="position:relative">
 
+            普通显示&nbsp&nbsp&nbsp<input type="button" id="ShowButton" name="ShowButton" value="显示"><br>
+            动画显示-1&nbsp<input type="button" id="ShowButton_1" name="ShowButton_1" value="显示"><br>
+            动画显示-2&nbsp<input type="button" id="ShowButton_2" name="ShowButton_2" value="显示"><br>
+            动画显示-3&nbsp<input type="button" id="ShowButton_3" name="ShowButton_3" value="显示"><br>
+            <div id="ShowDiv" name="ShowDiv"></div>
+
+
 
         </div>
         <div id="page4" class="page" style="position:relative">
@@ -252,7 +332,7 @@
                 <div class="page-header row no-gutters py-4">
                     <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                         <span class="text-uppercase page-subtitle">Dashboard</span>
-                        <h3 class="page-title">数据分析</h3>
+                        <h3 class="page-title">数据分析{{ title }}</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -349,7 +429,18 @@
             </div>
         </div>
         <div id="page5" class="page">
+            <input id="Button1" type="button" value="点击弹出层" onclick="ShowDiv('MyDiv','fade')" />
+            <!--弹出层时背景层DIV-->
+            <div id="fade" class="black_overlay">
+            </div>
 
+            <div id="MyDiv" class="white_content">
+
+                <div style="text-align: right; cursor: default; height: 40px;">
+                    <span style="font-size: 16px;" onclick="CloseDiv('MyDiv','fade')">关闭</span>
+                </div>
+                目前来说，我还是喜欢这个自己改造的弹出层。自己在项目中也用的是这个。
+            </div>
         </div>
 
 
@@ -371,7 +462,7 @@ option = {
         }
     },
     legend: {
-        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+        data:['{{ title }}','联盟广告','视频广告','直接访问','搜索引擎']
     },
     toolbox: {
         feature: {
@@ -379,7 +470,7 @@ option = {
         }
     },
     grid: {
-        left: '3%',
+        left: '{{ title }}%',
         right: '4%',
         bottom: '3%',
         containLabel: true
@@ -388,7 +479,7 @@ option = {
         {
             type : 'category',
             boundaryGap : false,
-            data : ['周一','周二','周三','周四','周五','周六','周日']
+            data : ['{{ title }}','周二','周三','周四','周五','周六','周日']
         }
     ],
     yAxis : [
@@ -398,7 +489,7 @@ option = {
     ],
     series : [
         {
-            name:'邮件营销',
+            name:'{{ title }}',
             type:'line',
             stack: '总量',
             areaStyle: {},
@@ -1503,7 +1594,7 @@ setTimeout(function () {
         dataset: {
             source: [
                 ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
-                ['Matcha Latte', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
+                ['{{ title }}', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
                 ['Milk Tea', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
                 ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
                 ['Walnut Brownie', 55.2, 67.1, 69.2, 72.4, 53.9, 39.1]
@@ -1560,6 +1651,69 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
        </script>
+
+<script type="text/javascript">
+        //普通显示
+        $(function(){
+            $("#ShowButton").click(
+            function(){
+                if($("#ShowDiv").css("display")=='none'){
+                    $("#ShowDiv").show();
+                    $("#ShowDiv").html("show()<br>hide()");
+                    $("#ShowButton").val("隐藏");
+                }else{
+                    $("#ShowDiv").hide();
+                    $("#ShowButton").val("显示");
+                }
+            });
+        });
+
+        //动画显示-1
+        $(function(){
+            $("#ShowButton_1").click(
+            function(){
+                if($("#ShowDiv").css("display")=='none'){
+                    $("#ShowDiv").show(1000);
+                    $("#ShowDiv").html("show(1000)<br>hide(1000)");
+                    $("#ShowButton_1").val("隐藏");
+                }else{
+                    $("#ShowDiv").hide(1000);
+                    $("#ShowButton_1").val("显示");
+                }
+            });
+        });
+
+        //动画显示-2
+        $(function(){
+        $("#ShowButton_2").click(
+            function(){
+                 if($("#ShowDiv").css("display")=='none'){
+                    $("#ShowDiv").slideDown();
+                    $("#ShowDiv").html("slideDown()<br>slideUp()");
+                    $("#ShowButton_2").val("隐藏");
+                 }else{
+                    $("#ShowDiv").slideUp();
+                    $("#ShowButton_2").val("显示");
+                 }
+            });
+        });
+
+        //动画显示-3
+        $(function(){
+            $("#ShowButton_3").click(
+            function(){
+                 if($("#ShowDiv").css("display")=='none'){
+                    $("#ShowDiv").fadeIn(2000);
+                    $("#ShowDiv").html("fadeIn()<br>fadeOut()");
+                    $("#ShowButton_3").val("隐藏");
+                }else{
+                    $("#ShowDiv").fadeOut(2000);
+                    $("#ShowButton_3").val("显示");
+                }
+            });
+        });
+
+</script>
 
 
 
