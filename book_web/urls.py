@@ -24,7 +24,7 @@ from django.conf.urls import  url
 from django.contrib import admin
 from learn import views
 from django.urls import path
-
+from learn.views import index
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
