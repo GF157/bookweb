@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<!--{% load static %}-->
+
 <html>
 
 <head>
@@ -324,9 +327,11 @@
         </div>
 
         <div id="page3" class="page" style="position:relative;background-image:url('https://img1.doubanio.com/view/activity_page/raw/public/p3819.jpg');" >
-            {% block grid %}
+            {% block grid %} {% endblock %}
+                <div id="p3_index" class="page_content">
+                    <p style="position:relative;top:100px;left:10px;"><img src="https://img1.doubanio.com/view/subject/m/public/s32281237.jpg" style="width:115px;height:172px"></p>
+                </div>
 
-            {% endblock %}
 
 
         </div>
@@ -335,7 +340,7 @@
                 <div class="page-header row no-gutters py-4">
                     <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                         <span class="text-uppercase page-subtitle">Dashboard</span>
-                        <h3 class="page-title">数据分析{{ title }}</h3>
+                        <h3 class="page-title">数据分析{{ tag1.0 }}</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -433,8 +438,10 @@
             </div>
         </div>
         <div id="page5" class="page">
-
-
+          <p>  {% for i in tag1 %}
+                {{ i.tag }}
+            {% endfor %}
+          </p>
 
 		</div>
 
@@ -457,7 +464,11 @@ option = {
         }
     },
     legend: {
-        data:['{{ title }}','联盟广告','视频广告','直接访问','搜索引擎']
+        data:[
+        {% for i in press_top %}
+        '{{ i.name }}',
+        {% endfor %}
+        ]
     },
     toolbox: {
         feature: {
@@ -474,7 +485,7 @@ option = {
         {
             type : 'category',
             boundaryGap : false,
-            data : ['{{ title }}','周二','周三','周四','周五','周六','周日']
+            data : ['周一','周二','周三','周四','周五','周六','周日']
         }
     ],
     yAxis : [
@@ -483,47 +494,15 @@ option = {
         }
     ],
     series : [
-        {
-            name:'{{ title }}',
-            type:'line',
-            stack: '总量',
-            areaStyle: {},
-            data:[120, 132, 101, 134, 90, 230, 210]
-        },
-        {
-            name:'联盟广告',
-            type:'line',
-            stack: '总量',
-            areaStyle: {},
-            data:[220, 182, 191, 234, 290, 330, 310]
-        },
-        {
-            name:'视频广告',
-            type:'line',
-            stack: '总量',
-            areaStyle: {},
-            data:[150, 232, 201, 154, 190, 330, 410]
-        },
-        {
-            name:'直接访问',
-            type:'line',
-            stack: '总量',
-            areaStyle: {normal: {}},
-            data:[320, 332, 301, 334, 390, 330, 320]
-        },
-        {
-            name:'搜索引擎',
-            type:'line',
-            stack: '总量',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'top'
-                }
+        {% for i in Press_top %}
+            {
+                name:'{{ i.name }}',
+                type:'line',
+                stack: '总量',
+                areaStyle: {},
+                data:[220,180,191,234,290,330,250]
             },
-            areaStyle: {normal: {}},
-            data:[820, 932, 901, 934, 1290, 1330, 1320]
-        }
+        {% endfor %}
     ]
 };
 ;
@@ -726,8 +705,8 @@ myChart.setOption(option, true);
                 },
                 data: [
                     {
-                        name: 'Sam S Club',
-                        value: 10000,
+                        name: '[英]史蒂芬·霍金',
+                        value: 16,
                         textStyle: {
                             normal: {
                                 color: 'black'
@@ -737,82 +716,13 @@ myChart.setOption(option, true);
                             }
                         }
                     },
+                    {% for i in author_top %}
                     {
-                        name: 'Macys',
-                        value: 6181
+                        name: '{{i.name}}',
+                        value: {{i.value}}
                     },
-                    {
-                        name: 'Amy Schumer',
-                        value: 4386
-                    },
-                    {
-                        name: 'Jurassic World',
-                        value: 4055
-                    },
-                    {
-                        name: 'Charter Communications',
-                        value: 2467
-                    },
-                    {
-                        name: 'Chick Fil A',
-                        value: 2244
-                    },
-                    {
-                        name: 'Planet Fitness',
-                        value: 1898
-                    },
-                    {
-                        name: 'Pitch Perfect',
-                        value: 1484
-                    },
-                    {
-                        name: 'Express',
-                        value: 1112
-                    },
-                    {
-                        name: 'Home',
-                        value: 965
-                    },
-                    {
-                        name: 'Johnny Depp',
-                        value: 847
-                    },
-                    {
-                        name: 'Lena Dunham',
-                        value: 582
-                    },
-                    {
-                        name: 'Lewis Hamilton',
-                        value: 555
-                    },
-                    {
-                        name: 'KXAN',
-                        value: 550
-                    },
-                    {
-                        name: 'Mary Ellen Mark',
-                        value: 462
-                    },
-                    {
-                        name: 'Farrah Abraham',
-                        value: 366
-                    },
-                    {
-                        name: 'Rita Ora',
-                        value: 360
-                    },
-                    {
-                        name: 'Serena Williams',
-                        value: 282
-                    },
-                    {
-                        name: 'NCAA baseball tournament',
-                        value: 273
-                    },
-                    {
-                        name: 'Point Break',
-                        value: 265
-                    }
+                    {% endfor %}
+
                 ]
             } ]
         };
@@ -1588,17 +1498,21 @@ setTimeout(function () {
         },
         dataset: {
             source: [
-                ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
-                ['{{ title }}', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
-                ['Milk Tea', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
-                ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
-                ['Walnut Brownie', 55.2, 67.1, 69.2, 72.4, 53.9, 39.1]
-            ]
+                ['product', '1900-1989', '1990-1999', '2000-2005', '2006-2010', '2010-2015', '2015-2019'],
+                 ['计算机', {{tag1.1}}, {{tag1.2}}, {{tag1.3}}, {{tag1.4}}, {{tag1.5}}, {{tag1.6}}],
+                 ['科普', {{tag2.1}}, {{tag2.2}}, {{tag2.3}}, {{tag2.4}}, {{tag2.5}}, {{tag2.6}}],
+                 ['人工智能', {{tag3.1}}, {{tag3.2}}, {{tag3.3}}, {{tag3.4}}, {{tag3.5}}, {{tag3.6}}],
+                 ['科学', {{tag4.1}}, {{tag4.2}}, {{tag4.3}}, {{tag4.4}}, {{tag4.5}}, {{tag4.6}}],
+                 ['编程', {{tag5.1}}, {{tag5.2}}, {{tag5.3}}, {{tag5.4}}, {{tag5.5}}, {{tag5.6}}],
+                 ['互联网', {{tag6.1}}, {{tag6.2}}, {{tag6.3}}, {{tag6.4}}, {{tag6.5}}, {{tag6.6}}],
+                ['其他', 55.2, 67.6, 69.2, 72.4, 53.9, 39.1],
         },
         xAxis: {type: 'category'},
         yAxis: {gridIndex: 0},
         grid: {top: '55%'},
         series: [
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
