@@ -177,7 +177,7 @@ def obtain_date(label):
                             time6 += 1
                     count6 += 1
     data = {
-        'tag': [label, time1, time2, time3, time4, time5, time6]
+        'tag': [label, xiaoshuo(time1/count1*100), xiaoshuo(time2/count2*100), xiaoshuo(time3/count3*100), xiaoshuo(time4/count4*100), xiaoshuo(time5/count5*100), xiaoshuo(time6/count6*100)]
     }
     yield (data)
 

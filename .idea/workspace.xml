@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b55a348-68b6-4385-af1e-7617a5ac7047" name="Default Changelist" comment="Default Changelist">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_web/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn/templates/grid_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/learn/templates/grid_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/learn/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learn/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/learn/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/learn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -98,14 +94,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="158" />
-          <entry key="html" value="4257" />
+          <entry key="html" value="4265" />
           <entry key="py" value="2687" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="158" />
-          <entry key="HTML" value="4257" />
+          <entry key="HTML" value="4265" />
           <entry key="Python" value="2687" />
         </counts>
       </usages-collector>
@@ -138,11 +134,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/learn/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="1501" column="97" lean-forward="true" selection-start-line="1501" selection-start-column="97" selection-end-line="1506" selection-end-column="97" />
+            <state relative-caret-position="411">
+              <caret line="1501" column="26" selection-start-line="1501" selection-start-column="26" selection-end-line="1501" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
                 <element signature="e#8196#8202#1" expanded="true" />
@@ -232,18 +228,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/learn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="178" column="12" lean-forward="true" selection-start-line="178" selection-start-column="12" selection-end-line="178" selection-end-column="12" />
+            <state relative-caret-position="161">
+              <caret line="179" column="49" selection-start-line="179" selection-start-column="49" selection-end-line="179" selection-end-column="49" />
+              <caret line="179" column="77" selection-start-line="179" selection-start-column="77" selection-end-line="179" selection-end-column="77" />
+              <caret line="179" column="105" selection-start-line="179" selection-start-column="105" selection-end-line="179" selection-end-column="105" />
+              <caret line="179" column="133" selection-start-line="179" selection-start-column="133" selection-end-line="179" selection-end-column="133" />
+              <caret line="179" column="161" lean-forward="true" selection-start-line="179" selection-start-column="161" selection-end-line="179" selection-end-column="161" />
+              <caret line="179" column="189" selection-start-line="179" selection-start-column="189" selection-end-line="179" selection-end-column="189" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1558281625510" expanded="true" signature="1775:2047" ph="..." />
-                <marker date="1558281625510" expanded="true" signature="2068:4937" ph="..." />
-                <marker date="1558281625510" expanded="true" signature="2445:2511" ph="..." />
-                <marker date="1558281625510" expanded="true" signature="4335:4337" ph="..." />
-                <marker date="1558281625510" expanded="true" signature="5486:5491" ph="..." />
+                <marker date="1558282513175" expanded="true" signature="1775:2047" ph="..." />
+                <marker date="1558282513175" expanded="true" signature="2068:5063" ph="..." />
+                <marker date="1558282513175" expanded="true" signature="2445:2511" ph="..." />
+                <marker date="1558282513175" expanded="true" signature="4461:4463" ph="..." />
+                <marker date="1558282513175" expanded="true" signature="5612:5617" ph="..." />
               </folding>
             </state>
           </provider>
@@ -340,8 +341,8 @@
         <option value="$PROJECT_DIR$/learn/templates/list.html" />
         <option value="$PROJECT_DIR$/learn/templates/grid_list.html" />
         <option value="$PROJECT_DIR$/book_web/urls.py" />
-        <option value="$PROJECT_DIR$/learn/views.py" />
         <option value="$PROJECT_DIR$/learn/templates/index.html" />
+        <option value="$PROJECT_DIR$/learn/views.py" />
       </list>
     </option>
   </component>
@@ -502,7 +503,7 @@
       <window_info id="DB Browser" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2519001" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38002172" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.44842562" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -695,25 +696,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/learn/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="178" column="12" lean-forward="true" selection-start-line="178" selection-start-column="12" selection-end-line="178" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1558281625510" expanded="true" signature="1775:2047" ph="..." />
-            <marker date="1558281625510" expanded="true" signature="2068:4937" ph="..." />
-            <marker date="1558281625510" expanded="true" signature="2445:2511" ph="..." />
-            <marker date="1558281625510" expanded="true" signature="4335:4337" ph="..." />
-            <marker date="1558281625510" expanded="true" signature="5486:5491" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/learn/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="1501" column="97" lean-forward="true" selection-start-line="1501" selection-start-column="97" selection-end-line="1506" selection-end-column="97" />
+        <state relative-caret-position="411">
+          <caret line="1501" column="26" selection-start-line="1501" selection-start-column="26" selection-end-line="1501" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
             <element signature="e#8196#8202#1" expanded="true" />
@@ -754,6 +740,26 @@
             <element signature="n#script#11;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#0;n#html#0;n#!!top" />
             <element signature="n#script#1;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learn/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="179" column="49" selection-start-line="179" selection-start-column="49" selection-end-line="179" selection-end-column="49" />
+          <caret line="179" column="77" selection-start-line="179" selection-start-column="77" selection-end-line="179" selection-end-column="77" />
+          <caret line="179" column="105" selection-start-line="179" selection-start-column="105" selection-end-line="179" selection-end-column="105" />
+          <caret line="179" column="133" selection-start-line="179" selection-start-column="133" selection-end-line="179" selection-end-column="133" />
+          <caret line="179" column="161" lean-forward="true" selection-start-line="179" selection-start-column="161" selection-end-line="179" selection-end-column="161" />
+          <caret line="179" column="189" selection-start-line="179" selection-start-column="189" selection-end-line="179" selection-end-column="189" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1558282513175" expanded="true" signature="1775:2047" ph="..." />
+            <marker date="1558282513175" expanded="true" signature="2068:5063" ph="..." />
+            <marker date="1558282513175" expanded="true" signature="2445:2511" ph="..." />
+            <marker date="1558282513175" expanded="true" signature="4461:4463" ph="..." />
+            <marker date="1558282513175" expanded="true" signature="5612:5617" ph="..." />
           </folding>
         </state>
       </provider>
