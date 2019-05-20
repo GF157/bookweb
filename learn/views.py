@@ -5,6 +5,7 @@ from django.core.paginator import Paginator # 分页
 from learn.models import Modouban
 import pymongo
 import re
+import pandas as pd
 
 client = pymongo.MongoClient('localhost', 27017)
 book = client['book']
@@ -126,6 +127,7 @@ def xiaoshuo(num):
     n = n / 100
     return (n)
 
+
 def obtain_date(label):
     time1 = 0
     time2 = 0
@@ -133,12 +135,7 @@ def obtain_date(label):
     time4 = 0
     time5 = 0
     time6 = 0
-    count1 = 0
-    count2 = 0
-    count3 = 0
-    count4 = 0
-    count5 = 0
-    count6 = 0
+    rest_lsit = ['其他',0,0,0,0,0,0]
     for i in all_info.find().limit(10426):
         if i['publish_date'] and i['label']:
             try:
@@ -150,65 +147,85 @@ def obtain_date(label):
                     for tag in i['label']:
                         if tag == label:
                             time1 += 1
-                    count1 += 1
+                            break
+                    rest_lsit[1] += 1
                 if int(time) > 1990 and int(time) < 1999:
                     for tag in i['label']:
                         if tag == label:
                             time2 += 1
-                    count2 += 1
+                            break
+                    rest_lsit[2] += 1
                 if int(time) > 2000 and int(time) < 2005:
                     for tag in i['label']:
                         if tag == label:
                             time3 += 1
-                    count3 += 1
+                            break
+                    rest_lsit[3] += 1
                 if int(time) > 2006 and int(time) < 2010:
                     for tag in i['label']:
                         if tag == label:
                             time4 += 1
-                    count4 += 1
+                            break
+                    rest_lsit[4] += 1
                 if int(time) > 2011 and int(time) < 2015:
                     for tag in i['label']:
                         if tag == label:
                             time5 += 1
-                    count5 += 1
+                            break
+                    rest_lsit[5] += 1
                 if int(time) > 2015 and int(time) < 2019:
                     for tag in i['label']:
                         if tag == label:
                             time6 += 1
-                    count6 += 1
+                            break
+                    rest_lsit[6] += 1
     data = {
-        'tag': [label, xiaoshuo(time1/count1*100), xiaoshuo(time2/count2*100), xiaoshuo(time3/count3*100), xiaoshuo(time4/count4*100), xiaoshuo(time5/count5*100), xiaoshuo(time6/count6*100)]
+        'tag': ['\'' + label + '\'', time1, time2, time3, time4, time5, time6],
+        'all': rest_lsit,
     }
-    yield (data)
+    yield data
 
 
 
-tag_1 = obtain_date('计算机')
-tag_2 = obtain_date('科普')
-tag_3 = obtain_date('人工智能')
-tag_4 = obtain_date('科学')
+tag_1 = obtain_date('计算机科学')
+tag_2 = obtain_date('机器学习')
+tag_3 = obtain_date('数据分析')
+tag_4 = obtain_date('设计')
 tag_5 = obtain_date('编程')
 tag_6 = obtain_date('互联网')
-print(tag_1)
+
 for i in tag_1:
-    print(i['tag'])
     label1 = i['tag']
 for i in tag_2:
-    print(i['tag'])
     label2 = i['tag']
 for i in tag_3:
-    print(i['tag'])
     label3 = i['tag']
 for i in tag_4:
-    print(i['tag'])
     label4 = i['tag']
 for i in tag_5:
-    print(i['tag'])
     label5 = i['tag']
 for i in tag_6:
-    print(i['tag'])
     label6 = i['tag']
-# charts.plot(series, show='inline', options=dict(title=dict(text='出版社top')))
+    res = i['all']
+lab = {
+    'l1': label1,
+    'l2': label2,
+    'l3': label3,
+    'l4': label4,
+    'l5': label5,
+    'l6': label6,
+}
+pd1 = pd.DataFrame(lab)
+# pd1.loc['Row_sum'] = pd1.apply(lambda x: x.sum()) #行
+pd1['Col_sum'] = pd1.apply(lambda x: x.sum(), axis=1)
+pd1['Col_sum'][0] = 0
+pds2 = pd.Series(res)
+pds2[0] = 0
+res = pds2 - pd1['Col_sum']
+
+res = pd.Series.tolist(res) # 其他标签list
+
+
 
 def index(request):
 
@@ -226,13 +243,13 @@ def index(request):
         'title': info,
         'Press_top': press,
         'author_top': author,
-        'page': loaded,
         'tag1': label1,
         'tag2': label2,
         'tag3': label3,
         'tag4': label4,
         'tag5': label5,
         'tag6': label6,
+        'res': res, # 其他标签
 
     }
     return render(request, 'index.html', context)
