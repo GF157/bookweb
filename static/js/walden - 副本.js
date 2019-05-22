@@ -27,9 +27,7 @@
             "#a0a7e6",
             "#c4ebad",
             "#96dee8",
-            "#556bde",
-            "#6b41e3",
-            "rgba(119,171,232,0.78)"
+            "rgba(219,183,137,0.83)"
         ],
         "backgroundColor": "rgba(252,252,252,0)",
         "textStyle": {},
@@ -44,12 +42,12 @@
         "line": {
             "itemStyle": {
                 "normal": {
-                    "borderWidth": "1"
+                    "borderWidth": "2"
                 }
             },
             "lineStyle": {
                 "normal": {
-                    "width": "2"
+                    "width": "1"
                 }
             },
             "symbolSize": "5",
@@ -59,12 +57,12 @@
         "radar": {
             "itemStyle": {
                 "normal": {
-                    "borderWidth": "1"
+                    "borderWidth": "2"
                 }
             },
             "lineStyle": {
                 "normal": {
-                    "width": "2"
+                    "width": "1"
                 }
             },
             "symbolSize": "5",
@@ -201,9 +199,7 @@
                 "#a0a7e6",
                 "#c4ebad",
                 "#96dee8",
-                "#556bde",
-                "#6b41e3",
-                "rgba(119,171,232,0.78)"
+                "rgba(219,183,137,0.83)"
             ],
             "label": {
                 "normal": {

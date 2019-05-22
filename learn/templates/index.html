@@ -132,7 +132,7 @@
                 top:0px;
             }
 
-            .left{}
+            .left{width:540px;}
             .right{position:absolute;right:10px;width:520px;}
 			
             #p2_s1{
@@ -141,7 +141,6 @@
             left:10px;
 			background-image:url('../../static/img/上一.png');
 			height:280px;
-			width:530px;
             }
             #p2_s11{
             position:absolute;
@@ -176,7 +175,6 @@
 			background-image:url('../../static/img/下一.png');
 			top:370px;left:10px;
 			height:280px;
-			width:530px;
             }
             #p2_x2{
             position:absolute;
@@ -217,7 +215,6 @@
             top:660px;
             left:10px;
             height:280px;
-            width:530px;
 
             <!--弹出层-->
             #ShowDiv{
@@ -328,114 +325,22 @@
 
         <div id="page3" class="page" style="position:relative;background-image:url('https://img1.doubanio.com/view/activity_page/raw/public/p3819.jpg');" >
             {% block grid %} {% endblock %}
-                <div id="p3_index" class="page_content">
-                    <p style="position:relative;top:100px;left:10px;"><img src="https://img1.doubanio.com/view/subject/m/public/s32281237.jpg" style="width:115px;height:172px"></p>
+            <div id="p3_index" style="position:relative;top:80px;left:600px; height:800px; width:800px; background-color: rgba(103, 86, 86, 0.5);">
+                <p style="prosition:absolute;color:#fff;font-size:24px;">所有图书信息</p>
+                <div style="prosition:abosolute;background-color: rgba(103, 86, 86, 0.85);">
+                    <p style="position:absolute;left:30px;"><img src="https://img1.doubanio.com/view/subject/m/public/s32281237.jpg" style="width:115px;height:172px"></p>
+                    <div id="title">
+                        <p style="position:absolute;left;50px;font-size:18px;color:#fff;">标题</p>
+                    </div>
+                </div>
+            </div>
+                <div  class="page_content">
                 </div>
 
 
 
         </div>
         <div id="page4" class="page" style="position:relative">
-            <div style="position:absolute;top:20px;" class="main-content-container container-fluid px-4">
-                <div class="page-header row no-gutters py-4">
-                    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-                        <span class="text-uppercase page-subtitle">Dashboard</span>
-                        <h3 class="page-title">数据分析{{ tag1.0 }}</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg col-md-6 col-sm-6 mb-4">
-                        <div class="stats-small stats-small--1 card card-small">
-                            <div class="card-body p-0 d-flex">
-                                <div class="d-flex flex-column m-auto">
-                                    <div class="stats-small__data text-center">
-                                        <span class="stats-small__label text-uppercase">Posts</span>
-                                        <h6 class="stats-small__value count my-3">2,390</h6>
-                                    </div>
-                                    <div class="stats-small__data">
-                                        <span class="stats-small__percentage stats-small__percentage--increase">4.7%</span>
-                                    </div>
-                                </div>
-                                <canvas height="120" class="blog-overview-stats-small-1"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg col-md-6 col-sm-6 mb-4">
-                        <div class="stats-small stats-small--1 card card-small">
-                            <div class="card-body p-0 d-flex">
-                                <div class="d-flex flex-column m-auto">
-                                    <div class="stats-small__data text-center">
-                                        <span class="stats-small__label text-uppercase">Pages</span>
-                                        <h6 class="stats-small__value count my-3">182</h6>
-                                    </div>
-                                    <div class="stats-small__data">
-                                        <span class="stats-small__percentage stats-small__percentage--increase">12.4%</span>
-                                    </div>
-                                </div>
-                                <canvas height="120" class="blog-overview-stats-small-2"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
-                        <div class="card card-small" >
-                            <div class="card-body pt-0" >
-                                <div class="row border-bottom py-2 bg-light">
-                                    <div class="col-12 col-sm-6">
-                                        <div id="blog-overview-date-range"
-                                             class="input-daterange input-group input-group-sm my-auto ml-auto mr-auto ml-sm-auto mr-sm-0"
-                                             style="max-width: 350px;">
-                                            <input type="text" class="input-sm form-control" name="start"
-                                                   placeholder="Start Date" id="blog-overview-date-range-1">
-                                            <input type="text" class="input-sm f                                                                                                    orm-control" name="end"
-                                                   placeholder="End Date" id="blog-overview-date-range-2">
-                                            <span class="input-group-append">
-                                                <span class="input-group-text">
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 d-flex mb-2 mb-sm-0">
-                                        <button type="button"
-                                                class="btn btn-sm btn-white ml-auto mr-auto ml-sm-auto mr-sm-0 mt-3 mt-sm-0">
-                                            View Full Report &rarr;
-                                        </button>
-                                    </div>
-                                </div>
-                                <canvas height="130" style="max-width: 100% !important;"
-                                        class="blog-overview-users"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4" id="echarts1">
-                        <div class="card card-small h-100">
-                            <div class="card-header border-bottom" >
-                                <h6 class="m-0">Users by device</h6>
-                            </div>
-                            <div class="card-body d-flex py-0" >
-
-                            </div>
-                            <div class="card-footer border-top">
-                                <div class="row">
-                                    <div class="col">
-                                        <select class="custom-select custom-select-sm" style="max-width: 130px;">
-                                            <option selected>Last Week</option>
-                                            <option value="1">Today</option>
-                                            <option value="2">Last Month</option>
-                                            <option value="3">Last Year</option>
-                                        </select>
-                                    </div>
-                                    <div class="col text-right view-report">
-                                        <a href="#">Full report &rarr;</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"></a></div>
-                </div>
-            </div>
         </div>
         <div id="page5" class="page">
           <p>  {% for i in tag1 %}
@@ -514,164 +419,286 @@ if (option && typeof option === "object") {
 <script type="text/javascript">
 var dom = document.getElementById("");
 var myChart = echarts.init(dom,'walden');
+
 var app = {};
 option = null;
-var posList = [
-'left', 'right', 'top', 'bottom',
-'inside',
-'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
-'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
-];
-
-app.configParameters = {
-rotate: {
-    min: -90,
-    max: 90
-},
-align: {
-    options: {
-        left: 'left',
-        center: 'center',
-        right: 'right'
-    }
-},
-verticalAlign: {
-    options: {
-        top: 'top',
-        middle: 'middle',
-        bottom: 'bottom'
-    }
-},
-position: {
-    options: echarts.util.reduce(posList, function (map, pos) {
-        map[pos] = pos;
-        return map;
-    }, {})
-},
-distance: {
-    min: 0,
-    max: 100
-}
-};
-
-app.config = {
-rotate: 90,
-align: 'left',
-verticalAlign: 'middle',
-position: 'insideBottom',
-distance: 15,
-onChange: function () {
-    var labelOption = {
-        normal: {
-            rotate: app.config.rotate,
-            align: app.config.align,
-            verticalAlign: app.config.verticalAlign,
-            position: app.config.position,
-            distance: app.config.distance
-        }
-    };
-    myChart.setOption({
-        series: [{
-            label: labelOption
-        }, {
-            label: labelOption
-        }, {
-            label: labelOption
-        }, {
-            label: labelOption
-        }]
-    });
-}
-};
-
-
-var labelOption = {
-normal: {
-    show: true,
-    position: app.config.position,
-    distance: app.config.distance,
-    align: app.config.align,
-    verticalAlign: app.config.verticalAlign,
-    rotate: app.config.rotate,
-    formatter: '{c}  {name|{a}}',
-    fontSize: 16,
-    rich: {
-        name: {
-            textBorderColor: '#fff'
-        }
-    }
-}
-};
 
 option = {
-color: ['#003366', '#006699', '#4cabce', '#e5323e'],
-tooltip: {
-    trigger: 'axis',
-    axisPointer: {
-        type: 'shadow'
-    }
-},
-legend: {
-    data: ['Forest', 'Steppe', 'Desert', 'Wetland']
-},
-toolbox: {
-    show: true,
-    orient: 'vertical',
-    left: 'right',
-    top: 'center',
-    feature: {
-        mark: {show: true},
-        dataView: {show: true, readOnly: false},
-        magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-        restore: {show: true},
-        saveAsImage: {show: true}
-    }
-},
-calculable: true,
-xAxis: [
-    {
-        type: 'category',
-        axisTick: {show: false},
-        data: ['2012', '2013', '2014', '2015', '2016']
-    }
-],
-yAxis: [
-    {
-        type: 'value'
-    }
-],
-series: [
-    {
-        name: 'Forest',
-        type: 'bar',
-        barGap: 0,
-        label: labelOption,
-        data: [320, 332, 301, 334, 390]
-    },
-    {
-        name: 'Steppe',
-        type: 'bar',
-        label: labelOption,
-        data: [220, 182, 191, 234, 290]
-    },
-    {
-        name: 'Desert',
-        type: 'bar',
-        label: labelOption,
-        data: [150, 232, 201, 154, 190]
-    },
-    {
-        name: 'Wetland',
-        type: 'bar',
-        label: labelOption,
-        data: [98, 77, 101, 99, 40]
-    }
-]
-};;
-if (option && typeof option === "object") {
-myChart.setOption(option, true);
-}
 
+    series: [
+        {
+            name: ' 现有公司（家）',
+            type: 'pie',
+            radius: ['25%', '30%'],
+            center: ['30%', '30%'],
+            startAngle: 225,
+            color: [new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: 'tihuan00a2ff'
+            }, {
+                offset: 1,
+                color: 'tihuan70ffac'
+            }]), "transparent"],
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            label: {
+                    normal: {
+                        position: 'center'
+                    }
+                },
+            data: [{
+                value: 75,
+                 name: '现有公司',
+                    label: {
+                        normal: {
+                            formatter: '现有公司',
+                            textStyle: {
+                                color: 'tihuanfff',
+                                fontSize: 16
+
+                            }
+                        }
+                    }
+            }, {
+                value: 25,
+                name: '%',
+                    label: {
+                        normal: {
+                            formatter: '\n35',
+                            textStyle: {
+                                color: 'tihuan007ac6',
+                                fontSize: 30
+
+                            }
+                        }
+                    }
+            },
+            {
+                value: 0,
+                name: '%',
+                    label: {
+                        normal: {
+                            formatter: '家',
+                            textStyle: {
+                                color: 'tihuanfff',
+                                fontSize: 16
+
+                            }
+                        }
+                    }
+            }]
+        },
+        {
+            name: ' 在售项目',
+            type: 'pie',
+            radius: ['25%', '30%'],
+            center: ['70%', '30%'],
+            startAngle: 225,
+            color: [new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: 'tihuan00a2ff'
+            }, {
+                offset: 1,
+                color: 'tihuan70ffac'
+            }]), "transparent"],
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            label: {
+                    normal: {
+                        position: 'center'
+                    }
+                },
+            data: [{
+                value: 75,
+                 name: '在售项目',
+                    label: {
+                        normal: {
+                            formatter: '在售项目',
+                            textStyle: {
+                                color: 'tihuanfff',
+                                fontSize: 16
+
+                            }
+                        }
+                    }
+            }, {
+                value: 25,
+                name: '%',
+                    label: {
+                        normal: {
+                            formatter: '\n3534',
+                            textStyle: {
+                                color: 'tihuan007ac6',
+                                fontSize: 30
+
+                            }
+                        }
+                    }
+            },
+            {
+                value: 0,
+                name: '%',
+                    label: {
+                        normal: {
+                            formatter: '个',
+                            textStyle: {
+                                color: 'tihuanfff',
+                                fontSize: 16
+
+                            }
+                        }
+                    }
+            }]
+        },
+        {
+            name: ' 现有门店',
+            type: 'pie',
+            radius: ['25%', '30%'],
+            center: ['30%', '70%'],
+            startAngle: 225,
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            label: {
+                    normal: {
+                        position: 'center'
+                    }
+                },
+            data: [{
+                value: 75,
+                "itemStyle": {
+                    "normal": {
+                        "color": new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            "offset": 0,
+                            "color": 'tihuanf125ff'
+                        }, {
+                            "offset": 1,
+                            "color": 'tihuan2dcbff'
+                        }]),
+                    }
+                },
+                 name: '现有门店',
+                    label: {
+                        normal: {
+                            formatter: '现有门店',
+                            textStyle: {
+                                color: 'tihuanfff',
+                                fontSize: 16
+
+                            }
+                        }
+                    }
+            }, {
+                value: 25,
+                name: '%',
+                    label: {
+                        normal: {
+                            formatter: '\n3534',
+                            textStyle: {
+                                color: 'tihuanf125ff',
+                                fontSize: 30
+
+                            }
+                        }
+                    }
+            },
+            {
+                value: 0,
+                name: '%',
+                    label: {
+                        normal: {
+                            formatter: '家',
+                            textStyle: {
+                                color: 'tihuanfff',
+                                fontSize: 16
+
+                            }
+                        }
+                    }
+            }]
+        },
+         {
+            name: '总人数',
+            type: 'pie',
+            radius: ['25%', '30%'],
+            center: ['70%', '70%'],
+            startAngle: 225,
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            label: {
+                    normal: {
+                        position: 'center'
+                    }
+                },
+            data: [{
+                value: 75,
+                "itemStyle": {
+                    "normal": {
+                        "color": new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            "offset": 0,
+                            "color": 'tihuanf125ff'
+                        }, {
+                            "offset": 1,
+                            "color": 'tihuan2dcbff'
+                        }]),
+                    }
+                },
+                 name: '总人数',
+                    label: {
+                        normal: {
+                            formatter: '总人数',
+                            textStyle: {
+                                color: 'tihuanfff',
+                                fontSize: 16
+
+                            }
+                        }
+                    }
+            }, {
+                value: 25,
+                name: '%',
+                    label: {
+                        normal: {
+                            formatter: '\n835341',
+                            textStyle: {
+                                color: 'tihuanf125ff',
+                                fontSize: 30
+
+                            }
+                        }
+                    }
+            },
+            {
+                value: 0,
+                name: '%',
+                    label: {
+                        normal: {
+                            formatter: '人',
+                            textStyle: {
+                                color: 'tihuanfff',
+                                fontSize: 16
+
+                            }
+                        }
+                    }
+            }]
+        },
+    ]
+}
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
 </script><!--空-->
 <script type="text/javascript">
 
@@ -705,8 +732,8 @@ myChart.setOption(option, true);
                 },
                 data: [
                     {
-                        name: '[英]史蒂芬·霍金',
-                        value: 16,
+                        name: '吴军',
+                        value: 22,
                         textStyle: {
                             normal: {
                                 color: 'black'
@@ -831,8 +858,9 @@ myChart.setOption(option, true);
 
 
 </script><!--空  堆积折线图-->
+    <!--折线图-->
 <script type="text/javascript">
-var dom = document.getElementById("p2_s1");
+var dom = document.getElementById("");
 var myChart = echarts.init(dom,'walden');
 var app = {};
 option = null;
@@ -876,7 +904,7 @@ option = {
             name:'联盟广告',
             type:'line',
             stack: '总量',
-            data:[220, 182, 191, 234, 290, 330, 310]
+            data:{{ res }}
         },
         {
             name:'视频广告',
@@ -1376,6 +1404,7 @@ if (option && typeof option === "object") {
 }
        </script><!--x2饼图-->
 
+
 <script type="text/javascript">
 var dom = document.getElementById("p2_x2");
 var myChart = echarts.init(dom,'walden');
@@ -1481,7 +1510,163 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
        </script><!--嵌套环形图-->
+    <!--编程语言柱状图-->
+<script type="text/javascript">
+var dom = document.getElementById("p2_s1");
+var myChart = echarts.init(dom,'walden');
+var app = {};
+option = null;
 
+var weatherIcons = {
+    'Sunny': '',
+    'Cloudy': '',
+    'Showers': ''
+};
+
+var seriesLabel = {
+    normal: {
+        show: true,
+        textBorderColor: '#333',
+        textBorderWidth: 2
+    }
+}
+
+option = {
+    title: {
+        text: '编程语言'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    legend: {
+        data: ['PHP', 'java', 'python', 'c++']
+    },
+    grid: {
+        left: 80
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'value',
+        name: 'Days',
+        axisLabel: {
+            formatter: '{value}'
+        }
+    },
+    yAxis: {
+        type: 'category',
+        inverse: true,
+        data: ['00-09', '10-15', '15-19'],
+        axisLabel: {
+            formatter: function (value) {
+                return value;
+            },
+            margin: 20,
+            rich: {
+                value: {
+                    lineHeight: 30,
+                    align: 'center'
+                },
+                Sunny: {
+                    height: 40,
+                    align: 'center',
+                    backgroundColor: {
+                        image: weatherIcons.Sunny
+                    }
+                },
+                Cloudy: {
+                    height: 40,
+                    align: 'center',
+                    backgroundColor: {
+                        image: weatherIcons.Cloudy
+                    }
+                },
+                Showers: {
+                    height: 40,
+                    align: 'center',
+                    backgroundColor: {
+                        image: weatherIcons.Showers
+                    }
+                }
+            }
+        }
+    },
+    series: [
+        {
+            name: 'PHP',
+            type: 'bar',
+            data: [120, 184, 263],
+            label: seriesLabel,
+            markPoint: {
+                symbolSize: 1,
+                symbolOffset: [0, '50%'],
+                label: {
+                   normal: {
+                        formatter: '{a|{a}\n}{b|{b} }{c|{c}}',
+                        backgroundColor: 'rgb(242,242,242)',
+                        borderColor: '#aaa',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        padding: [4, 10],
+                        lineHeight: 26,
+                        // shadowBlur: 5,
+                        // shadowColor: '#000',
+                        // shadowOffsetX: 0,
+                        // shadowOffsetY: 1,
+                        position: 'right',
+                        distance: 20,
+                        rich: {
+                            a: {
+                                align: 'center',
+                                color: '#fff',
+                                fontSize: 18,
+                                textShadowBlur: 2,
+                                textShadowColor: '#000',
+                                textShadowOffsetX: 0,
+                                textShadowOffsetY: 1,
+                                textBorderColor: '#333',
+                                textBorderWidth: 2
+                            },
+                            b: {
+                                 color: '#333'
+                            },
+                            c: {
+                                color: '#ff8811',
+                                textBorderColor: '#000',
+                                textBorderWidth: 1,
+                                fontSize: 22
+                            }
+                        }
+                   }
+                }
+            }
+        },
+
+        {% for i in prog %}
+        {
+        name: '{{ i.name }}',
+        type: 'bar',
+        label: seriesLabel,
+        data: {{ i.data }}
+        },
+        {% endfor %}
+
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+
+<!--折线饼图-->
 <script type="text/javascript">
 var dom = document.getElementById("p2_s2");
 var myChart = echarts.init(dom,'walden');
@@ -1505,13 +1690,15 @@ setTimeout(function () {
                  ['{{tag4.0}}', {{tag4.1}}, {{tag4.2}}, {{tag4.3}}, {{tag4.4}}, {{tag4.5}}, {{tag4.6}}],
                  ['{{tag5.0}}', {{tag5.1}}, {{tag5.2}}, {{tag5.3}}, {{tag5.4}}, {{tag5.5}}, {{tag5.6}}],
                  ['{{tag6.0}}', {{tag6.1}}, {{tag6.2}}, {{tag6.3}}, {{tag6.4}}, {{tag6.5}}, {{tag6.6}}],
-                ['{{res.0}}', {{res.1}}, {{res.2}}, {{res.3}}, {{res.4}}, {{res.5}}, {{res.6}}],
+                 ['{{tag7.0}}', {{tag7.1}}, {{tag7.2}}, {{tag7.3}}, {{tag7.4}}, {{tag7.5}}, {{tag7.6}}],
+                ['其他', {{res.1}}, {{res.2}}, {{res.3}}, {{res.4}}, {{res.5}}, {{res.6}}],
             ]
         },
         xAxis: {type: 'category'},
         yAxis: {gridIndex: 0},
         grid: {top: '55%'},
         series: [
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
@@ -1561,7 +1748,7 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
        </script>
-
+<!--弹出层-->
 <script type="text/javascript">
         //普通显示
         $(function(){

@@ -25,11 +25,9 @@ from django.contrib import admin
 from learn import views
 from django.urls import path
 from learn.views import index
-from learn.views import grid
 urlpatterns = [
     # url(r'^$', views.index, name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^index/', index),
-    url(r'^grid/', grid),
 
 ]
