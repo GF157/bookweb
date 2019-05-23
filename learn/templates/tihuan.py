@@ -43,6 +43,25 @@ def get_pro():
     yield obtain_date('java')
     yield obtain_date('c++')
 
-test = [data for data in get_pro()]
-for i in test:
-    print(i)
+# 编程语言
+# test = [data for data in get_pro()]
+# for i in test:
+#     print(i)
+
+def get_nation():
+    nation_list = []
+    nation_index = []
+    naiton_count = []
+    for i in all_info.find():
+        nation_list.append(i['nation'])
+    nation_index = list(set(nation_list))
+    for i in nation_index:
+        naiton_count.append(nation_list.count(i))
+        data = {
+            'nation': i,
+            'count': nation_list.count(i),
+        }
+        if nation_list.count(i) > 50:
+            print(data)
+
+get_nation()

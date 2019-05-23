@@ -361,47 +361,27 @@ def get_score(min, max):
 
 # 获取评分对应的详细信息
 def get_scores():
-    score_list = []
     dicts = get_score(0, 4)
-    # score_list.append(dicts[element])
     yield dicts
     for i in range(4, 10):
         dicts = get_score(i, i+1)
-        # score_list.append(dicts[element])
         yield dicts
-
-    # da = {
-    #     'element': element,
-    #     'data': score_list,
-    # }
-    # return da
 
 
 def get_score_index():
-    da = get_scores('reading')
-    yield da
-    da = get_scores('read')
-    yield da
-    da = get_scores('want')
-    yield da
-    da = get_scores('book')
-    yield da
-    da = get_scores('short')
-    yield da
-    da = get_scores('note')
-    yield da
-    da = get_scores('page')
-    yield da
-    da = get_scores('number')
-    yield da
+    basic_list = ['reading', 'read', 'want', 'book', 'short', 'note', 'page', 'number', 'price']
+    score_index = [data for data in get_scores()]
+    pd1 = pd.DataFrame(score_index)
+    for i in range(0, 9):
+        list_ = pd1[i].tolist()
+        data = {
+			'name': basic_list[i],
+			'data': list_,
+        }
+        yield data
 
-
-score_index = [data for data in get_scores()]
-pd1 = pd.DataFrame
-for i in score_index:
-    pd1['test'] = i
-print(pd1)
-
+score_index = [data for data in get_score_index()]
+print(score_index)
 
 def index(request):
 
