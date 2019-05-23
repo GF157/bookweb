@@ -18,7 +18,32 @@ author_list = []
 press_list = []
 label_list = []
 
+# 统计类
+datas = {
 
+    # 评分
+    'score_number': 0,  #
+    'score_high': 0,  # 最高评分
+    ''
+
+    'nine': 0,  # 9分以上
+    'nine_time': 0,  # 9分出版时间
+    'nine_price': 0,  # 9分价钱
+    'nine_number': 0,  # 9分评分人数
+    'nine_page': 0,  # 9分页数
+    'nine_want': 0,  # 九分想读
+    'nine_read': 0,  # 九分读过
+    'nine_reading': 0,  # 九分在读
+
+    'nine_shor': 0,  # 九分短评
+    'nine_book': 0,  # 九分书评
+    'nine_note': 0,  # 九分笔记
+
+
+    'none_score': 0,  # 暂无评分
+
+
+}
 
 
 
@@ -284,6 +309,99 @@ res = pd.Series.tolist(res)  # 其他标签list
 print(pd1)
 
 
+# p2_x3 评分详细信息折线图
+def get_score(min, max):
+    for items in all_info.find():
+        # 将没有评分的重置为0
+        if items['score']:
+            pass
+        else:
+            items['score'] = 0
+        if items['number']:
+            pass
+        else:
+            items['number'] = 0
+        if items['number'] == '评分人数不足':
+            items['number'] = 0
+        if items['pages']:
+            # 评分分级
+            score = float(items['score'])
+            if score > min and score < max:
+                datas['nine'] += 1
+                datas['nine_reading'] += int(items['reading'])
+                datas['nine_read'] += int(items['read'])
+                datas['nine_want'] += int(items['read_want'])
+                datas['nine_book'] += int(items['book_number'])
+                datas['nine_shor'] += int(items['short_number'])
+
+                datas['nine_note'] += int(items['note_number'])
+                datas['nine_page'] += int(items['pages'])
+                datas['nine_number'] += int(items['number'])
+
+                try:
+                    price = re.findall('(\d\d)', items['price'])[0]
+                except:
+                    price = 0
+                datas['nine_price'] += int(price)
+    scores = {
+        'reading': xiaoshuo(datas['nine_reading'] / datas['nine']),
+        'read': xiaoshuo(datas['nine_read'] / datas['nine']),
+        'want': xiaoshuo(datas['nine_want'] / datas['nine']),
+
+        'book': xiaoshuo(datas['nine_book'] / datas['nine']),
+        'short': xiaoshuo(datas['nine_shor'] / datas['nine']),
+        'note': xiaoshuo(datas['nine_note'] / datas['nine']),
+
+        'page': xiaoshuo(datas['nine_page'] / datas['nine']),
+        'number': xiaoshuo(datas['nine_number'] / datas['nine']),
+        'price': xiaoshuo(datas['nine_price'] / datas['nine']),
+    }
+    score_list = [scores['reading'], scores['read'], scores['want'], scores['book'], scores['short'], scores['note'], scores['page'], scores['number'], scores['price']]
+    return score_list
+
+# 获取评分对应的详细信息
+def get_scores():
+    score_list = []
+    dicts = get_score(0, 4)
+    # score_list.append(dicts[element])
+    yield dicts
+    for i in range(4, 10):
+        dicts = get_score(i, i+1)
+        # score_list.append(dicts[element])
+        yield dicts
+
+    # da = {
+    #     'element': element,
+    #     'data': score_list,
+    # }
+    # return da
+
+
+def get_score_index():
+    da = get_scores('reading')
+    yield da
+    da = get_scores('read')
+    yield da
+    da = get_scores('want')
+    yield da
+    da = get_scores('book')
+    yield da
+    da = get_scores('short')
+    yield da
+    da = get_scores('note')
+    yield da
+    da = get_scores('page')
+    yield da
+    da = get_scores('number')
+    yield da
+
+
+score_index = [data for data in get_scores()]
+pd1 = pd.DataFrame
+for i in score_index:
+    pd1['test'] = i
+print(pd1)
+
 
 def index(request):
 
@@ -311,6 +429,7 @@ def index(request):
         'tag7': label7,
         'res': res,  # 其他标签
         'prog': prog,  # 编程语言柱状图
+        'score_index': score_index, # 评分详细信息
 
     }
     return render(request, 'index.html', context)

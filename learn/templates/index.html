@@ -194,14 +194,14 @@
             left:0px;
             top;0px;
 			height:320px;
-			width:265px;
+			width:400px;
 			z-index: 1;
             }#p2_x2 #x2_2{
             position:absolute;
 			background-image:url('../../static/img/下三.png');
-			left:270px;
+			left:410px;
 			height:320px;
-			width:265px;
+			width:400px;
             }#p2_x2 #x2_3{
             position:absolute;
 			background-image:url('../../static/img/下三.png');
@@ -350,11 +350,11 @@
 
 		</div>
 
-
+    </div>
 </div>
 
 <script type="text/javascript">
-var dom = document.getElementById("p2_x3");
+var dom = document.getElementById("");
 var myChart = echarts.init(dom,'walden');
 var app = {};
 option = null;
@@ -858,129 +858,8 @@ if (option && typeof option === "object") {
 
 
 </script><!--空  堆积折线图-->
-    <!--折线图-->
-<script type="text/javascript">
-var dom = document.getElementById("");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
-option = {
-    title: {
-        text: ''
-    },
-    tooltip: {
-        trigger: 'axis'
-    },
-    legend: {
-        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
-    },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
-    },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['周一','周二','周三','周四','周五','周六','周日']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [
-        {
-            name:'邮件营销',
-            type:'line',
-            stack: '总量',
-            data:[120, 132, 101, 134, 90, 230, 210]
-        },
-        {
-            name:'联盟广告',
-            type:'line',
-            stack: '总量',
-            data:{{ res }}
-        },
-        {
-            name:'视频广告',
-            type:'line',
-            stack: '总量',
-            data:[150, 232, 201, 154, 190, 330, 410]
-        },
-        {
-            name:'直接访问',
-            type:'line',
-            stack: '总量',
-            data:[320, 332, 301, 334, 390, 330, 320]
-        },
-        {
-            name:'搜索引擎',
-            type:'line',
-            stack: '总量',
-            data:[820, 932, 901, 934, 1290, 1330, 1320]
-        }
-    ]
-};
-;
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
-       </script><!-- 折线图-->
-<script type="text/javascript">
-var dom = document.getElementById("p2_x1");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
-option = {
-    tooltip: {},
-    legend: {
-        x: 'left',
-        data: ['预算分配', '实际开销']
-    },
-    radar: {
-        // shape: 'circle',
-        name: {
-            textStyle: {
-                color: '#fff',
-                backgroundColor: '#999',
-                borderRadius: 3,
-                padding: [3, 5]
-           }
-        },
-        indicator: [
-           { name: '销售', max: 6500},
-           { name: '管理', max: 16000},
-           { name: '信息技术', max: 30000},
-           { name: '客服', max: 38000},
-           { name: '研发', max: 52000},
-           { name: '市场', max: 25000}
-        ]
-    },
-    series: [{
-        name: '预算 vs 开销（Budget vs spending）',
-        type: 'radar',
-        // areaStyle: {normal: {}},
-        data : [
-            {
-                value : [4300, 10000, 28000, 35000, 50000, 19000],
-                name : '预算分配'
-            },
-             {
-                value : [5000, 14000, 28000, 31000, 42000, 21000],
-                name : '实际开销'
-            }
-        ]
-    }]
-};;
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
-       </script><!--x2_2 雷达图-->
+
+
 <script type="text/javascript">
 var dom = document.getElementById("");
 var myChart = echarts.init(dom,'walden');
@@ -1402,9 +1281,63 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script><!--x2饼图-->
-
-
+       </script>
+<!--折线图-->
+<script type="text/javascript">
+var dom = document.getElementById("p2_x3");
+var myChart = echarts.init(dom,'walden');
+var app = {};
+option = null;
+option = {
+    title: {
+        text: ''
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:[
+        {% for i in score_index %}
+        '{{ i.element }}',
+        {% endfor %}
+        ]
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['4分以下','4-5分','5-6分','6-7分','7-8分','8-9分','9分以上']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {% for i in score_index%}
+        {
+            name:'{{ i.element }}',
+            type:'line',
+            stack: '总量',
+            data:{{ i.data }}
+        },
+        {% endfor %}
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+<!--嵌套环形图-->
 <script type="text/javascript">
 var dom = document.getElementById("p2_x2");
 var myChart = echarts.init(dom,'walden');
@@ -1509,8 +1442,56 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script><!--嵌套环形图-->
-    <!--编程语言柱状图-->
+       </script>
+<!--作者国籍雷达图-->
+<script type="text/javascript">
+var dom = document.getElementById("p2_x1");
+var myChart = echarts.init(dom,'walden');
+var app = {};
+option = null;
+option = {
+    title: {text: '作者国籍雷达图'},
+    tooltip: {},
+    legend: {
+        x: 'left',
+        data: ['预算分配']
+    },
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius: 3,
+                padding: [3, 5]
+           }
+        },
+        indicator: [
+           { name: '中国', max: 2000},
+           { name: '美国', max: 2000},
+           { name: '日本', max: 2000},
+           { name: '法国', max: 2000},
+           { name: '英国', max: 2000},
+           { name: '印度', max: 2000}
+        ]
+    },
+    series: [{
+        name: '预算 vs 开销（Budget vs spending）',
+        type: 'radar',
+        // areaStyle: {normal: {}},
+        data : [
+            {
+                value : [1430, 1905, 1203, 852, 940, 681],
+                name : '作者数量'
+            }
+        ]
+    }]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+<!--编程语言柱状图-->
 <script type="text/javascript">
 var dom = document.getElementById("p2_s1");
 var myChart = echarts.init(dom,'walden');
@@ -1686,8 +1667,8 @@ setTimeout(function () {
                 ['product', '1900-1989', '1990-1999', '2000-2005', '2006-2010', '2010-2015', '2015-2019'],
                  ['{{tag1.0}}', {{tag1.1}}, {{tag1.2}}, {{tag1.3}}, {{tag1.4}}, {{tag1.5}}, {{tag1.6}}],
                  ['{{tag2.0}}', {{tag2.1}}, {{tag2.2}}, {{tag2.3}}, {{tag2.4}}, {{tag2.5}}, {{tag2.6}}],
-                 ['{{tag3.0}}', {{tag3.1}}, {{tag3.2}}, {{tag3.3}}, {{tag3.4}}, {{tag3.5}}, {{tag3.6}}],
-                 ['{{tag4.0}}', {{tag4.1}}, {{tag4.2}}, {{tag4.3}}, {{tag4.4}}, {{tag4.5}}, {{tag4.6}}],
+                 <!--['{{tag3.0}}', {{tag3.1}}, {{tag3.2}}, {{tag3.3}}, {{tag3.4}}, {{tag3.5}}, {{tag3.6}}],-->
+                 <!--['{{tag4.0}}', {{tag4.1}}, {{tag4.2}}, {{tag4.3}}, {{tag4.4}}, {{tag4.5}}, {{tag4.6}}],-->
                  ['{{tag5.0}}', {{tag5.1}}, {{tag5.2}}, {{tag5.3}}, {{tag5.4}}, {{tag5.5}}, {{tag5.6}}],
                  ['{{tag6.0}}', {{tag6.1}}, {{tag6.2}}, {{tag6.3}}, {{tag6.4}}, {{tag6.5}}, {{tag6.6}}],
                  ['{{tag7.0}}', {{tag7.1}}, {{tag7.2}}, {{tag7.3}}, {{tag7.4}}, {{tag7.5}}, {{tag7.6}}],
@@ -1698,8 +1679,6 @@ setTimeout(function () {
         yAxis: {gridIndex: 0},
         grid: {top: '55%'},
         series: [
-            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
