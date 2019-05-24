@@ -145,7 +145,7 @@ def get_author():
                 'name': i,
                 'value': author_list.count(i),
             }
-            if i != '不明' and i != '[日]藤子不二雄Ⓐ':
+            if i != '不明' and i != '[日]藤子不二雄Ⓐ' and i != '[英]史蒂芬·霍金' and i != '刘慈欣' and i != '吴军' and i != '[美]阿尔伯特·爱因斯坦':
                 yield (data)
 
 
@@ -380,7 +380,7 @@ def get_score_index():
         }
         yield data
 
-score_index = [data for data in get_score_index()]
+score_index = [data for data in get_score_index()]  # 评分对应基本详细信息
 print(score_index)
 
 def index(request):
