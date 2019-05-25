@@ -74,11 +74,11 @@ perspective effects (not including the modals and the overlay).
 
 .md-content h3 {
 	margin: 0;
-	padding: 0.1em;
+	padding: 10px;
 	text-align: center;
-	font-size: 1.4em;
+	font-size: 1em;
 	font-weight: 300;
-	opacity: 0.8;
+	opacity: 0.8; /*不透明级别*/
 	background: rgba(98,108,145,1);
 	border-radius: 3px 3px 0 0;
 }
