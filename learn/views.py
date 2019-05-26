@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.core.paginator import Paginator # 分页
+from django.core.paginator import Paginator  # 分页
 # Create your views here.
 from learn.models import Modouban
 import pymongo
@@ -41,10 +41,7 @@ datas = {
 
 
     'none_score': 0,  # 暂无评分
-
-
 }
-
 
 
 def cleanDb():
@@ -92,17 +89,17 @@ def cleanDb():
         author_list.append(i['author'])
         press_list.append(i['press'])
 
-
         # print(update_tag)
         # 更新数据
         # all_info.update_many({'_id': i['_id']}, {'$set': {'author': author}})
         # all_info.update_many({'_id': i['_id']}, {'$set': {'press': press}})
         # all_info.update_many({'_id': i['_id']}, {'$set': {'label': update_tag}})
 
+
 cleanDb()
 
 # 不重复数据
-author_index =[]
+author_index = []
 press_index = []
 label_index = []
 
@@ -136,6 +133,7 @@ for i in press_index:
         }
         print(data)
 
+
 def get_author():
     for i in author_index:
         # 作者top
@@ -147,7 +145,6 @@ def get_author():
             }
             if i != '不明' and i != '[日]藤子不二雄Ⓐ' and i != '[英]史蒂芬·霍金' and i != '刘慈欣' and i != '吴军' and i != '[美]阿尔伯特·爱因斯坦':
                 yield (data)
-
 
 
 def get_press(types):
@@ -167,6 +164,7 @@ tag_list = []
 tag_index = []
 tag_count = []
 tag_top = []
+
 
 def xiaoshuo(num):
     n = num * 100
@@ -251,10 +249,13 @@ def obtain_prog(label):
     }
     return data
 
+
 def get_pro():
     yield obtain_prog('python')
     yield obtain_prog('java')
     yield obtain_prog('c++')
+
+
 # 获取编程历年信息
 prog = [data for data in get_pro()]
 
@@ -269,7 +270,6 @@ tag_6 = obtain_date('互联网')
 tag_8 = obtain_date('Python')
 tag_9 = obtain_date('Java')
 tag_10 = obtain_date('C')
-
 
 
 for i in tag_1:
@@ -356,32 +356,38 @@ def get_score(min, max):
         'number': xiaoshuo(datas['nine_number'] / datas['nine']),
         'price': xiaoshuo(datas['nine_price'] / datas['nine']),
     }
-    score_list = [scores['reading'], scores['read'], scores['want'], scores['book'], scores['short'], scores['note'], scores['page'], scores['number'], scores['price']]
+    score_list = [scores['reading'], scores['read'], scores['want'], scores['book'],
+                  scores['short'], scores['note'], scores['page'], scores['number'], scores['price']]
     return score_list
 
 # 获取评分对应的详细信息
+
+
 def get_scores():
     dicts = get_score(0, 4)
     yield dicts
     for i in range(4, 10):
-        dicts = get_score(i, i+1)
+        dicts = get_score(i, i + 1)
         yield dicts
 
 
 def get_score_index():
-    basic_list = ['reading', 'read', 'want', 'book', 'short', 'note', 'page', 'number', 'price']
+    basic_list = ['reading', 'read', 'want', 'book',
+                  'short', 'note', 'page', 'number', 'price']
     score_index = [data for data in get_scores()]
     pd1 = pd.DataFrame(score_index)
     for i in range(0, 9):
         list_ = pd1[i].tolist()
         data = {
-			'name': basic_list[i],
-			'data': list_,
+            'name': basic_list[i],
+            'data': list_,
         }
         yield data
 
+
 score_index = [data for data in get_score_index()]  # 评分对应基本详细信息
 print(score_index)
+
 
 def index(request):
 
@@ -389,15 +395,13 @@ def index(request):
     press = [data for data in get_press('column')]
     author = [data for data in get_author()]
 
-
-
     limit = 4
-    paginatior = Paginator(press,limit)
-    page = request.GET.get('page',1)
+    paginatior = Paginator(info, limit)
+    page = request.GET.get('page', 1)
     loaded = paginatior.page(page)
     context = {
         'for': [0, 1, 2, 3, 4, 5, 6],
-        'title': info,
+        'all_info': loaded,
         'Press_top': press,
         'author_top': author,
         'tag1': label1,
@@ -409,11 +413,10 @@ def index(request):
         'tag7': label7,
         'res': res,  # 其他标签
         'prog': prog,  # 编程语言柱状图
-        'score_index': score_index, # 评分详细信息
+        'score_index': score_index,  # 评分详细信息
 
     }
     return render(request, 'index.html', context)
-
 
 
 # def home(request):

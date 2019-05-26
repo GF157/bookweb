@@ -100,11 +100,13 @@ class Modouban(Document):
     # 笔记数量
     note_number = StringField()
 
+    nation = StringField()
+
     # 指明连接的数据表名
-    meta = {'collection': 'tag_computer1'}
+    meta = {'collection': 'computerY'}
 
 
 
 # 测试是否连接成功
-# for i in Modouban.objects[:10]:  # [:10] 分片
-#     print(i.author)
+for i in Modouban.objects[:100]:  # [:10] 分片
+    print(i.author)

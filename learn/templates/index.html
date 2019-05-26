@@ -7,7 +7,7 @@
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
     <script type="text/javascript" src="../../static/js/wordcloud.js"></script>
     <script type="text/javascript" src="../../static/js/walden.js"></script>
-    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/jquery-2.2.1.min.js"></script>
     
     <!--弹出层-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,162 +20,167 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/component.css" />
     <!-- 弹出层 -->
 
+    <!-- semantic -->
+    <script type="text/javascript" src="../../static/js/semantic.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/semantic.min.css"></link>
+
     <link rel="stylesheet" href="../../static/css/index.css">
 
     <title>计算机类图书信息分析</title>
 
     <style type="text/css">
-            .player{
-                width: 100%;
-                z-index: -11;
-             }
-            .homepage-banner {
-                border-right: none;
-                border-left: none;
-                position: relative;
-            }
-            .no-video .animation-container video,
-            .touch .animation-container video {
-                display: none;
-            }
-            .no-video .animation-container .animation,
-            .touch .animation-container .animation {
-                display: block !important;
-            }
-            .animation-container {
-                position: relative;
-                bottom: 0%;
-                left: 0%;
-                height: 100%;
-                width: 100%;
-                overflow: hidden;
-            }
-            .animation-container .animation img {
-                width: 100%;
-                bottom: 0;
-                position: absolute;
-            }
-            .animation-container .mask {
-                z-index: 5;
-                position: absolute;
-                width: 100%;
-            }
+    .player{
+        width: 100%;
+        z-index: -11;
+    }
+    .homepage-banner {
+        border-right: none;
+        border-left: none;
+        position: relative;
+    }
+    .no-video .animation-container video,
+    .touch .animation-container video {
+        display: none;
+    }
+    .no-video .animation-container .animation,
+    .touch .animation-container .animation {
+        display: block !important;
+    }
+    .animation-container {
+        position: relative;
+        bottom: 0%;
+        left: 0%;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+    .animation-container .animation img {
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+    }
+    .animation-container .mask {
+        z-index: 5;
+        position: absolute;
+        width: 100%;
+    }
 
-            .animation-container video {
-                position: absolute;
-                z-index: 0;
-                bottom: 0;
-            }
-            .animation-container video.fillScreen {
-                width: 100%;
-            }
-            .animation-container .logo {
-                position: absolute;
-                z-index: 100;
-                width: 100%;
-                height: 100%;
-            }
-            .logo{
-                position:absolute;
-                top:0px;
-            }
+    .animation-container video {
+        position: absolute;
+        z-index: 0;
+        bottom: 0;
+    }
+    .animation-container video.fillScreen {
+        width: 100%;
+    }
+    .animation-container .logo {
+        position: absolute;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+    }
+    .logo{
+        position:absolute;
+        top:0px;
+    }
 
-            .left{width:540px;}
-            .right{position:absolute;right:10px;width:520px;}
-			
-            #p2_s1{
+    .left{width:540px;}
+    .right{position:absolute;right:10px;width:520px;}
+
+    #p2_s1{
+        position:absolute;
+        top:80px;
+        left:10px;
+        background: rgba(239, 247, 250, 1);
+        border-radius: 10px;
+        height:280px;
+    }
+    #p2_s11{
+        position:absolute;
+        top:0px;
+        left:0px;
+        background: rgba(239, 247, 250, 1);
+        border-radius: 10px;
+        height:350px;
+        width:380px;
+    }
+    #p2_s12{
+        position:absolute;
+        top:0px;
+        left:385px;
+        background: rgba(239, 247, 250, 1);
+        border-radius: 10px;
+        height:350px;
+        width:300px;
+    }
+    #p2_s2{
+        position:absolute;
+        background: rgba(239, 247, 250, 1);
+        border-radius: 10px;
+        top:80px;left:560px;
+        height:480px;
+        width:820px;
+    }
+    #p2_s3{
+        position: absolute;
+        top: 80px;
+        background: rgba(239, 247, 250, 1);
+        border-radius: 10px;
+        height:380px;
+    }
+    #p2_x1{
+        position:absolute;
+        background: rgba(239, 247, 250, 1);
+        border-radius: 10px;
+        top:370px;left:10px;
+        height:280px;
+    }
+    #p2_x2{
+        position:absolute;
+        background: rgba(239, 247, 250, 1);
+        border-radius: 10px;
+        top:570px;left:560px;
+        height:350px;
+        width:820px;
+    }
+    #p2_x3{
+        background: rgba(239, 247, 250, 1);
+        border-radius: 10px;
+        top:470px;
+        height:400px;
+    }
+    #p2_x2 #x2_1{
+        position:absolute;
+        background: rgba(239, 247, 250, 1);
+        border-radius: 10px;
+        left:0px;
+        top;0px;
+        height:320px;
+        width:400px;
+        z-index: 1;
+        }#p2_x2 #x2_2{
             position:absolute;
-            top:80px;
-            left:10px;
             background: rgba(239, 247, 250, 1);
             border-radius: 10px;
-			height:280px;
-            }
-            #p2_s11{
-            position:absolute;
-            top:0px;
-            left:0px;
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-			height:350px;
-			width:380px;
-            }
-            #p2_s12{
-            position:absolute;
-            top:0px;
-            left:385px;
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-			height:350px;
-			width:300px;
-            }
-            #p2_s2{
-            position:absolute;
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-			top:80px;left:560px;
-			height:480px;
-			width:820px;
-            }
-            #p2_s3{
-            position: absolute;
-            top: 80px;
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-			height:380px;
-            }
-            #p2_x1{
-            position:absolute;
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-			top:370px;left:10px;
-			height:280px;
-            }
-            #p2_x2{
-            position:absolute;
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-			top:570px;left:560px;
-			height:350px;
-			width:820px;
-            }
-            #p2_x3{
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-			top:470px;
-			height:400px;
-            }
-            #p2_x2 #x2_1{
-            position:absolute;
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-            left:0px;
-            top;0px;
-			height:320px;
-			width:400px;
-			z-index: 1;
-            }#p2_x2 #x2_2{
-            position:absolute;
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-			left:410px;
-			height:320px;
-			width:400px;
+            left:410px;
+            height:320px;
+            width:400px;
             }#p2_x2 #x2_3{
-            position:absolute;
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-			left:520px;
-			height:320px;
-			width:265px;
+                position:absolute;
+                background: rgba(239, 247, 250, 1);
+                border-radius: 10px;
+                left:520px;
+                height:320px;
+                width:265px;
             }
             #p2_z1{
-            position:absolute;
-            background: rgba(239, 247, 250, 1);
-            border-radius: 10px;
-            top:660px;
-            left:10px;
-            height:280px;
+                position:absolute;
+                background: rgba(239, 247, 250, 1);
+                border-radius: 10px;
+                top:660px;
+                left:10px;
+                height:280px;
+            }
             
             button {
                 border-radius: 10px;
@@ -190,286 +195,336 @@
                 position: absolute;
                 z-index: 1000;
             }
+            
+            #index_text i{
+                color: #fff;
+            }
+            #index_text p{
+                color: #fff;
+            }
+            #index_text h3{
+                color: #fff;
+            }
+        </style>
+    </head>
 
-    </style>
-</head>
+    <body>
 
-<body>
+        <div id="wrap">
+            <div id="main">
 
-<div id="wrap">
-    <div id="main">
+                <ul id="pageUl" type="circle" style="z-index: 2000;">
+                    <li id="pageUlLi1" class="pageUlLi">&nbsp;</li>
+                    <li id="pageUlLi2" class="pageUlLi">&nbsp;</li>
+                    <li id="pageUlLi3" class="pageUlLi">&nbsp;</li>
+                    <li id="pageUlLi4" class="pageUlLi">&nbsp;</li>
+                    <li id="pageUlLi5" class="pageUlLi">&nbsp;</li>
+                </ul>
 
-        <ul id="pageUl" type="circle">
-            <li id="pageUlLi1" class="pageUlLi">&nbsp;</li>
-            <li id="pageUlLi2" class="pageUlLi">&nbsp;</li>
-            <li id="pageUlLi3" class="pageUlLi">&nbsp;</li>
-            <li id="pageUlLi4" class="pageUlLi">&nbsp;</li>
-            <li id="pageUlLi5" class="pageUlLi">&nbsp;</li>
-        </ul>
+                <div id="page1" class="page">
 
-        <div id="page1" class="page">
-
-            <div class="homepage-banner">
-                <div class="animation-container">
-                    <div class="logo">
-                        <p style="position:absolute;top:100px;"><img src="../../static/img/title.png" width="50%" height="55%"></p>
-                        <p style="position:absolute;top:0px;"><img src="../../static/img/title_img.png"></p>
-                        <p style="position:absolute;top:5px;left:15px;"><img src="../../static/img/logo.png" width="70%" height="70%"></p>
-                        <p style="position:absolute;top:-1px;right:15px;"><img src="../../static/img/cata.png" width="70%">
-                        </p>
-                    </div>
-                    <div class="mask">
-                        <img src="../../static/img/shade.png" width="100%" height="100%">
-                    </div>
-                    <video autoplay loop class="fillScreen" width="100%" poster="../../static/img/static.png">
-                        <source src="../../static/fonts/satellite.mp4" type="video/mp4"/>
-                        <source src="../../static/fonts/satellite.webm" type="video/webm"/>
-                        Please upgrade your browser, it does not support the video tag.
-                    </video>
-
-                </div>
-                <div class="textdown"><p align="value" style="color:white;">基于豆瓣用户对读书条目的评分、标记和评价 (统计截至2019-4-1)</p>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div style="background-color: #ffffff;position:relative" id="page2" class="page">
-        
-            <div class="md-modal md-effect-1" id="modal-1">
-                <div class="md-content" style="position:absolute;width:100%;height:100%;">
-                    <div class="md-content" style="position:absolute;width:100%;height:100%;min-height:500px;background: rgba(0,0,0,0.5);">
-                        <div style="position:relative;left:20%;width:60%;height:800px;">
-                            <h3>编程语言历年书本数目统计</h3>
-                            <div  id="p2_s1_show" style="position:relative;left:10%;width:80%;height:80%">
+                    <div class="homepage-banner">
+                        <div class="animation-container">
+                            <div class="logo">
+                                <p style="position:absolute;top:100px;"><img src="../../static/img/title.png" width="50%" height="55%"></p>
+                                <p style="position:absolute;top:0px;"><img src="../../static/img/title_img.png"></p>
+                                <p style="position:absolute;top:5px;left:15px;"><img src="../../static/img/logo.png" width="70%" height="70%"></p>
+                                <p style="position:absolute;top:-1px;right:15px;"><img src="../../static/img/cata.png" width="70%">
+                                </p>
                             </div>
-                            <button class="md-close" style="position: fixed;border-radius: 10px;font-size: 0.1em;background: #c0392b;">Close</button>
+                            <div class="mask">
+                                <img src="../../static/img/shade.png" width="100%" height="100%">
+                            </div>
+                            <video autoplay loop class="fillScreen" width="100%" poster="../../static/img/static.png">
+                                <source src="../../static/fonts/satellite.mp4" type="video/mp4"/>
+                                <source src="../../static/fonts/satellite.webm" type="video/webm"/>
+                                Please upgrade your browser, it does not support the video tag.
+                            </video>
+
                         </div>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+                        <div class="textdown"><p align="value" style="color:white;">基于豆瓣用户对读书条目的评分、标记和评价 (统计截至2019-4-1)</p>
+                        </div>
 
-            <div class="md-modal md-effect-1" id="modal-2">
-                <div class="md-content" style="position:absolute;width:100%;height:100%;">
-                    <div class="md-content" style="position:absolute;width:100%;height:100%;min-height:500px;background: rgba(0,0,0,0.5);">
-                        <div style="position:relative;left:20%;width:60%;height:85%;">
-                            <button class="md-close">Close</button>
-                            <h3>作者国籍雷达图</h3>
-                            <div  id="p2_s2_show" style="position:relative;left:10%;width:80%;height:80%">
-                                
+                    </div>
+
+                </div>
+
+                <div style="background-color: #ffffff;position:relative" id="page2" class="page">
+
+                    <div class="md-modal md-effect-1" id="modal-1">
+                        <div class="md-content" style="position:absolute;width:100%;height:100%;">
+                            <div class="md-content" style="position:absolute;width:100%;height:100%;min-height:500px;background: rgba(0,0,0,0.5);">
+                                <div style="position:relative;left:20%;width:60%;height:800px;">
+                                    <h3>编程语言历年书本数目统计</h3>
+                                    <div  id="p2_s1_show" style="position:relative;left:10%;width:80%;height:80%">
+                                    </div>
+                                    <button class="md-close" style="position: fixed;border-radius: 10px;font-size: 0.1em;background: #c0392b;">Close</button>
+                                </div>
+
                             </div>
+
+                        </div>
+                    </div>
+
+                    <div class="md-modal md-effect-1" id="modal-2">
+                        <div class="md-content" style="position:absolute;width:100%;height:100%;">
+                            <div class="md-content" style="position:absolute;width:100%;height:100%;min-height:500px;background: rgba(0,0,0,0.5);">
+                                <div style="position:relative;left:20%;width:60%;height:85%;">
+                                    <button class="md-close">Close</button>
+                                    <h3>作者国籍雷达图</h3>
+                                    <div  id="p2_s2_show" style="position:relative;left:10%;width:80%;height:80%">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="md-modal md-effect-1" id="modal-3">
+                        <div class="md-content" style="position:absolute;width:100%;height:100%;">
+                            <div class="md-content" style="position:absolute;width:100%;height:100%;min-height:500px;background: rgba(0,0,0,0.5);">
+                                <div style="position:relative;left:20%;width:60%;height:800px;">
+                                    <h3>作者国籍雷达图</h3>
+                                    <div  id="tanchu" style="position:relative;left:10%;width:80%;height:80%"></div>
+                                    <button class="md-close">Close</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="container" style="position:absolute;width:100%;height:100%;">
+                        <div class="column" style="position:absolute;top:9%;left:25%;">
+                            <button class="md-trigger" data-modal="modal-1" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.005em;z-index: 1000;">Show</button>
+                        </div>
+                        <div class="column" style="position:absolute;top:9%;left:68%;">
+                            <button class="md-trigger" data-modal="modal-2" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.05em;z-index: 1000;">Show</button>
+                        </div>
+                        <div class="column" style="position:absolute;top:40%;left:25%;">
+                            <button class="md-trigger" data-modal="modal-3" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.05em;z-index: 1000;">Show</button>
+                        </div>
+                        <div class="column" style="position:absolute;top:72%;left:25%;">
+                            <button class="md-trigger" data-modal="modal-4" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.05em;z-index: 1000;">Show</button>
+                        </div>
+                        <div class="column" style="position:absolute;top:61%;left:68%;">
+                            <button class="md-trigger" data-modal="modal-5" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.05em;z-index: 1000;">Show</button>
+                        </div>
+                        <div class="column" style="position:absolute;top:52%;left:96%;">
+                            <button class="md-trigger" data-modal="modal-6" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.05em;z-index: 1000;">Show</button>
+                        </div>
+                    </div>
+
+                    <p style="position:absolute;top:2%;right:83%;"><img src="../../static/img/数据分析2.png"></p>
+                    <p style="position:absolute;top:10px;right:350px"><img width="80%" height="80%" src="../../static/img/全部数据.png"></p>
+                    <p style="position:absolute;top:10px;right:50px"><img width="80%" height="80%" src="../../static/img/有效数据.png"></p>
+                    <div id="p2_s1" class="left">
+
+                        <div id="p2_s11">
+
+                        </div>
+                        <div id="p2_s12">
+
+                        </div>
+                    </div>
+
+                    <div id="p2_s2">  </div>
+                    <div id="p2_s3" class="right">  </div>
+                    <div id="p2_x1" class="left">  </div>
+                    <div id="p2_x2">
+                        <div id="x2_1">
+
+                        </div>
+                        <div id="x2_2">
+
+                        </div>
+                        <div id="x2_3">
+
+                        </div>
+                    </div>
+                    <div id="p2_x3" class="right">  </div>
+                    <div id="p2_z1" class="left">  </div>
+
+                </div>
+
+                <div id="page3" class="page" style="position:relative;background-image:url('https://img1.doubanio.com/view/activity_page/raw/public/p3819.jpg');" >
+                    {% block grid %} {% endblock %}
+                    <div id="p3_index" style="position:relative;top:80px;left:600px; height:800px; width:800px; background-color: rgba(103, 86, 86, 0.5);">
+                        <p style="prosition:absolute;color:#fff;font-size:24px;">所有图书信息</p>
+                        <div style="prosition:abosolute;background-color: rgba(103, 86, 86, 0.85);">
+
+                            <p style="position:absolute;left:30px;"><img src="https://img1.doubanio.com/view/subject/m/public/s32281237.jpg" style="width:115px;height:172px"></p>
+                            <div id="title">
+                                <p style="position:absolute;left;500px;font-size:18px;color:#fff;">标题</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div  class="page_content">
+                    </div>
+
+
+
+                </div>
+
+                <div id="page4" class="page" style="position:relative;background-image:url('https://img1.doubanio.com/view/activity_page/raw/public/p3819.jpg');">
+                    <div class="ui text container segment" style="background-color: rgba(103, 86, 86, 0.85);">
+                        <div class="ui divided items">
+                            <div class="ui segment">
+                                <h2 class="ui center aligned header">全部图书榜单信息</h2>
+                            </div>
+                            {% for i in all_info %}
+                            <div class="item">
+                                <div class="content">
+                                    <!-- <div class="ui small image">
+                                      <img src="{{ i.image }}">
+                                    </div> -->
+                                    <div class="menu" id="index_text">
+                                        <h3 class="ui header" href="{{ i.url }}">{{ i.title }}</h3>
+                                        <p>作者：{{ i.author }} / 出版社：{{ i.press }} / 评分：{{ i.score }} / 评分人数：{{ i.number }}</p>
+                                        <p>短评情感指数：</p>
+                                        <div class="extra">
+                                            {% for tag in i.label %}
+                                            <div class="ui label">
+                                                {{ tag }}
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            {% endfor %}
                             
+                        <div class="ui pagination menu">
+                            {% if all_info.has_previous %}
+                            <a class="active item" href="?page={{ all_info.previous_page_number }}"> < </a>
+                            {% endif %}
+                            <div class="disable item">
+                                page {{ all_info.number }} of {{ all_info.paginator.num_pages}}
+                            </div>
+                            {% if all_info.has_next %}
+                            <a class="item" href="?page={{ all_info.next_page_number }}"> > </a> 
+                            {% endif %}
                         </div>
-                        
                     </div>
-                    
                 </div>
+                <div id="page5" class="page">
+                  <p>  {% for i in tag1 %}
+                    {{ i.tag }}
+                    {% endfor %}
+                </p>
+
             </div>
-            <div class="md-modal md-effect-1" id="modal-3">
-                <div class="md-content" style="position:absolute;width:100%;height:100%;">
-                    <div class="md-content" style="position:absolute;width:100%;height:100%;min-height:500px;background: rgba(0,0,0,0.5);">
-                        <div style="position:relative;left:20%;width:60%;height:800px;">
-                            <h3>作者国籍雷达图</h3>
-                            <div  id="tanchu" style="position:relative;left:10%;width:80%;height:80%"></div>
-                            <button class="md-close">Close</button>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="container" style="position:absolute;width:100%;height:100%;">
-                    <div class="column" style="position:absolute;top:9%;left:25%;">
-                        <button class="md-trigger" data-modal="modal-1" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.005em;z-index: 1000;">Show</button>
-                    </div>
-                    <div class="column" style="position:absolute;top:9%;left:68%;">
-                        <button class="md-trigger" data-modal="modal-2" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.05em;z-index: 1000;">Show</button>
-                    </div>
-                    <div class="column" style="position:absolute;top:40%;left:25%;">
-                        <button class="md-trigger" data-modal="modal-3" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.05em;z-index: 1000;">Show</button>
-                    </div>
-                    <div class="column" style="position:absolute;top:72%;left:25%;">
-                        <button class="md-trigger" data-modal="modal-4" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.05em;z-index: 1000;">Show</button>
-                    </div>
-                    <div class="column" style="position:absolute;top:61%;left:68%;">
-                        <button class="md-trigger" data-modal="modal-5" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.05em;z-index: 1000;">Show</button>
-                    </div>
-                    <div class="column" style="position:absolute;top:52%;left:96%;">
-                        <button class="md-trigger" data-modal="modal-6" style="position:absolute;background: #848FFD;border-radius: 10px;font-size: 0.05em;z-index: 1000;">Show</button>
-                    </div>
-            </div>
-            
-            <p style="position:absolute;top:2%;right:83%;"><img src="../../static/img/数据分析2.png"></p>
-            <p style="position:absolute;top:10px;right:350px"><img width="80%" height="80%" src="../../static/img/全部数据.png"></p>
-            <p style="position:absolute;top:10px;right:50px"><img width="80%" height="80%" src="../../static/img/有效数据.png"></p>
-            <div id="p2_s1" class="left">
-                
-                <div id="p2_s11">
-
-                </div>
-                <div id="p2_s12">
-
-                </div>
-            </div>
-
-            <div id="p2_s2">  </div>
-            <div id="p2_s3" class="right">  </div>
-            <div id="p2_x1" class="left">  </div>
-            <div id="p2_x2">
-                <div id="x2_1">
-
-                </div>
-                <div id="x2_2">
-
-                </div>
-                <div id="x2_3">
-
-                </div>
-            </div>
-            <div id="p2_x3" class="right">  </div>
-            <div id="p2_z1" class="left">  </div>
 
         </div>
-
-        <div id="page3" class="page" style="position:relative;background-image:url('https://img1.doubanio.com/view/activity_page/raw/public/p3819.jpg');" >
-            {% block grid %} {% endblock %}
-            <div id="p3_index" style="position:relative;top:80px;left:600px; height:800px; width:800px; background-color: rgba(103, 86, 86, 0.5);">
-                <p style="prosition:absolute;color:#fff;font-size:24px;">所有图书信息</p>
-                <div style="prosition:abosolute;background-color: rgba(103, 86, 86, 0.85);">
-                    <p style="position:absolute;left:30px;"><img src="https://img1.doubanio.com/view/subject/m/public/s32281237.jpg" style="width:115px;height:172px"></p>
-                    <div id="title">
-                        <p style="position:absolute;left;500px;font-size:18px;color:#fff;">标题</p>
-                    </div>
-                </div>
-            </div>
-                <div  class="page_content">
-                </div>
-
-
-
-        </div>
-
-        <div id="page4" class="page">
-            
-        </div>
-        <div id="page5" class="page">
-          <p>  {% for i in tag1 %}
-                {{ i.tag }}
-            {% endfor %}
-          </p>
-
-		</div>
-
     </div>
-</div>
 
 
 
 
-<!-- 弹出层图表 -->
+    <!-- 弹出层图表 -->
 
-<script type="text/javascript">
-var dom = document.getElementById("p2_s1_show");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
+    <script type="text/javascript">
+        var dom = document.getElementById("p2_s1_show");
+        var myChart = echarts.init(dom,'walden');
+        var app = {};
+        option = null;
 
-var weatherIcons = {
-    'Sunny': '',
-    'Cloudy': '',
-    'Showers': ''
-};
+        var weatherIcons = {
+            'Sunny': '',
+            'Cloudy': '',
+            'Showers': ''
+        };
 
-var seriesLabel = {
-    normal: {
-        show: true,
-        textBorderColor: '#333',
-        textBorderWidth: 2
-    }
-}
-
-option = {
-    title: {
-        text: '编程语言'
-    },
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'shadow'
-        }
-    },
-    legend: {
-        data: ['PHP', 'java', 'python', 'c++']
-    },
-    grid: {
-        left: 80
-    },
-    toolbox: {
-        show: true,
-        feature: {
-            saveAsImage: {}
-        }
-    },
-    xAxis: {
-        type: 'value',
-        name: 'Days',
-        axisLabel: {
-            formatter: '{value}'
-        }
-    },
-    yAxis: {
-        type: 'category',
-        inverse: true,
-        data: ['00-09', '10-15', '15-19'],
-        axisLabel: {
-            formatter: function (value) {
-                return value;
-            },
-            margin: 20,
-            rich: {
-                value: {
-                    lineHeight: 30,
-                    align: 'center'
-                },
-                Sunny: {
-                    height: 40,
-                    align: 'center',
-                    backgroundColor: {
-                        image: weatherIcons.Sunny
-                    }
-                },
-                Cloudy: {
-                    height: 40,
-                    align: 'center',
-                    backgroundColor: {
-                        image: weatherIcons.Cloudy
-                    }
-                },
-                Showers: {
-                    height: 40,
-                    align: 'center',
-                    backgroundColor: {
-                        image: weatherIcons.Showers
-                    }
-                }
+        var seriesLabel = {
+            normal: {
+                show: true,
+                textBorderColor: '#333',
+                textBorderWidth: 2
             }
         }
-    },
-    series: [
-        {
-            name: 'PHP',
-            type: 'bar',
-            data: [120, 184, 263],
-            label: seriesLabel,
-            markPoint: {
-                symbolSize: 1,
-                symbolOffset: [0, '50%'],
-                label: {
-                   normal: {
+
+        option = {
+            title: {
+                text: '编程语言'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                data: ['PHP', 'java', 'python', 'c++']
+            },
+            grid: {
+                left: 80
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'value',
+                name: 'Days',
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            },
+            yAxis: {
+                type: 'category',
+                inverse: true,
+                data: ['00-09', '10-15', '15-19'],
+                axisLabel: {
+                    formatter: function (value) {
+                        return value;
+                    },
+                    margin: 20,
+                    rich: {
+                        value: {
+                            lineHeight: 30,
+                            align: 'center'
+                        },
+                        Sunny: {
+                            height: 40,
+                            align: 'center',
+                            backgroundColor: {
+                                image: weatherIcons.Sunny
+                            }
+                        },
+                        Cloudy: {
+                            height: 40,
+                            align: 'center',
+                            backgroundColor: {
+                                image: weatherIcons.Cloudy
+                            }
+                        },
+                        Showers: {
+                            height: 40,
+                            align: 'center',
+                            backgroundColor: {
+                                image: weatherIcons.Showers
+                            }
+                        }
+                    }
+                }
+            },
+            series: [
+            {
+                name: 'PHP',
+                type: 'bar',
+                data: [120, 184, 263],
+                label: seriesLabel,
+                markPoint: {
+                    symbolSize: 1,
+                    symbolOffset: [0, '50%'],
+                    label: {
+                     normal: {
                         formatter: '{a|{a}\n}{b|{b} }{c|{c}}',
                         backgroundColor: 'rgb(242,242,242)',
                         borderColor: '#aaa',
@@ -496,28 +551,28 @@ option = {
                                 textBorderWidth: 2
                             },
                             b: {
-                                 color: '#333'
-                            },
-                            c: {
-                                color: '#ff8811',
-                                textBorderColor: '#000',
-                                textBorderWidth: 1,
-                                fontSize: 22
-                            }
+                               color: '#333'
+                           },
+                           c: {
+                            color: '#ff8811',
+                            textBorderColor: '#000',
+                            textBorderWidth: 1,
+                            fontSize: 22
                         }
-                   }
+                    }
                 }
             }
-        },
+        }
+    },
 
-        {% for i in prog %}
-        {
+    {% for i in prog %}
+    {
         name: '{{ i.name }}',
         type: 'bar',
         label: seriesLabel,
         data: {{ i.data }}
-        },
-        {% endfor %}
+    },
+    {% endfor %}
 
     ]
 };
@@ -525,20 +580,20 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+</script>
 
 <script type="text/javascript">
-            var dom = document.getElementById("tanchu");
-            var myChart = echarts.init(dom,'walden');
-            var app = {};
-            option = null;
-            option = {
-                tooltip: {},
-                legend: {
-                    x: 'left',
-                    data: ['预算分配']
-                },
-                radar: {
+    var dom = document.getElementById("tanchu");
+    var myChart = echarts.init(dom,'walden');
+    var app = {};
+    option = null;
+    option = {
+        tooltip: {},
+        legend: {
+            x: 'left',
+            data: ['预算分配']
+        },
+        radar: {
                     // shape: 'circle',
                     name: {
                         textStyle: {
@@ -546,15 +601,15 @@ if (option && typeof option === "object") {
                             backgroundColor: '#999',
                             borderRadius: 3,
                             padding: [3, 5]
-                       }
+                        }
                     },
                     indicator: [
-                       { name: '美国', max: 5000},
-                       { name: '法国', max: 5000},
-                       { name: '英国', max: 1000},
-                       { name: '中国', max: 5000},
-                       { name: '德国', max: 1000},
-                       { name: '日本', max: 1000}
+                    { name: '美国', max: 5000},
+                    { name: '法国', max: 5000},
+                    { name: '英国', max: 1000},
+                    { name: '中国', max: 5000},
+                    { name: '德国', max: 1000},
+                    { name: '日本', max: 1000}
                     ]
                 },
                 series: [{
@@ -562,10 +617,10 @@ if (option && typeof option === "object") {
                     type: 'radar',
                     // areaStyle: {normal: {}},
                     data : [
-                        {
-                            value : [4604, 125, 465, 4108, 92, 284],
-                            name : '作者数量'
-                        }
+                    {
+                        value : [4604, 125, 465, 4108, 92, 284],
+                        name : '作者数量'
+                    }
                     ]
                 }]
             };;
@@ -574,386 +629,386 @@ if (option && typeof option === "object") {
             }
         </script>
 
-<!-- page2图表 -->
+        <!-- page2图表 -->
 
-<script type="text/javascript">
-var dom = document.getElementById("");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
-option = {
-    tooltip : {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'cross',
-            label: {
-                backgroundColor: '#6a7985'
+        <script type="text/javascript">
+            var dom = document.getElementById("");
+            var myChart = echarts.init(dom,'walden');
+            var app = {};
+            option = null;
+            option = {
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#6a7985'
+                        }
+                    }
+                },
+                legend: {
+                    data:[
+                    {% for i in press_top %}
+                    '{{ i.name }}',
+                    {% endfor %}
+                    ]
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                grid: {
+                    left: '{{ title }}%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : false,
+                    data : ['周一','周二','周三','周四','周五','周六','周日']
+                }
+                ],
+                yAxis : [
+                {
+                    type : 'value'
+                }
+                ],
+                series : [
+                {% for i in Press_top %}
+                {
+                    name:'{{ i.name }}',
+                    type:'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    data:[220,180,191,234,290,330,250]
+                },
+                {% endfor %}
+                ]
+            };
+            ;
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
             }
-        }
-    },
-    legend: {
-        data:[
-        {% for i in press_top %}
-        '{{ i.name }}',
-        {% endfor %}
-        ]
-    },
-    toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
-    },
-    grid: {
-        left: '{{ title }}%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    xAxis : [
-        {
-            type : 'category',
-            boundaryGap : false,
-            data : ['周一','周二','周三','周四','周五','周六','周日']
-        }
-    ],
-    yAxis : [
-        {
-            type : 'value'
-        }
-    ],
-    series : [
-        {% for i in Press_top %}
-            {
-                name:'{{ i.name }}',
-                type:'line',
-                stack: '总量',
-                areaStyle: {},
-                data:[220,180,191,234,290,330,250]
-            },
-        {% endfor %}
-    ]
-};
-;
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
 
-</script><!--p2_x1  堆叠区域图-->
-<script type="text/javascript">
-var dom = document.getElementById("");
-var myChart = echarts.init(dom,'walden');
+        </script><!--p2_x1  堆叠区域图-->
+        <script type="text/javascript">
+            var dom = document.getElementById("");
+            var myChart = echarts.init(dom,'walden');
 
-var app = {};
-option = null;
+            var app = {};
+            option = null;
 
-option = {
+            option = {
 
-    series: [
-        {
-            name: ' 现有公司（家）',
-            type: 'pie',
-            radius: ['25%', '30%'],
-            center: ['30%', '30%'],
-            startAngle: 225,
-            color: [new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: 'tihuan00a2ff'
-            }, {
-                offset: 1,
-                color: 'tihuan70ffac'
-            }]), "transparent"],
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            label: {
-                    normal: {
-                        position: 'center'
-                    }
+                series: [
+                {
+                    name: ' 现有公司（家）',
+                    type: 'pie',
+                    radius: ['25%', '30%'],
+                    center: ['30%', '30%'],
+                    startAngle: 225,
+                    color: [new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'tihuan00a2ff'
+                    }, {
+                        offset: 1,
+                        color: 'tihuan70ffac'
+                    }]), "transparent"],
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    label: {
+                        normal: {
+                            position: 'center'
+                        }
+                    },
+                    data: [{
+                        value: 75,
+                        name: '现有公司',
+                        label: {
+                            normal: {
+                                formatter: '现有公司',
+                                textStyle: {
+                                    color: 'tihuanfff',
+                                    fontSize: 16
+
+                                }
+                            }
+                        }
+                    }, {
+                        value: 25,
+                        name: '%',
+                        label: {
+                            normal: {
+                                formatter: '\n35',
+                                textStyle: {
+                                    color: 'tihuan007ac6',
+                                    fontSize: 30
+
+                                }
+                            }
+                        }
+                    },
+                    {
+                        value: 0,
+                        name: '%',
+                        label: {
+                            normal: {
+                                formatter: '家',
+                                textStyle: {
+                                    color: 'tihuanfff',
+                                    fontSize: 16
+
+                                }
+                            }
+                        }
+                    }]
                 },
-            data: [{
-                value: 75,
-                 name: '现有公司',
+                {
+                    name: ' 在售项目',
+                    type: 'pie',
+                    radius: ['25%', '30%'],
+                    center: ['70%', '30%'],
+                    startAngle: 225,
+                    color: [new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'tihuan00a2ff'
+                    }, {
+                        offset: 1,
+                        color: 'tihuan70ffac'
+                    }]), "transparent"],
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
                     label: {
                         normal: {
-                            formatter: '现有公司',
-                            textStyle: {
-                                color: 'tihuanfff',
-                                fontSize: 16
+                            position: 'center'
+                        }
+                    },
+                    data: [{
+                        value: 75,
+                        name: '在售项目',
+                        label: {
+                            normal: {
+                                formatter: '在售项目',
+                                textStyle: {
+                                    color: 'tihuanfff',
+                                    fontSize: 16
 
+                                }
                             }
                         }
-                    }
-            }, {
-                value: 25,
-                name: '%',
-                    label: {
-                        normal: {
-                            formatter: '\n35',
-                            textStyle: {
-                                color: 'tihuan007ac6',
-                                fontSize: 30
+                    }, {
+                        value: 25,
+                        name: '%',
+                        label: {
+                            normal: {
+                                formatter: '\n3534',
+                                textStyle: {
+                                    color: 'tihuan007ac6',
+                                    fontSize: 30
 
+                                }
                             }
                         }
-                    }
-            },
-            {
-                value: 0,
-                name: '%',
-                    label: {
-                        normal: {
-                            formatter: '家',
-                            textStyle: {
-                                color: 'tihuanfff',
-                                fontSize: 16
+                    },
+                    {
+                        value: 0,
+                        name: '%',
+                        label: {
+                            normal: {
+                                formatter: '个',
+                                textStyle: {
+                                    color: 'tihuanfff',
+                                    fontSize: 16
 
+                                }
                             }
                         }
-                    }
-            }]
-        },
-        {
-            name: ' 在售项目',
-            type: 'pie',
-            radius: ['25%', '30%'],
-            center: ['70%', '30%'],
-            startAngle: 225,
-            color: [new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: 'tihuan00a2ff'
-            }, {
-                offset: 1,
-                color: 'tihuan70ffac'
-            }]), "transparent"],
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            label: {
-                    normal: {
-                        position: 'center'
-                    }
+                    }]
                 },
-            data: [{
-                value: 75,
-                 name: '在售项目',
+                {
+                    name: ' 现有门店',
+                    type: 'pie',
+                    radius: ['25%', '30%'],
+                    center: ['30%', '70%'],
+                    startAngle: 225,
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
                     label: {
                         normal: {
-                            formatter: '在售项目',
-                            textStyle: {
-                                color: 'tihuanfff',
-                                fontSize: 16
+                            position: 'center'
+                        }
+                    },
+                    data: [{
+                        value: 75,
+                        "itemStyle": {
+                            "normal": {
+                                "color": new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    "offset": 0,
+                                    "color": 'tihuanf125ff'
+                                }, {
+                                    "offset": 1,
+                                    "color": 'tihuan2dcbff'
+                                }]),
+                            }
+                        },
+                        name: '现有门店',
+                        label: {
+                            normal: {
+                                formatter: '现有门店',
+                                textStyle: {
+                                    color: 'tihuanfff',
+                                    fontSize: 16
 
+                                }
                             }
                         }
-                    }
-            }, {
-                value: 25,
-                name: '%',
-                    label: {
-                        normal: {
-                            formatter: '\n3534',
-                            textStyle: {
-                                color: 'tihuan007ac6',
-                                fontSize: 30
+                    }, {
+                        value: 25,
+                        name: '%',
+                        label: {
+                            normal: {
+                                formatter: '\n3534',
+                                textStyle: {
+                                    color: 'tihuanf125ff',
+                                    fontSize: 30
 
+                                }
                             }
                         }
-                    }
-            },
-            {
-                value: 0,
-                name: '%',
-                    label: {
-                        normal: {
-                            formatter: '个',
-                            textStyle: {
-                                color: 'tihuanfff',
-                                fontSize: 16
+                    },
+                    {
+                        value: 0,
+                        name: '%',
+                        label: {
+                            normal: {
+                                formatter: '家',
+                                textStyle: {
+                                    color: 'tihuanfff',
+                                    fontSize: 16
 
+                                }
                             }
                         }
-                    }
-            }]
-        },
-        {
-            name: ' 现有门店',
-            type: 'pie',
-            radius: ['25%', '30%'],
-            center: ['30%', '70%'],
-            startAngle: 225,
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            label: {
-                    normal: {
-                        position: 'center'
-                    }
+                    }]
                 },
-            data: [{
-                value: 75,
-                "itemStyle": {
-                    "normal": {
-                        "color": new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                            "offset": 0,
-                            "color": 'tihuanf125ff'
-                        }, {
-                            "offset": 1,
-                            "color": 'tihuan2dcbff'
-                        }]),
-                    }
+                {
+                    name: '总人数',
+                    type: 'pie',
+                    radius: ['25%', '30%'],
+                    center: ['70%', '70%'],
+                    startAngle: 225,
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    label: {
+                        normal: {
+                            position: 'center'
+                        }
+                    },
+                    data: [{
+                        value: 75,
+                        "itemStyle": {
+                            "normal": {
+                                "color": new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    "offset": 0,
+                                    "color": 'tihuanf125ff'
+                                }, {
+                                    "offset": 1,
+                                    "color": 'tihuan2dcbff'
+                                }]),
+                            }
+                        },
+                        name: '总人数',
+                        label: {
+                            normal: {
+                                formatter: '总人数',
+                                textStyle: {
+                                    color: 'tihuanfff',
+                                    fontSize: 16
+
+                                }
+                            }
+                        }
+                    }, {
+                        value: 25,
+                        name: '%',
+                        label: {
+                            normal: {
+                                formatter: '\n835341',
+                                textStyle: {
+                                    color: 'tihuanf125ff',
+                                    fontSize: 30
+
+                                }
+                            }
+                        }
+                    },
+                    {
+                        value: 0,
+                        name: '%',
+                        label: {
+                            normal: {
+                                formatter: '人',
+                                textStyle: {
+                                    color: 'tihuanfff',
+                                    fontSize: 16
+
+                                }
+                            }
+                        }
+                    }]
                 },
-                 name: '现有门店',
-                    label: {
+                ]
+            }
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        </script><!--空-->
+        <script type="text/javascript">
+
+            var chart = echarts.init(document.getElementById('p2_s3'),'walden');
+
+            var option = {
+                tooltip: {},
+                series: [ {
+                    type: 'wordCloud',
+                    gridSize: 2,
+                    sizeRange: [12, 50],
+                    rotationRange: [-90, 90],
+                    shape: 'pentagon',
+                    width: 600,
+                    height: 400,
+                    drawOutOfBound: true,
+                    textStyle: {
                         normal: {
-                            formatter: '现有门店',
-                            textStyle: {
-                                color: 'tihuanfff',
-                                fontSize: 16
-
-                            }
-                        }
-                    }
-            }, {
-                value: 25,
-                name: '%',
-                    label: {
-                        normal: {
-                            formatter: '\n3534',
-                            textStyle: {
-                                color: 'tihuanf125ff',
-                                fontSize: 30
-
-                            }
-                        }
-                    }
-            },
-            {
-                value: 0,
-                name: '%',
-                    label: {
-                        normal: {
-                            formatter: '家',
-                            textStyle: {
-                                color: 'tihuanfff',
-                                fontSize: 16
-
-                            }
-                        }
-                    }
-            }]
-        },
-         {
-            name: '总人数',
-            type: 'pie',
-            radius: ['25%', '30%'],
-            center: ['70%', '70%'],
-            startAngle: 225,
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-            data: [{
-                value: 75,
-                "itemStyle": {
-                    "normal": {
-                        "color": new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                            "offset": 0,
-                            "color": 'tihuanf125ff'
-                        }, {
-                            "offset": 1,
-                            "color": 'tihuan2dcbff'
-                        }]),
-                    }
-                },
-                 name: '总人数',
-                    label: {
-                        normal: {
-                            formatter: '总人数',
-                            textStyle: {
-                                color: 'tihuanfff',
-                                fontSize: 16
-
-                            }
-                        }
-                    }
-            }, {
-                value: 25,
-                name: '%',
-                    label: {
-                        normal: {
-                            formatter: '\n835341',
-                            textStyle: {
-                                color: 'tihuanf125ff',
-                                fontSize: 30
-
-                            }
-                        }
-                    }
-            },
-            {
-                value: 0,
-                name: '%',
-                    label: {
-                        normal: {
-                            formatter: '人',
-                            textStyle: {
-                                color: 'tihuanfff',
-                                fontSize: 16
-
-                            }
-                        }
-                    }
-            }]
-        },
-    ]
-}
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
-</script><!--空-->
-<script type="text/javascript">
-
-        var chart = echarts.init(document.getElementById('p2_s3'),'walden');
-
-        var option = {
-            tooltip: {},
-            series: [ {
-                type: 'wordCloud',
-                gridSize: 2,
-                sizeRange: [12, 50],
-                rotationRange: [-90, 90],
-                shape: 'pentagon',
-                width: 600,
-                height: 400,
-                drawOutOfBound: true,
-                textStyle: {
-                    normal: {
-                        color: function () {
-                            return 'rgb(' + [
+                            color: function () {
+                                return 'rgb(' + [
                                 Math.round(Math.random() * 160),
                                 Math.round(Math.random() * 160),
                                 Math.round(Math.random() * 160)
-                            ].join(',') + ')';
+                                ].join(',') + ')';
+                            }
+                        },
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowColor: '#333'
                         }
                     },
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowColor: '#333'
-                    }
-                },
-                data: [
+                    data: [
                     {
                         name: '吴军',
                         value: 22,
@@ -973,25 +1028,25 @@ if (option && typeof option === "object") {
                     },
                     {% endfor %}
 
-                ]
-            } ]
-        };
+                    ]
+                } ]
+            };
 
-        chart.setOption(option);
+            chart.setOption(option);
 
-        window.onresize = chart.resize;
+            window.onresize = chart.resize;
 
 
-</script><!--p2_s3 词云-->
-<script type="text/javascript">
+        </script><!--p2_s3 词云-->
+        <script type="text/javascript">
 
-        var myChart = echarts.init(document.getElementById('p2_z1'),'walden');
+            var myChart = echarts.init(document.getElementById('p2_z1'),'walden');
 
-        option = null;
-        var app = {};
-        option = {
-            tooltip : {
-                trigger: 'axis',
+            option = null;
+            var app = {};
+            option = {
+                tooltip : {
+                    trigger: 'axis',
                 axisPointer : {            // 坐标轴指示器，坐标轴触发有效
                     type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                 }
@@ -1013,66 +1068,66 @@ if (option && typeof option === "object") {
                 data: ['2012年','2013年','2014年','2015年','2016年','2017年','2018年']
             },
             series: [
-                {
-                    name: '互联网',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'insideRight'
-                        }
-                    },
-                    data: [320, 302, 301, 334, 390, 330, 320]
+            {
+                name: '互联网',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
                 },
-                {
-                    name: '编程',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'insideRight'
-                        }
-                    },
-                    data: [120, 132, 101, 134, 90, 230, 210]
+                data: [320, 302, 301, 334, 390, 330, 320]
+            },
+            {
+                name: '编程',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
                 },
-                {
-                    name: '交互设计',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'insideRight'
-                        }
-                    },
-                    data: [220, 182, 191, 234, 290, 330, 310]
+                data: [120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name: '交互设计',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
                 },
-                {
-                    name: '用户体验',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'insideRight'
-                        }
-                    },
-                    data: [150, 212, 201, 154, 190, 330, 410]
+                data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name: '用户体验',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
                 },
-                {
-                    name: '算法',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'insideRight'
-                        }
-                    },
-                    data: [820, 832, 901, 934, 1290, 1330, 1320]
-                }
+                data: [150, 212, 201, 154, 190, 330, 410]
+            },
+            {
+                name: '算法',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                },
+                data: [820, 832, 901, 934, 1290, 1330, 1320]
+            }
             ]
         };;
         if (option && typeof option === "object") {
@@ -1080,21 +1135,21 @@ if (option && typeof option === "object") {
         }
 
 
-</script><!--空  堆积折线图-->
+    </script><!--空  堆积折线图-->
 
 
 
-<!--堆积柱状图-->
-<script type="text/javascript">
-var dom = document.getElementById("p2_x2");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
-app.title = '堆叠条形图';
+    <!--堆积柱状图-->
+    <script type="text/javascript">
+        var dom = document.getElementById("p2_x2");
+        var myChart = echarts.init(dom,'walden');
+        var app = {};
+        option = null;
+        app.title = '堆叠条形图';
 
-option = {
-    tooltip : {
-        trigger: 'axis',
+        option = {
+            tooltip : {
+                trigger: 'axis',
         axisPointer : {            // 坐标轴指示器，坐标轴触发有效
             type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
         }
@@ -1120,51 +1175,51 @@ option = {
         data: ['4分以下','4-5分','5-6分','6-7分','7-8分','8-9分','9分以上']
     },
     series: [
-        {% for i in score_index%}
-        {
-            name:'{{ i.name }}',
-            type:'bar',
-            stack: '总量',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'insideRight'
-                }
-            },
-            data:{{ i.data }}
+    {% for i in score_index%}
+    {
+        name:'{{ i.name }}',
+        type:'bar',
+        stack: '总量',
+        label: {
+            normal: {
+                show: true,
+                position: 'insideRight'
+            }
         },
-        {% endfor %}
+        data:{{ i.data }}
+    },
+    {% endfor %}
 
     ]
 };;
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+</script>
 
 
 <script type="text/javascript">
-var dom = document.getElementById("x2_1");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
-var weatherIcons = {
-    'Sunny': './data/asset/img/weather/sunny_128.png',
-    'Cloudy': './data/asset/img/weather/cloudy_128.png',
-    'Showers': './data/asset/img/weather/showers_128.png'
-};
+    var dom = document.getElementById("x2_1");
+    var myChart = echarts.init(dom,'walden');
+    var app = {};
+    option = null;
+    var weatherIcons = {
+        'Sunny': './data/asset/img/weather/sunny_128.png',
+        'Cloudy': './data/asset/img/weather/cloudy_128.png',
+        'Showers': './data/asset/img/weather/showers_128.png'
+    };
 
-option = {
-    title: {
-        text: '天气情况统计',
-        subtext: '虚构数据',
-        left: 'center'
-    },
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
+    option = {
+        title: {
+            text: '天气情况统计',
+            subtext: '虚构数据',
+            left: 'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
         // orient: 'vertical',
         // top: 'middle',
         bottom: 10,
@@ -1172,159 +1227,159 @@ option = {
         data: ['西凉', '益州','兖州','荆州','幽州']
     },
     series : [
+    {
+        type: 'pie',
+        radius : '65%',
+        center: ['50%', '50%'],
+        selectedMode: 'single',
+        data:[
         {
-            type: 'pie',
-            radius : '65%',
-            center: ['50%', '50%'],
-            selectedMode: 'single',
-            data:[
-                {
-                    value:1548,
-                    name: '幽州',
-                    label: {
-                        normal: {
-                            formatter: [
-                                '{title|{b}}{abg|}',
-                                '  {weatherHead|天气}{valueHead|天数}{rateHead|占比}',
-                                '{hr|}',
-                                '  {Sunny|}{value|202}{rate|55.3%}',
-                                '  {Cloudy|}{value|142}{rate|38.9%}',
-                                '  {Showers|}{value|21}{rate|5.8%}'
-                            ].join('\n'),
-                            backgroundColor: '#eee',
-                            borderColor: '#777',
-                            borderWidth: 1,
-                            borderRadius: 4,
-                            rich: {
-                                title: {
-                                    color: '#eee',
-                                    align: 'center'
-                                },
-                                abg: {
-                                    backgroundColor: '#333',
-                                    width: '100%',
-                                    align: 'right',
-                                    height: 25,
-                                    borderRadius: [4, 4, 0, 0]
-                                },
-                                Sunny: {
-                                    height: 30,
-                                    align: 'left',
-                                    backgroundColor: {
-                                        image: weatherIcons.Sunny
-                                    }
-                                },
-                                Cloudy: {
-                                    height: 30,
-                                    align: 'left',
-                                    backgroundColor: {
-                                        image: weatherIcons.Cloudy
-                                    }
-                                },
-                                Showers: {
-                                    height: 30,
-                                    align: 'left',
-                                    backgroundColor: {
-                                        image: weatherIcons.Showers
-                                    }
-                                },
-                                weatherHead: {
-                                    color: '#333',
-                                    height: 24,
-                                    align: 'left'
-                                },
-                                hr: {
-                                    borderColor: '#777',
-                                    width: '100%',
-                                    borderWidth: 0.5,
-                                    height: 0
-                                },
-                                value: {
-                                    width: 20,
-                                    padding: [0, 20, 0, 30],
-                                    align: 'left'
-                                },
-                                valueHead: {
-                                    color: '#333',
-                                    width: 20,
-                                    padding: [0, 20, 0, 30],
-                                    align: 'center'
-                                },
-                                rate: {
-                                    width: 40,
-                                    align: 'right',
-                                    padding: [0, 10, 0, 0]
-                                },
-                                rateHead: {
-                                    color: '#333',
-                                    width: 40,
-                                    align: 'center',
-                                    padding: [0, 10, 0, 0]
-                                }
+            value:1548,
+            name: '幽州',
+            label: {
+                normal: {
+                    formatter: [
+                    '{title|{b}}{abg|}',
+                    '  {weatherHead|天气}{valueHead|天数}{rateHead|占比}',
+                    '{hr|}',
+                    '  {Sunny|}{value|202}{rate|55.3%}',
+                    '  {Cloudy|}{value|142}{rate|38.9%}',
+                    '  {Showers|}{value|21}{rate|5.8%}'
+                    ].join('\n'),
+                    backgroundColor: '#eee',
+                    borderColor: '#777',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    rich: {
+                        title: {
+                            color: '#eee',
+                            align: 'center'
+                        },
+                        abg: {
+                            backgroundColor: '#333',
+                            width: '100%',
+                            align: 'right',
+                            height: 25,
+                            borderRadius: [4, 4, 0, 0]
+                        },
+                        Sunny: {
+                            height: 30,
+                            align: 'left',
+                            backgroundColor: {
+                                image: weatherIcons.Sunny
                             }
+                        },
+                        Cloudy: {
+                            height: 30,
+                            align: 'left',
+                            backgroundColor: {
+                                image: weatherIcons.Cloudy
+                            }
+                        },
+                        Showers: {
+                            height: 30,
+                            align: 'left',
+                            backgroundColor: {
+                                image: weatherIcons.Showers
+                            }
+                        },
+                        weatherHead: {
+                            color: '#333',
+                            height: 24,
+                            align: 'left'
+                        },
+                        hr: {
+                            borderColor: '#777',
+                            width: '100%',
+                            borderWidth: 0.5,
+                            height: 0
+                        },
+                        value: {
+                            width: 20,
+                            padding: [0, 20, 0, 30],
+                            align: 'left'
+                        },
+                        valueHead: {
+                            color: '#333',
+                            width: 20,
+                            padding: [0, 20, 0, 30],
+                            align: 'center'
+                        },
+                        rate: {
+                            width: 40,
+                            align: 'right',
+                            padding: [0, 10, 0, 0]
+                        },
+                        rateHead: {
+                            color: '#333',
+                            width: 40,
+                            align: 'center',
+                            padding: [0, 10, 0, 0]
                         }
                     }
-                },
-                {value:535, name: '荆州'},
-                {value:510, name: '兖州'},
-                {value:634, name: '益州'},
-                {value:735, name: '西凉'}
-            ],
-            itemStyle: {
-                emphasis: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
                 }
             }
+        },
+        {value:535, name: '荆州'},
+        {value:510, name: '兖州'},
+        {value:634, name: '益州'},
+        {value:735, name: '西凉'}
+        ],
+        itemStyle: {
+            emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
         }
+    }
     ]
 };
 ;
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+</script>
 <!--折线图-->
 <script type="text/javascript">
-var dom = document.getElementById("p2_x3");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
-option = {
-    title: {
-        text: ''
-    },
-    tooltip: {
-        trigger: 'axis'
-    },
-    legend: {
-        data:[
-        {% for i in score_index %}
-        '{{ i.name }}',
-        {% endfor %}
-        ]
-    },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
-    },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['4分以下','4-5分','5-6分','6-7分','7-8分','8-9分','9分以上']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [
+    var dom = document.getElementById("p2_x3");
+    var myChart = echarts.init(dom,'walden');
+    var app = {};
+    option = null;
+    option = {
+        title: {
+            text: ''
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:[
+            {% for i in score_index %}
+            '{{ i.name }}',
+            {% endfor %}
+            ]
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['4分以下','4-5分','5-6分','6-7分','7-8分','8-9分','9分以上']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
         {% for i in score_index%}
         {
             name:'{{ i.name }}',
@@ -1333,32 +1388,32 @@ option = {
             data:{{ i.data }}
         },
         {% endfor %}
-    ]
-};
-;
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
-       </script>
+        ]
+    };
+    ;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script>
 <!--嵌套环形图-->
 <script type="text/javascript">
-var dom = document.getElementById("");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
-app.title = '嵌套环形图';
+    var dom = document.getElementById("");
+    var myChart = echarts.init(dom,'walden');
+    var app = {};
+    option = null;
+    app.title = '嵌套环形图';
 
-option = {
-    tooltip: {
-        trigger: 'item',
-        formatter: "{a} <br/>{b}: {c} ({d}%)"
-    },
-    legend: {
-        orient: 'vertical',
-        x: 'left',
-        data:['直达','营销广告','搜索引擎','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
-    },
-    series: [
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:['直达','营销广告','搜索引擎','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
+        },
+        series: [
         {
 
             type:'pie',
@@ -1376,9 +1431,9 @@ option = {
                 }
             },
             data:[
-                {value:335, name:'直达', selected:true},
-                {value:679, name:'营销广告'},
-                {value:1548, name:'搜索引擎'}
+            {value:335, name:'直达', selected:true},
+            {value:679, name:'营销广告'},
+            {value:1548, name:'搜索引擎'}
             ]
         },
         {
@@ -1430,36 +1485,36 @@ option = {
                 }
             },
             data:[
-                {value:335, name:'直达'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1048, name:'百度'},
-                {value:251, name:'谷歌'},
-                {value:147, name:'必应'},
-                {value:102, name:'其他'}
+            {value:335, name:'直达'},
+            {value:310, name:'邮件营销'},
+            {value:234, name:'联盟广告'},
+            {value:135, name:'视频广告'},
+            {value:1048, name:'百度'},
+            {value:251, name:'谷歌'},
+            {value:147, name:'必应'},
+            {value:102, name:'其他'}
             ]
         }
-    ]
-};;
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
-       </script>
+        ]
+    };;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script>
 <!--作者国籍雷达图-->
 <script type="text/javascript">
-var dom = document.getElementById("p2_x1");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
-option = {
-    title: {text: '作者国籍雷达图'},
-    tooltip: {},
-    legend: {
-        x: 'left',
-        data: ['预算分配']
-    },
-    radar: {
+    var dom = document.getElementById("p2_x1");
+    var myChart = echarts.init(dom,'walden');
+    var app = {};
+    option = null;
+    option = {
+        title: {text: '作者国籍雷达图'},
+        tooltip: {},
+        legend: {
+            x: 'left',
+            data: ['预算分配']
+        },
+        radar: {
         // shape: 'circle',
         name: {
             textStyle: {
@@ -1467,15 +1522,15 @@ option = {
                 backgroundColor: '#999',
                 borderRadius: 3,
                 padding: [3, 5]
-           }
+            }
         },
         indicator: [
-           { name: '美国', max: 5000},
-           { name: '法国', max: 5000},
-           { name: '英国', max: 1000},
-           { name: '中国', max: 5000},
-           { name: '德国', max: 1000},
-           { name: '日本', max: 1000}
+        { name: '美国', max: 5000},
+        { name: '法国', max: 5000},
+        { name: '英国', max: 1000},
+        { name: '中国', max: 5000},
+        { name: '德国', max: 1000},
+        { name: '日本', max: 1000}
         ]
     },
     series: [{
@@ -1483,106 +1538,106 @@ option = {
         type: 'radar',
         // areaStyle: {normal: {}},
         data : [
-            {
-                value : [4604, 125, 465, 4108, 92, 284],
-                name : '作者数量'
-            }
+        {
+            value : [4604, 125, 465, 4108, 92, 284],
+            name : '作者数量'
+        }
         ]
     }]
 };;
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+</script>
 <!--编程语言柱状图-->
 <script type="text/javascript">
-var dom = document.getElementById("p2_s1");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
+    var dom = document.getElementById("p2_s1");
+    var myChart = echarts.init(dom,'walden');
+    var app = {};
+    option = null;
 
-var weatherIcons = {
-    'Sunny': '',
-    'Cloudy': '',
-    'Showers': ''
-};
+    var weatherIcons = {
+        'Sunny': '',
+        'Cloudy': '',
+        'Showers': ''
+    };
 
-var seriesLabel = {
-    normal: {
-        show: true,
-        textBorderColor: '#333',
-        textBorderWidth: 2
+    var seriesLabel = {
+        normal: {
+            show: true,
+            textBorderColor: '#333',
+            textBorderWidth: 2
+        }
     }
-}
 
-option = {
-    title: {
-        text: '编程语言'
-    },
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'shadow'
-        }
-    },
-    legend: {
-        data: ['PHP', 'java', 'python', 'c++']
-    },
-    grid: {
-        left: 80
-    },
-    toolbox: {
-        show: true,
-        feature: {
-            saveAsImage: {}
-        }
-    },
-    xAxis: {
-        type: 'value',
-        name: 'Days',
-        axisLabel: {
-            formatter: '{value}'
-        }
-    },
-    yAxis: {
-        type: 'category',
-        inverse: true,
-        data: ['00-09', '10-15', '15-19'],
-        axisLabel: {
-            formatter: function (value) {
-                return value;
-            },
-            margin: 20,
-            rich: {
-                value: {
-                    lineHeight: 30,
-                    align: 'center'
+    option = {
+        title: {
+            text: '编程语言'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            data: ['PHP', 'java', 'python', 'c++']
+        },
+        grid: {
+            left: 80
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'value',
+            name: 'Days',
+            axisLabel: {
+                formatter: '{value}'
+            }
+        },
+        yAxis: {
+            type: 'category',
+            inverse: true,
+            data: ['00-09', '10-15', '15-19'],
+            axisLabel: {
+                formatter: function (value) {
+                    return value;
                 },
-                Sunny: {
-                    height: 40,
-                    align: 'center',
-                    backgroundColor: {
-                        image: weatherIcons.Sunny
-                    }
-                },
-                Cloudy: {
-                    height: 40,
-                    align: 'center',
-                    backgroundColor: {
-                        image: weatherIcons.Cloudy
-                    }
-                },
-                Showers: {
-                    height: 40,
-                    align: 'center',
-                    backgroundColor: {
-                        image: weatherIcons.Showers
+                margin: 20,
+                rich: {
+                    value: {
+                        lineHeight: 30,
+                        align: 'center'
+                    },
+                    Sunny: {
+                        height: 40,
+                        align: 'center',
+                        backgroundColor: {
+                            image: weatherIcons.Sunny
+                        }
+                    },
+                    Cloudy: {
+                        height: 40,
+                        align: 'center',
+                        backgroundColor: {
+                            image: weatherIcons.Cloudy
+                        }
+                    },
+                    Showers: {
+                        height: 40,
+                        align: 'center',
+                        backgroundColor: {
+                            image: weatherIcons.Showers
+                        }
                     }
                 }
             }
-        }
-    },
-    series: [
+        },
+        series: [
         {
             name: 'PHP',
             type: 'bar',
@@ -1592,14 +1647,14 @@ option = {
                 symbolSize: 1,
                 symbolOffset: [0, '50%'],
                 label: {
-                   normal: {
-                        formatter: '{a|{a}\n}{b|{b} }{c|{c}}',
-                        backgroundColor: 'rgb(242,242,242)',
-                        borderColor: '#aaa',
-                        borderWidth: 1,
-                        borderRadius: 4,
-                        padding: [4, 10],
-                        lineHeight: 26,
+                 normal: {
+                    formatter: '{a|{a}\n}{b|{b} }{c|{c}}',
+                    backgroundColor: 'rgb(242,242,242)',
+                    borderColor: '#aaa',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    padding: [4, 10],
+                    lineHeight: 26,
                         // shadowBlur: 5,
                         // shadowColor: '#000',
                         // shadowOffsetX: 0,
@@ -1619,28 +1674,28 @@ option = {
                                 textBorderWidth: 2
                             },
                             b: {
-                                 color: '#333'
-                            },
-                            c: {
-                                color: '#ff8811',
-                                textBorderColor: '#000',
-                                textBorderWidth: 1,
-                                fontSize: 22
-                            }
+                               color: '#333'
+                           },
+                           c: {
+                            color: '#ff8811',
+                            textBorderColor: '#000',
+                            textBorderWidth: 1,
+                            fontSize: 22
                         }
-                   }
+                    }
                 }
             }
-        },
+        }
+    },
 
-        {% for i in prog %}
-        {
+    {% for i in prog %}
+    {
         name: '{{ i.name }}',
         type: 'bar',
         label: seriesLabel,
         data: {{ i.data }}
-        },
-        {% endfor %}
+    },
+    {% endfor %}
 
     ]
 };
@@ -1648,40 +1703,40 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+</script>
 
 <!--折线饼图-->
 <script type="text/javascript">
-var dom = document.getElementById("p2_s2");
-var myChart = echarts.init(dom,'walden');
-var app = {};
-option = null;
+    var dom = document.getElementById("p2_s2");
+    var myChart = echarts.init(dom,'walden');
+    var app = {};
+    option = null;
 
-setTimeout(function () {
+    setTimeout(function () {
 
-    option = {
-        legend: {},
-        tooltip: {
-            trigger: 'axis',
-            showContent: false
-        },
-        dataset: {
-            source: [
+        option = {
+            legend: {},
+            tooltip: {
+                trigger: 'axis',
+                showContent: false
+            },
+            dataset: {
+                source: [
                 ['product', '1900-1989', '1990-1999', '2000-2005', '2006-2010', '2010-2015', '2015-2019'],
-                 ['{{tag1.0}}', {{tag1.1}}, {{tag1.2}}, {{tag1.3}}, {{tag1.4}}, {{tag1.5}}, {{tag1.6}}],
-                 ['{{tag2.0}}', {{tag2.1}}, {{tag2.2}}, {{tag2.3}}, {{tag2.4}}, {{tag2.5}}, {{tag2.6}}],
-                 <!--['{{tag3.0}}', {{tag3.1}}, {{tag3.2}}, {{tag3.3}}, {{tag3.4}}, {{tag3.5}}, {{tag3.6}}],-->
-                 <!--['{{tag4.0}}', {{tag4.1}}, {{tag4.2}}, {{tag4.3}}, {{tag4.4}}, {{tag4.5}}, {{tag4.6}}],-->
-                 ['{{tag5.0}}', {{tag5.1}}, {{tag5.2}}, {{tag5.3}}, {{tag5.4}}, {{tag5.5}}, {{tag5.6}}],
-                 ['{{tag6.0}}', {{tag6.1}}, {{tag6.2}}, {{tag6.3}}, {{tag6.4}}, {{tag6.5}}, {{tag6.6}}],
-                 ['{{tag7.0}}', {{tag7.1}}, {{tag7.2}}, {{tag7.3}}, {{tag7.4}}, {{tag7.5}}, {{tag7.6}}],
+                ['{{tag1.0}}', {{tag1.1}}, {{tag1.2}}, {{tag1.3}}, {{tag1.4}}, {{tag1.5}}, {{tag1.6}}],
+                ['{{tag2.0}}', {{tag2.1}}, {{tag2.2}}, {{tag2.3}}, {{tag2.4}}, {{tag2.5}}, {{tag2.6}}],
+                <!--['{{tag3.0}}', {{tag3.1}}, {{tag3.2}}, {{tag3.3}}, {{tag3.4}}, {{tag3.5}}, {{tag3.6}}],-->
+                <!--['{{tag4.0}}', {{tag4.1}}, {{tag4.2}}, {{tag4.3}}, {{tag4.4}}, {{tag4.5}}, {{tag4.6}}],-->
+                ['{{tag5.0}}', {{tag5.1}}, {{tag5.2}}, {{tag5.3}}, {{tag5.4}}, {{tag5.5}}, {{tag5.6}}],
+                ['{{tag6.0}}', {{tag6.1}}, {{tag6.2}}, {{tag6.3}}, {{tag6.4}}, {{tag6.5}}, {{tag6.6}}],
+                ['{{tag7.0}}', {{tag7.1}}, {{tag7.2}}, {{tag7.3}}, {{tag7.4}}, {{tag7.5}}, {{tag7.6}}],
                 ['其他', {{res.1}}, {{res.2}}, {{res.3}}, {{res.4}}, {{res.5}}, {{res.6}}],
-            ]
-        },
-        xAxis: {type: 'category'},
-        yAxis: {gridIndex: 0},
-        grid: {top: '55%'},
-        series: [
+                ]
+            },
+            xAxis: {type: 'category'},
+            yAxis: {gridIndex: 0},
+            grid: {top: '55%'},
+            series: [
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
@@ -1701,35 +1756,35 @@ setTimeout(function () {
                     tooltip: '2012'
                 }
             }
-        ]
-    };
+            ]
+        };
 
-    myChart.on('updateAxisPointer', function (event) {
-        var xAxisInfo = event.axesInfo[0];
-        if (xAxisInfo) {
-            var dimension = xAxisInfo.value + 1;
-            myChart.setOption({
-                series: {
-                    id: 'pie',
-                    label: {
-                        formatter: '{b}: {@[' + dimension + ']} ({d}%)'
-                    },
-                    encode: {
-                        value: dimension,
-                        tooltip: dimension
+        myChart.on('updateAxisPointer', function (event) {
+            var xAxisInfo = event.axesInfo[0];
+            if (xAxisInfo) {
+                var dimension = xAxisInfo.value + 1;
+                myChart.setOption({
+                    series: {
+                        id: 'pie',
+                        label: {
+                            formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                        },
+                        encode: {
+                            value: dimension,
+                            tooltip: dimension
+                        }
                     }
-                }
-            });
-        }
-    });
+                });
+            }
+        });
 
-    myChart.setOption(option);
+        myChart.setOption(option);
 
-});;
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
-       </script>
+    });;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script>
 
 
 
@@ -1779,8 +1834,8 @@ if (option && typeof option === "object") {
     var pageNum = document.querySelectorAll(".page").length;
     //如果不加时间控制，滚动会过度灵敏，一次翻好几屏
     var startTime = 0, //翻屏起始时间
-        endTime = 0,
-        now = 0;
+    endTime = 0,
+    now = 0;
     //浏览器兼容
     if ((navigator.userAgent.toLowerCase().indexOf("firefox") != -1)) {
         document.addEventListener("DOMMouseScroll", scrollFun, false);
@@ -1914,5 +1969,5 @@ if (option && typeof option === "object") {
                 });
             }
 
-</script>
-</html>
+        </script>
+        </html>
