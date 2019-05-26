@@ -1,103 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script type="text/javascript" src="../../static/js/semantic.js"></script>
-	<link rel="stylesheet" href="../../static/css/semantic.css"></link>
-	<script type="text/javascript" src="../../static/js/jquery-2.2.1.min.js"></script>
-	<style type="text/css">
-		#index_text i{
-			color: #fff;
-		}
-		#index_text p{
-			color: #fff;
-		}
-		#index_text h3{
-			color: #fff;
-		}
-	</style>
+	<meta charset="utf-8">
+	<title>jQuery单页/全屏滚动插件onepage-scroll演示-显示命名锚记_dowebok</title>
+	<link rel="stylesheet" href="../../static/css/onepage-scroll.css" />
+	<style>
+	.page1 { background-color: #1bbc9b;}
+	.page2 { background-color: #FF7F50;}
+	.page3 { background-color: #4BBFC3;}
+	.page4 { background-color: #f90;}
+	p.title { position: relative; top: 35%; font: 700 40px "Microsoft Yahei"; color: #fff; text-align: center;}
+</style>
+<script src="http://cdn.staticfile.org/jquery/1.9.0/jquery.min.js"></script>
+<script src="../../static/js/jquery.onepage-scroll.min.js"></script>
+<script type="text/javascript" src="../../static/js/semantic.min.js"></script>
+<link rel="stylesheet" href="../../static/css/semantic.min.css"></link>
+<script>
+	$(function(){
+		$('.main').onepage_scroll({
+			sectionContainer: '.page',
+			updateURL: false
+		});
+	});
+</script>
 </head>
+
 <body>
-	<div class="ui text container segment" style="background-color: rgba(103, 86, 86, 0.5);">
-		<div class="ui divided items">
-			<div class="item">
-				<div class="content ">
-					<div class="ui small image">
-						<svg width="150" height="150">
-							<image xlink:href="https://img1.doubanio.com/view/subject/m/public/s32281237.jpg" x="0" y="0" width="100%" height="100%"></image>
-						</svg>
-					</div>
-					<div class="menu" id="index_text" style="position: absolute;top: 5%;left: 25%">
-							<h3 class="ui header">The title</h3>
-							<i>作者： </i>
-							<i class="item">吴军</i>
-							<i class="item">/</i>
-							<i class="item">出版社： </i>
-							<i >人民出版社 /  </i>
-							<i >评分：</i>
-							<i >9.3 / </i>
-							<i >评分人数：</i>
-							<i >4655 / </i>
-							<p>短评情感指数：</p>
-						<div class="extra">
-							<div class="ui label right aligned">
-								tag1
-							</div>
-							<div class="ui label right aligned">
-								tag2
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="content">
-					<div class="header">
-						The title
-					</div>
-					<div class="description">
-						<p>something</p>
-					</div>
-					<div class="extra">
-						<div class="ui label">
-							tag1
-						</div>
-						<div class="ui label">
-							tag2
-						</div>
-
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="content">
-					<div class="header">
-						The title
-					</div>
-					<div class="description">
-						<p>something</p>
-					</div>
-					<div class="extra">
-						<div class="ui label">
-							tag1
-						</div>
-						<div class="ui label">
-							tag2
-						</div>
-
-					</div>
-				</div>
-			</div>
+	<div class="main">
+		<div class="page page1">
+			<p class="title">滚动时地址栏URL会显示命名锚记</p>
 		</div>
-		<div class="ui pagination menu">
-			<a class="active item" href="#"> < </a>
-			<div class="disable item">
-				page 1 of 3
-			</div>
-			<a class="item" href="#"> > </a>
+		<div class="page page2">
+			<p class="title">可惜点“后退”/“前进”按钮虽然命名锚记会改变，但却不会滚动</p>
 		</div>
-	</div>
-</body>
-</html>
+		<div class="page page3">
+			<div class="ui text container segment" style="background-color: rgba(103, 86, 86, 0.85);">
+				<div class="ui divided items">
+					<div class="ui segment">
+						<h2 class="ui center aligned header">全部图书榜单信息</h2>
+					</div>
+					{% for i in all_info %}
+					<div class="item">
+						<div class="content">
+                                    <!-- <div class="ui small image">
+                                      <img src="{{ i.image }}">
+                                  </div> -->
+                                  <div class="menu" id="index_text">
+                                  	<h3 class="ui header" href="{{ i.url }}">{{ i.title }}</h3>
+                                  	<p>作者：{{ i.author }} / 出版社：{{ i.press }} / 评分：{{ i.score }} / 评分人数：{{ i.number }}</p>
+                                  	<p>短评情感指数：</p>
+                                  	<div class="extra">
+                                  		{% for tag in i.label %}
+                                  		<div class="ui label">
+                                  			{{ tag }}
+                                  		</div>
+                                  		{% endfor %}
+
+                                  	</div>
+                                  </div> 
+                              </div>
+                          </div>
+                          {% endfor %}
+                          
+                          <div class="ui pagination menu">
+                          	{% if all_info.has_previous %}
+                          	<a class="active item" href="?page={{ all_info.previous_page_number }}"> < </a>
+                          	{% endif %}
+                          	<div class="disable item">
+                          		page {{ all_info.number }} of {{ all_info.paginator.num_pages}}
+                          	</div>
+                          	{% if all_info.has_next %}
+                          	<a class="item" href="?page={{ all_info.next_page_number }}"> > </a> 
+                          	{% endif %}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="page page4">
+              	<p class="title">第四屏</p>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+          <a href="http://www.dowebok.com/" style="display: none;">dowebok</a>
+          <a href="http://www.dowebok.com/118.html" style="display: none;">onepage-scroll – jQuery单页/全屏滚动插件</a>
+      </body>
+      </html>
