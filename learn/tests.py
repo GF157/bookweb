@@ -12,15 +12,23 @@ seek = book['seekY']
 all_info = book['computerY']
 sta = book['statistics']
 info = book['computerZ']
-# for i in all_info.find():
-# 	if i['number'] and i['number'] != '评分人数不足':
-# 		if i['score']:
-# 			rank = int(i['number']) * float(i['score'])
-# 			print(rank)
 
-# 	else:
-# 		rank = 0
-# 	all_info.update_many({'_id': i['_id']}, {'$set': {'rank': rank}})
+
+
+for i in all_info.find():
+	rank = 0
+	sign = 0
+	if i['number'] and i['number'] != '评分人数不足':
+		if i['label']:
+			for j in i['label']:
+				if j in "小说科普心理散文随笔生活商业青春自然艺术哲学爱情文学财富理财经济管理心理心理学成长漫画文化传媒娱乐奇幻旅行生活励志传记历史伦理医学健身育儿数学社会":
+					sign = 1
+		if sign == 0:
+			if i['score']:
+				rank = int(i['number']) * float(i['score'])
+				print(rank)
+
+	all_info.update_many({'_id': i['_id']}, {'$set': {'rank': rank}})
 
 mydoc = all_info.find().sort('rank', -1)
 for i in mydoc:
