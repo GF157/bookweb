@@ -389,19 +389,24 @@ score_index = [data for data in get_score_index()]  # 评分对应基本详细�
 print(score_index)
 
 
+
+
+
 def index(request):
 
-    info = Modouban.objects[:1]
+    info = Modouban.objects
+    print(info)
     press = [data for data in get_press('column')]
     author = [data for data in get_author()]
 
-    limit = 4
+    limit = 6
     paginatior = Paginator(info, limit)
     page = request.GET.get('page', 1)
     loaded = paginatior.page(page)
     context = {
         'for': [0, 1, 2, 3, 4, 5, 6],
         'all_info': loaded,
+        'counts': info.count(),
         'Press_top': press,
         'author_top': author,
         'tag1': label1,

@@ -215,25 +215,25 @@
         background: #c0392b;
         height: 25px;
         font-size: 0.2em;
-    }*/
+        }*/
 
 
-    /*弹出层*/
-    .big{
-        position: absolute;
-        z-index: 1000;
-    }
+        /*弹出层*/
+        .big{
+            position: absolute;
+            z-index: 1000;
+        }
 
-    #index_text i{
-        color: #fff;
-    }
-    #index_text p{
-        color: #fff;
-    }
-    #index_text h3{
-        color: #fff;
-    }
-</style>
+        #index_text i{
+            color: #fff;
+        }
+        #index_text p{
+            color: #fff;
+        }
+        #index_text h3{
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body>
@@ -391,16 +391,13 @@
                 </div>
                 <div  class="page_content">
                 </div>
-
-
-
             </div>
 
             <div id="page4" class="page" style="position:relative;background-image:url('https://img1.doubanio.com/view/activity_page/raw/public/p3819.jpg');">
-                <div class="ui text container segment" style="background-color: rgba(103, 86, 86, 0.85);">
+                <div class="ui container segment" style="background-color: rgba(103, 86, 86, 0.75);">
                     <div class="ui divided items">
-                        <div class="ui segment">
-                            <h2 class="ui center aligned header">全部图书榜单信息</h2>
+                        <div class="ui container">
+                            <h2 class="ui center aligned header" style="color: #fff;">全部图书榜单信息</h2>
                         </div>
                         {% for i in all_info %}
                         <div class="item">
@@ -409,156 +406,157 @@
                                       <img src="{{ i.image }}">
                                   </div> -->
                                   <div class="menu" id="index_text">
-                                    <h3 class="ui header" href="{{ i.url }}">{{ i.title }}</h3>
+                                    <a href="{{ i.url }}">
+                                        <h3 class="ui header" href="{{ i.url }}">{{ i.title }}</h3>
+                                    </a>
                                     <p>作者：{{ i.author }} / 出版社：{{ i.press }} / 评分：{{ i.score }} / 评分人数：{{ i.number }}</p>
                                     <p>短评情感指数：</p>
                                     <div class="extra">
                                         {% for tag in i.label %}
-                                        <div class="ui label">
+                                        <div class="ui blue label">
                                             {{ tag }}
                                         </div>
                                         {% endfor %}
 
                                     </div>
-                                </div> 
-                            </div>
-                        </div>
-                        {% endfor %}
-
-                        <div class="ui pagination menu">
-                            {% if all_info.has_previous %}
-                            <a class="active item" href="?page={{ all_info.previous_page_number }}"> < </a>
-                            {% endif %}
-                            <div class="disable item">
-                                page {{ all_info.number }} of {{ all_info.paginator.num_pages }}
-                            </div>
-                            {% if all_info.has_next %}
-                            <a class="item" href="?page={{ all_info.next_page_number }}"> > </a> 
-                            {% endif %}
+                                </div>
                         </div>
                     </div>
-                </div>
-                <div id="page5" class="page">
-                  <p>  {% for i in tag1 %}
-                    {{ i.tag }}
                     {% endfor %}
-                </p>
-
+                    <div class="ui pagination menu">
+                        {% if all_info.has_previous %}
+                        <a class="active item" href="?page={{ all_info.previous_page_number }}"> < </a>
+                        {% endif %}
+                        <div class="disable item">
+                            page {{ all_info.number }} of {{ all_info.paginator.num_pages }}
+                        </div>
+                        {% if all_info.has_next %}
+                        <a class="item" href="?page={{ all_info.next_page_number }}"> > </a> 
+                        {% endif %}
+                    </div>
+                </div>
             </div>
+            <div id="page5" class="page">
+              <p>  {% for i in tag1 %}
+                {{ i.tag }}
+                {% endfor %}
+            </p>
 
         </div>
+
     </div>
+</div>
 
 
 
 
-    <!-- 弹出层图表 -->
+<!-- 弹出层图表 -->
 
-    <script type="text/javascript">
-        var dom = document.getElementById("p2_s1_show");
-        var myChart = echarts.init(dom,'walden');
-        var app = {};
-        option = null;
+<script type="text/javascript">
+    var dom = document.getElementById("p2_s1_show");
+    var myChart = echarts.init(dom,'walden');
+    var app = {};
+    option = null;
 
-        var weatherIcons = {
-            'Sunny': '',
-            'Cloudy': '',
-            'Showers': ''
-        };
+    var weatherIcons = {
+        'Sunny': '',
+        'Cloudy': '',
+        'Showers': ''
+    };
 
-        var seriesLabel = {
-            normal: {
-                show: true,
-                textBorderColor: '#333',
-                textBorderWidth: 2
-            }
+    var seriesLabel = {
+        normal: {
+            show: true,
+            textBorderColor: '#333',
+            textBorderWidth: 2
         }
+    }
 
-        option = {
-            title: {
-                text: '编程语言'
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            legend: {
-                data: ['PHP', 'java', 'python', 'c++']
-            },
-            grid: {
-                left: 80
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    saveAsImage: {}
-                }
-            },
-            xAxis: {
-                type: 'value',
-                name: 'Days',
-                axisLabel: {
-                    formatter: '{value}'
-                }
-            },
-            yAxis: {
-                type: 'category',
-                inverse: true,
-                data: ['00-09', '10-15', '15-19'],
-                axisLabel: {
-                    formatter: function (value) {
-                        return value;
+    option = {
+        title: {
+            text: '编程语言'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            data: ['PHP', 'java', 'python', 'c++']
+        },
+        grid: {
+            left: 80
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'value',
+            name: 'Days',
+            axisLabel: {
+                formatter: '{value}'
+            }
+        },
+        yAxis: {
+            type: 'category',
+            inverse: true,
+            data: ['00-09', '10-15', '15-19'],
+            axisLabel: {
+                formatter: function (value) {
+                    return value;
+                },
+                margin: 20,
+                rich: {
+                    value: {
+                        lineHeight: 30,
+                        align: 'center'
                     },
-                    margin: 20,
-                    rich: {
-                        value: {
-                            lineHeight: 30,
-                            align: 'center'
-                        },
-                        Sunny: {
-                            height: 40,
-                            align: 'center',
-                            backgroundColor: {
-                                image: weatherIcons.Sunny
-                            }
-                        },
-                        Cloudy: {
-                            height: 40,
-                            align: 'center',
-                            backgroundColor: {
-                                image: weatherIcons.Cloudy
-                            }
-                        },
-                        Showers: {
-                            height: 40,
-                            align: 'center',
-                            backgroundColor: {
-                                image: weatherIcons.Showers
-                            }
+                    Sunny: {
+                        height: 40,
+                        align: 'center',
+                        backgroundColor: {
+                            image: weatherIcons.Sunny
+                        }
+                    },
+                    Cloudy: {
+                        height: 40,
+                        align: 'center',
+                        backgroundColor: {
+                            image: weatherIcons.Cloudy
+                        }
+                    },
+                    Showers: {
+                        height: 40,
+                        align: 'center',
+                        backgroundColor: {
+                            image: weatherIcons.Showers
                         }
                     }
                 }
-            },
-            series: [
-            {
-                name: 'PHP',
-                type: 'bar',
-                data: [120, 184, 263],
-                label: seriesLabel,
-                markPoint: {
-                    symbolSize: 1,
-                    symbolOffset: [0, '50%'],
-                    label: {
-                     normal: {
-                        formatter: '{a|{a}\n}{b|{b} }{c|{c}}',
-                        backgroundColor: 'rgb(242,242,242)',
-                        borderColor: '#aaa',
-                        borderWidth: 1,
-                        borderRadius: 4,
-                        padding: [4, 10],
-                        lineHeight: 26,
+            }
+        },
+        series: [
+        {
+            name: 'PHP',
+            type: 'bar',
+            data: [120, 184, 263],
+            label: seriesLabel,
+            markPoint: {
+                symbolSize: 1,
+                symbolOffset: [0, '50%'],
+                label: {
+                   normal: {
+                    formatter: '{a|{a}\n}{b|{b} }{c|{c}}',
+                    backgroundColor: 'rgb(242,242,242)',
+                    borderColor: '#aaa',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    padding: [4, 10],
+                    lineHeight: 26,
                         // shadowBlur: 5,
                         // shadowColor: '#000',
                         // shadowOffsetX: 0,
@@ -578,9 +576,9 @@
                                 textBorderWidth: 2
                             },
                             b: {
-                               color: '#333'
-                           },
-                           c: {
+                             color: '#333'
+                         },
+                         c: {
                             color: '#ff8811',
                             textBorderColor: '#000',
                             textBorderWidth: 1,
@@ -1674,7 +1672,7 @@ if (option && typeof option === "object") {
                 symbolSize: 1,
                 symbolOffset: [0, '50%'],
                 label: {
-                 normal: {
+                   normal: {
                     formatter: '{a|{a}\n}{b|{b} }{c|{c}}',
                     backgroundColor: 'rgb(242,242,242)',
                     borderColor: '#aaa',
@@ -1701,9 +1699,9 @@ if (option && typeof option === "object") {
                                 textBorderWidth: 2
                             },
                             b: {
-                               color: '#333'
-                           },
-                           c: {
+                             color: '#333'
+                         },
+                         c: {
                             color: '#ff8811',
                             textBorderColor: '#000',
                             textBorderWidth: 1,
