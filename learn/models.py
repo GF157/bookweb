@@ -102,8 +102,10 @@ class Modouban(Document):
 
     nation = StringField()
 
+    rank = StringField()
+
     # 指明连接的数据表名
-    meta = {'collection': 'computerY'}
+    meta = {'collection': 'computerZ'}
 
 
 
