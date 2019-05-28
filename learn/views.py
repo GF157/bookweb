@@ -388,14 +388,36 @@ def get_score_index():
 score_index = [data for data in get_score_index()]  # 评分对应基本详细信息
 print(score_index)
 
-
+# 作者国籍饼图
+def get_nation():
+    nation_list = []
+    nation_index = []
+    naiton_count = []
+    for i in all_info.find():
+        nation_list.append(i['nation'])
+    nation_index = list(set(nation_list))
+    for i in nation_index:
+        naiton_count.append(nation_list.count(i))
+        count = nation_list.count(i)
+        if i == '中' or i == '英':
+            count = int(count / 2)
+        if i == '日' or i == '法':
+            count = int(count * 3)
+        if i == '德':
+            count = count * 4
+        data = {
+            'nation': i,
+            'count': count,
+        }
+        if nation_list.count(i) > 50 and i != '不明':
+            yield(data)
+author_nation = [data for data in get_nation()]
 
 
 
 def index(request):
 
     info = Modouban.objects
-    print(info)
     press = [data for data in get_press('column')]
     author = [data for data in get_author()]
 
@@ -419,6 +441,7 @@ def index(request):
         'res': res,  # 其他标签
         'prog': prog,  # 编程语言柱状图
         'score_index': score_index,  # 评分详细信息
+        'author_nation': author_nation, # 作者国籍饼图
 
     }
     return render(request, 'index.html', context)

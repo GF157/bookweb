@@ -104,6 +104,8 @@ class Modouban(Document):
 
     rank = StringField()
 
+    emotion = StringField()
+
     # 指明连接的数据表名
     meta = {'collection': 'computerZ'}
 

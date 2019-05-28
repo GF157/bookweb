@@ -1,11 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from django.core.paginator import Paginator # 分页
-# Create your views here.
-from learn.models import Modouban
+
 import pymongo
 import re
 import pandas as pd
+
+from snownlp import SnowNLP
+from string import punctuation
 
 client = pymongo.MongoClient('localhost', 27017)
 book = client['book']
@@ -14,6 +13,30 @@ all_info = book['computerY']
 sta = book['statistics']
 
 
+def xiaoshuo(num):
+    n = num * 1000
+    n = int(n)
+    n = n / 1000
+    return n
+
+def update_emotion():
+    emotion = 0
+    count = 0
+    for i in all_info.find():
+        if i['short']:
+            for sh in i['short']:
+                sn = SnowNLP(sh)
+                for s in sn.sentences:
+                    s1 = SnowNLP(s)
+                    count += 1
+                    emotion += s1.sentiments
+            emotion = emotion / count
+            all_info.update_many({'_id': i['_id']},{'$set': {'emotion':emotion}})
+            print(emotion)
+            emotion = 0
+            count = 0
+
+# ----------------------------------------------------------------------
 def obtain_date(label):
     pro_list = [0, 0, 0, 0]
     for i in seek.find():
@@ -57,11 +80,16 @@ def get_nation():
     nation_index = list(set(nation_list))
     for i in nation_index:
         naiton_count.append(nation_list.count(i))
+        count = nation_list.count(i)
+        if i == '中' or i == '英':
+            count = int(count / 2)
+        if i == '日' or i == '法':
+            count = int(count * 3)
         data = {
             'nation': i,
-            'count': nation_list.count(i),
+            'count': count,
         }
-        if nation_list.count(i) > 50:
+        if nation_list.count(i) > 50 and i != '不明':
             print(data)
 
 get_nation()
