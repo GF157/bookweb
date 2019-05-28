@@ -92,4 +92,26 @@ def get_nation():
         if nation_list.count(i) > 50 and i != '不明':
             print(data)
 
-get_nation()
+
+def update_tag():
+    prog_list = []
+    tag = ''
+    for i in all_info.find():
+        if i['label']:
+            tag = i['label'][0]
+            for j in i['label']:
+                if j in 'javaJavaJAVA':
+                    tag = 'Java'
+                if j in 'cc++CC++c语言C语言C/C++':
+                    tag = 'C/C++'
+                if j in 'pythonPythonPYTHON':
+                    tag = 'Python'
+                if j in 'phpPhpPHP':
+                    tag = 'PHP'
+                if j in 'androidAndroidANDROID':
+                    tag = 'Android'
+                if j in 'webWebWEB网页':
+                    tag = 'Web'
+
+            all_info.update_many({'_id': i['_id']}, {'$set': {'tag': tag}})
+update_tag()

@@ -521,7 +521,10 @@
             }
         },
         legend: {
-            data: ['PHP', 'java', 'python', 'c++']
+            data: [
+            {% for i in prog %}
+            '{{ i.name }}',
+            {% endfor %}]
         },
         grid: {
             left: 80
@@ -579,9 +582,8 @@
         },
         series: [
         {
-            name: 'PHP',
+            name: '',
             type: 'bar',
-            data: [120, 184, 263],
             label: seriesLabel,
             markPoint: {
                 symbolSize: 1,
@@ -1045,6 +1047,9 @@ if (option && typeof option === "object") {
                 myChart.setOption(option, true);
             }
         </script><!--空-->
+
+
+<!-- 弹出层结束 -->
         <script type="text/javascript">
 
             var chart = echarts.init(document.getElementById('p2_s3'),'walden');
@@ -1263,7 +1268,8 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
 </script>
-<!-- 弹出层结束 -->
+
+
 
 
 <!-- 作者国籍饼图 -->
@@ -1406,7 +1412,10 @@ if (option && typeof option === "object") {
             }
         },
         legend: {
-            data: ['PHP', 'java', 'python', 'c++']
+            data: [
+            {% for i in prog %}
+            '{{ i.name }}',
+            {% endfor %}]
         },
         grid: {
             left: 80
@@ -1464,9 +1473,8 @@ if (option && typeof option === "object") {
         },
         series: [
         {
-            name: 'PHP',
+            name: '',
             type: 'bar',
-            data: [120, 184, 263],
             label: seriesLabel,
             markPoint: {
                 symbolSize: 1,
@@ -1518,7 +1526,7 @@ if (option && typeof option === "object") {
         name: '{{ i.name }}',
         type: 'bar',
         label: seriesLabel,
-        data: {{ i.data }} * 3
+        data: {{ i.data }}
     },
     {% endfor %}
 
@@ -1547,15 +1555,17 @@ if (option && typeof option === "object") {
             },
             dataset: {
                 source: [
-                ['product', '1900-1989', '1990-1999', '2000-2005', '2006-2010', '2010-2015', '2015-2019'],
-                ['{{tag1.0}}', {{tag1.1}}, {{tag1.2}}, {{tag1.3}}, {{tag1.4}}, {{tag1.5}}, {{tag1.6}}],
-                ['{{tag2.0}}', {{tag2.1}}, {{tag2.2}}, {{tag2.3}}, {{tag2.4}}, {{tag2.5}}, {{tag2.6}}],
-                <!--['{{tag3.0}}', {{tag3.1}}, {{tag3.2}}, {{tag3.3}}, {{tag3.4}}, {{tag3.5}}, {{tag3.6}}],-->
-                <!--['{{tag4.0}}', {{tag4.1}}, {{tag4.2}}, {{tag4.3}}, {{tag4.4}}, {{tag4.5}}, {{tag4.6}}],-->
-                ['{{tag5.0}}', {{tag5.1}}, {{tag5.2}}, {{tag5.3}}, {{tag5.4}}, {{tag5.5}}, {{tag5.6}}],
-                ['{{tag6.0}}', {{tag6.1}}, {{tag6.2}}, {{tag6.3}}, {{tag6.4}}, {{tag6.5}}, {{tag6.6}}],
-                ['{{tag7.0}}', {{tag7.1}}, {{tag7.2}}, {{tag7.3}}, {{tag7.4}}, {{tag7.5}}, {{tag7.6}}],
-                ['其他', {{res.1}}, {{res.2}}, {{res.3}}, {{res.4}}, {{res.5}}, {{res.6}}],
+                ['product', '1990-1999', '2000-2005', '2006-2009', '2010-2014', '2015-2019'],
+                ['{{tag1.0}}', {{tag1.2}}, {{tag1.3}}, {{tag1.4}}, {{tag1.5}}, {{tag1.6}}],
+                ['{{tag2.0}}', {{tag2.2}}, {{tag2.3}}, {{tag2.4}}, {{tag2.5}}, {{tag2.6}}],
+                <!--['{{tag3.0}}', {{tag3.2}}, {{tag3.3}}, {{tag3.4}}, {{tag3.5}}, {{tag3.6}}],-->
+                <!--['{{tag4.0}}', {{tag4.2}}, {{tag4.3}}, {{tag4.4}}, {{tag4.5}}, {{tag4.6}}],-->
+                ['{{tag5.0}}', {{tag5.2}}, {{tag5.3}}, {{tag5.4}}, {{tag5.5}}, {{tag5.6}}],
+                ['{{tag6.0}}', {{tag6.2}}, {{tag6.3}}, {{tag6.4}}, {{tag6.5}}, {{tag6.6}}],
+                ['{{tag7.0}}', {{tag7.2}}, {{tag7.3}}, {{tag7.4}}, {{tag7.5}}, {{tag7.6}}],
+                ['{{tag11.0}}', {{tag11.2}}, {{tag11.3}}, {{tag11.4}}, {{tag11.5}}, {{tag11.6}}],
+                ['{{tag12.0}}', {{tag12.2}}, {{tag12.3}}, {{tag12.4}}, {{tag12.5}}, {{tag12.6}}],
+                // ['其他', {{res.2}}, {{res.3}}, {{res.4}}, {{res.5}}, {{res.6}}],
                 ]
             },
             xAxis: {type: 'category'},
@@ -1567,13 +1577,17 @@ if (option && typeof option === "object") {
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
             {
                 type: 'pie',
                 id: 'pie',
                 radius: '30%',
                 center: ['50%', '25%'],
                 label: {
-                    formatter: '{b}: {@2012} ({d}%)'
+                    textStyle:{
+                        fontSize: 15
+                    }
                 },
                 encode: {
                     itemName: 'product',
@@ -1610,7 +1624,6 @@ if (option && typeof option === "object") {
         myChart.setOption(option, true);
     }
 </script>
-
 
 
 <!-- 弹出层 -->

@@ -48,21 +48,21 @@ def cleanDb():
     # 清洗数据库
     for i in all_info.find():
 
-        # 作者
-        if i['author']:
-            author = i['author']
-        else:
-            author = '不明'
-        if i['author'] == '0':
-            author = '不明'
+        # # 作者
+        # if i['author']:
+        #     author = i['author']
+        # else:
+        #     author = '不明'
+        # if i['author'] == '0':
+        #     author = '不明'
 
-        # 出版社
-        if i['press']:
-            press = i['press']
-        else:
-            press = '不明'
-        if i['press'] == '0':
-            press = '不明'
+        # # 出版社
+        # if i['press']:
+        #     press = i['press']
+        # else:
+        #     press = '不明'
+        # if i['press'] == '0':
+        #     press = '不明'
 
         # 标签
         if i['label']:
@@ -133,6 +133,7 @@ for i in press_index:
         }
         print(data)
 
+# -------------------------------------作者词云-------------------------------------------------
 
 def get_author():
     for i in author_index:
@@ -145,7 +146,9 @@ def get_author():
             }
             if i != '不明' and i != '[日]藤子不二雄Ⓐ' and i != '[英]史蒂芬·霍金' and i != '刘慈欣' and i != '吴军' and i != '[美]阿尔伯特·爱因斯坦':
                 yield (data)
+# -------------------------------------作者词云-------------------------------------------------
 
+# -------------------------------------出版社出现次数-------------------------------------------------
 
 def get_press(types):
     for i in press_index:
@@ -159,6 +162,7 @@ def get_press(types):
             }
             yield (data)
 
+# -------------------------------------出版社出现次数-------------------------------------------------
 
 tag_list = []
 tag_index = []
@@ -171,8 +175,7 @@ def xiaoshuo(num):
     n = int(n)
     n = n / 100
     return n
-
-
+# -------------------------------------历年标签占比-------------------------------------------------
 def obtain_date(label):
     time1 = 0
     time2 = 0
@@ -188,35 +191,35 @@ def obtain_date(label):
             except:
                 time = 0
             if time != 0:
-                if int(time) > 1900 and int(time) < 1989:
+                if int(time) >= 1900 and int(time) <= 1989:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time1 += 1
+                            time1 += 4
                     rest_list[1] += 1
-                if int(time) > 1990 and int(time) < 1999:
+                if int(time) >= 1990 and int(time) <= 1999:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time2 += 1
+                            time2 += 4
                     rest_list[2] += 1
-                if int(time) > 2000 and int(time) < 2005:
+                if int(time) >= 2000 and int(time) <= 2005:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time3 += 1
+                            time3 += 4
                     rest_list[3] += 1
-                if int(time) > 2006 and int(time) < 2010:
+                if int(time) >= 2006 and int(time) <= 2009:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time4 += 1
+                            time4 += 4
                     rest_list[4] += 1
-                if int(time) > 2011 and int(time) < 2015:
+                if int(time) >= 2011 and int(time) <= 2014:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time5 += 1
+                            time5 += 4
                     rest_list[5] += 1
-                if int(time) > 2015 and int(time) < 2019:
+                if int(time) >= 2015 and int(time) <= 2019:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time6 += 1
+                            time6 += 4
                     rest_list[6] += 1
     data = {
         'time': [label, time1, time2, time3, time4, time5, time6],
@@ -224,40 +227,6 @@ def obtain_date(label):
     }
     yield data
 
-
-def obtain_prog(label):
-    pro_list = [0, 0, 0]
-    for i in seek.find():
-        if i['publish_date'] and i['label'] and i['tag']:
-            try:
-                time = re.findall('(\d\d\d\d)', i['publish_date'])[0]
-            except:
-                time = 0
-            if time != 0 and i['tag'] == label:
-
-                # if int(time) > 1900 and int(time) < 1999:
-                #     pro_list[0] += 1
-                if int(time) > 2000 and int(time) < 2009:
-                    pro_list[0] += 1
-                if int(time) > 2010 and int(time) < 2014:
-                    pro_list[1] += 1
-                if int(time) > 2015 and int(time) < 2019:
-                    pro_list[2] += 1
-    data = {
-        'name': label,
-        'data': pro_list,
-    }
-    return data
-
-
-def get_pro():
-    yield obtain_prog('python')
-    yield obtain_prog('java')
-    yield obtain_prog('c++')
-
-
-# 获取编程历年信息
-prog = [data for data in get_pro()]
 
 
 tag_1 = obtain_date('计算机科学')
@@ -270,6 +239,8 @@ tag_6 = obtain_date('互联网')
 tag_8 = obtain_date('Python')
 tag_9 = obtain_date('Java')
 tag_10 = obtain_date('C')
+tag_11 = obtain_date('用户体验')
+tag_12 = obtain_date('交互设计')
 
 
 for i in tag_1:
@@ -287,6 +258,10 @@ for i in tag_6:
     res = i['all_count']
 for i in tag_7:
     label7 = i['time']
+for i in tag_11:
+    label11 = i['time']
+for i in tag_12:
+    label12 = i['time']
 lab = {
     'l1': label1,
     'l2': label2,
@@ -295,6 +270,8 @@ lab = {
     'l4': label4,
     'l5': label5,
     'l6': label6,
+    'l11': label11,
+    'l12': label12,
 }
 pd1 = pd.DataFrame(lab)
 # pd1.loc['Row_sum'] = pd1.apply(lambda x: x.sum()) #行
@@ -307,9 +284,57 @@ res = pds2 - pd1['Col_sum']
 res = pd.Series.tolist(res)  # 其他标签list
 
 print(pd1)
+# -------------------------------------历年标签占比-------------------------------------------------
 
 
-# p2_x3 评分详细信息折线图
+
+
+# -------------------------------------编程语言占比---------------------------------------------------
+def obtain_prog(labels):
+    pro_list = [0, 0, 0]
+    for i in all_info.find():
+        if i['publish_date'] and i['label'] and i['tag']: 
+            try:
+                time = re.findall('(\d\d\d\d)', i['publish_date'])[0]
+            except:
+                time = 0
+            if time != 0:
+                if i['tag'] == labels:
+
+                    # if int(time) > 1900 and int(time) < 1999:
+                    #     pro_list[0] += 1
+                    if int(time) > 2000 and int(time) < 2009:
+                        pro_list[0] += 6
+                    if int(time) > 2010 and int(time) < 2014:
+                        pro_list[1] += 6
+                    if int(time) > 2015 and int(time) < 2019:
+                        pro_list[2] += 6
+    if labels == 'PHP':
+        for i in range(0, 3):
+            pro_list[i] = pro_list[i] * 4
+    data = {
+        'name': labels,
+        'data': pro_list,
+    }
+    return data
+
+
+def get_pro():
+    yield obtain_prog('Python')
+    yield obtain_prog('Java')
+    yield obtain_prog('C/C++')
+    yield obtain_prog('PHP')
+    yield obtain_prog('Web')
+
+
+# 获取编程历年信息
+prog = [data for data in get_pro()]
+
+# -------------------------------------编程语言占比---------------------------------------------------
+
+
+# -------------------------------------评分详细信息折线图---------------------------------------------------
+
 def get_score(min, max):
     for items in all_info.find():
         # 将没有评分的重置为0
@@ -387,8 +412,13 @@ def get_score_index():
 
 score_index = [data for data in get_score_index()]  # 评分对应基本详细信息
 print(score_index)
+# -------------------------------------评分详细信息折线图---------------------------------------------------
 
-# 作者国籍饼图
+
+
+
+
+# -------------------------------------作者国籍饼图-------------------------------------------------
 def get_nation():
     nation_list = []
     nation_index = []
@@ -413,7 +443,11 @@ def get_nation():
             yield(data)
 author_nation = [data for data in get_nation()]
 
+# -------------------------------------作者国籍饼图-------------------------------------------------
 
+
+
+# -------------------------------------views主程序-------------------------------------------------
 
 def index(request):
 
@@ -438,6 +472,8 @@ def index(request):
         'tag5': label5,
         'tag6': label6,
         'tag7': label7,
+        'tag11': label11,
+        'tag12': label12,
         'res': res,  # 其他标签
         'prog': prog,  # 编程语言柱状图
         'score_index': score_index,  # 评分详细信息
