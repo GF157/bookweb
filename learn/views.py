@@ -11,6 +11,7 @@ client = pymongo.MongoClient('localhost', 27017)
 book = client['book']
 seek = book['seekY']
 all_info = book['computerY']
+all_info_Z = book['computerZ']
 sta = book['statistics']
 
 # 所有数据
@@ -46,7 +47,7 @@ datas = {
 
 def cleanDb():
     # 清洗数据库
-    for i in all_info.find():
+    for i in all_info_Z.find():
 
         # # 作者
         # if i['author']:
@@ -144,7 +145,7 @@ def get_author():
                 'name': i,
                 'value': author_list.count(i),
             }
-            if i != '不明' and i != '[日]藤子不二雄Ⓐ' and i != '[英]史蒂芬·霍金' and i != '刘慈欣' and i != '吴军' and i != '[美]阿尔伯特·爱因斯坦':
+            if i != '不明' and i != '[日]藤子不二雄Ⓐ' and i != '[英]史蒂芬·霍金' and i != '刘慈欣' and i != '吴军' and i != '[美]阿尔伯特·爱因斯坦' and i != '[日]东野圭吾':
                 yield (data)
 # -------------------------------------作者词云-------------------------------------------------
 
@@ -157,7 +158,7 @@ def get_press(types):
             press_count.append(press_list.count(i))
             data = {
                 'name': i,
-                'data': [press_list.count(i)],
+                'data': press_list.count(i),
                 'type': types,
             }
             yield (data)
@@ -301,14 +302,14 @@ def obtain_prog(labels):
             if time != 0:
                 if i['tag'] == labels:
 
-                    # if int(time) > 1900 and int(time) < 1999:
+                    # if int(time) >= 2000 and int(time) <= 2004:
                     #     pro_list[0] += 1
-                    if int(time) > 2000 and int(time) < 2009:
-                        pro_list[0] += 6
-                    if int(time) > 2010 and int(time) < 2014:
-                        pro_list[1] += 6
-                    if int(time) > 2015 and int(time) < 2019:
-                        pro_list[2] += 6
+                    if int(time) >= 2006 and int(time) <= 2009:
+                        pro_list[0] += 4
+                    if int(time) >= 2010 and int(time) <= 2014:
+                        pro_list[1] += 4
+                    if int(time) >= 2015 and int(time) <= 2019:
+                        pro_list[2] += 4
     if labels == 'PHP':
         for i in range(0, 3):
             pro_list[i] = pro_list[i] * 4
@@ -397,14 +398,17 @@ def get_scores():
 
 
 def get_score_index():
-    basic_list = ['reading', 'read', 'want', 'book',
-                  'short', 'note', 'page', 'number', 'price']
+    basic_list = ['在读', '已读', '想读', '书评',
+                  '短评', '笔记', '页数', '评分人数', '价格']
+    want_list = ['reading', 'read', 'want']
+    book_list = ['book', 'short', 'note']
+    basics_list = ['page', 'number', 'price']
     score_index = [data for data in get_scores()]
     pd1 = pd.DataFrame(score_index)
     for i in range(0, 9):
         list_ = pd1[i].tolist()
         data = {
-            'name': basic_list[i],
+            'basic': basic_list[i],
             'data': list_,
         }
         yield data
@@ -433,13 +437,13 @@ def get_nation():
             count = int(count / 2)
         if i == '日' or i == '法':
             count = int(count * 3)
-        if i == '德':
+        if i == '德' or i == '不明':
             count = count * 4
         data = {
             'nation': i,
             'count': count,
         }
-        if nation_list.count(i) > 50 and i != '不明':
+        if nation_list.count(i) > 50:
             yield(data)
 author_nation = [data for data in get_nation()]
 

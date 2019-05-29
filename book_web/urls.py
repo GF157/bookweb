@@ -26,8 +26,8 @@ from learn import views
 from django.urls import path
 from learn.views import index
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    # url(r'^$', views.index, name='index'),
     url(r'^admin/', admin.site.urls),
-    # url(r'^index/', index),
+    url(r'^index/', index),
 
 ]
