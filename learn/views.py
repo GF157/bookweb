@@ -124,15 +124,15 @@ for i in author_index:
         }
         print(data)
 
-for i in press_index:
-    # 出版社top
-    if press_list.count(i) > 190:
-        press_count.append(press_list.count(i))
-        data = {
-            'press': i,
-            'press_count': press_list.count(i),
-        }
-        print(data)
+# for i in press_index:
+#     # 出版社top
+#     if press_list.count(i) > 190:
+#         press_count.append(press_list.count(i))
+#         data = {
+#             'press': i,
+#             'press_count': press_list.count(i),
+#         }
+#         print(data)
 
 # -------------------------------------作者词云-------------------------------------------------
 
@@ -151,17 +151,17 @@ def get_author():
 
 # -------------------------------------出版社出现次数-------------------------------------------------
 
-def get_press(types):
-    for i in press_index:
-        # 出版社top
-        if press_list.count(i) > 100:
-            press_count.append(press_list.count(i))
-            data = {
-                'name': i,
-                'data': press_list.count(i),
-                'type': types,
-            }
-            yield (data)
+# def get_press(types):
+#     for i in press_index:
+#         # 出版社top
+#         if press_list.count(i) > 100:
+#             press_count.append(press_list.count(i))
+#             data = {
+#                 'name': i,
+#                 'data': press_list.count(i),
+#                 'type': types,
+#             }
+#             yield (data)
 
 # -------------------------------------出版社出现次数-------------------------------------------------
 
@@ -195,32 +195,32 @@ def obtain_date(label):
                 if int(time) >= 1900 and int(time) <= 1989:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time1 += 4
+                            time1 += 2
                     rest_list[1] += 1
                 if int(time) >= 1990 and int(time) <= 1999:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time2 += 4
+                            time2 += 2
                     rest_list[2] += 1
                 if int(time) >= 2000 and int(time) <= 2005:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time3 += 4
+                            time3 += 2
                     rest_list[3] += 1
                 if int(time) >= 2006 and int(time) <= 2009:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time4 += 4
+                            time4 += 2
                     rest_list[4] += 1
                 if int(time) >= 2011 and int(time) <= 2014:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time5 += 4
+                            time5 += 2
                     rest_list[5] += 1
                 if int(time) >= 2015 and int(time) <= 2019:
                     for tag in i['label']:
                         if tag == label or label in tag:
-                            time6 += 4
+                            time6 += 2
                     rest_list[6] += 1
     data = {
         'time': [label, time1, time2, time3, time4, time5, time6],
@@ -450,13 +450,59 @@ author_nation = [data for data in get_nation()]
 # -------------------------------------作者国籍饼图-------------------------------------------------
 
 
+# -------------------------------------出版社信息-------------------------------------------------
+def get_press():
+    pipeline = [
+
+        {'$group': {
+            '_id':"$press",
+            'num_of_tag':{'$sum':1},
+            'score':{'$avg': '$score'},
+            'number':{'$avg': '$number'},
+            }},
+        {'$project':{'_id':0,'tags':"$_id",'num_of_tag':1, 'score':1, 'number': 1}},
+        {'$match': {
+            "num_of_tag": {'$gte': 150}}
+            },
+        ]
+
+    for i in all_info.aggregate(pipeline):
+        # if i['num_of_tag'] > 180:
+            yield(i)
+
+
+
+# -------------------------------------出版社信息-------------------------------------------------
+# -------------------------------------作者国籍-------------------------------------------------
+
+def get_nation_2():
+    pip = [
+        {'$group':{
+            '_id': '$nation',
+            'count': {'$sum': 1},
+            'score': {'$avg': '$score'},
+            'want': {'$avg': '$read_want'},
+            'number': {'$avg': '$number'},
+            'read': {'$avg': '$read'},
+            }
+        },
+        {'$project':{'_id':0,'nation':"$_id",'count':1, 'score':1, 'want': 1, 'number': 1,'read': 1,}},
+        {'$match':{
+            'count': {'$gte': 100}
+            },
+        }
+    ]
+    for i in all_info.aggregate(pip):
+        yield(i)
+nation = [data for data in get_nation_2()]
+# -------------------------------------作者国籍-------------------------------------------------
 
 # -------------------------------------views主程序-------------------------------------------------
 
 def index(request):
 
     info = Modouban.objects
-    press = [data for data in get_press('column')]
+    press = [data for data in get_press()]
     author = [data for data in get_author()]
 
     limit = 6
@@ -482,17 +528,19 @@ def index(request):
         'prog': prog,  # 编程语言柱状图
         'score_index': score_index,  # 评分详细信息
         'author_nation': author_nation, # 作者国籍饼图
+        'nation': nation, #作者国籍详细信息
 
     }
     return render(request, 'index.html', context)
 
 
-# def home(request):
-#     article = invitation.objects
-#
-#     page_num = request.GET.get('page',1)
-#     loaded = article.page(page_num)
-#     context = {
-#         'invitation':loaded
-#     }
-#     return render(request,'home.html',context)
+def list(request):
+    info = Modouban.objects
+    limit = 6
+    paginatior = Paginator(info, limit)
+    page = request.GET.get('page', 1)
+    loaded = paginatior.page(page)
+    context = {
+        'all_info':loaded
+    }
+    return render(request,'list.html',context)

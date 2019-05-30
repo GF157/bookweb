@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src="../../static/js/semantic.min.js"></script>
+  <link rel="stylesheet" href="../../static/css/semantic.min.css"></link>
+  <script type="text/javascript" src="../../static/js/jquery-2.2.1.min.js"></script>
+  <script type="text/css">
+    #index_text i{
+        color: #fff;
+    }
+    #index_text p{
+        color: #fff;
+    }
+    #index_text h3{
+        color: #fff;
+    }
+  </script>
+
+</head>
+<body>
+  <div id="page4" class="page" style="position:relative;background-image:url('https://img1.doubanio.com/view/activity_page/raw/public/p3819.jpg');width: 100%;height: 100%;">
+                <div class="ui container segment" style="background-color: rgba(103, 86, 86, 0.75);">
+                    <div class="ui divided items">
+                        <div class="ui container">
+                            <<a href="http://127.0.0.1:8000/index">
+                            <h2 class="ui center aligned header" style="color: #fff;">全部图书榜单信息</h2>
+                            </a>
+                        </div>
+                        {% for i in all_info %}
+                        <div class="item">
+                            <div class="content">
+                                    <!-- <div class="ui small image">
+                                      <img src="{{ i.image }}">
+                                  </div> -->
+                                  <div class="menu" id="index_text" style="color: #fff;">
+                                    <a href="{{ i.url }}">
+                                        <h3 class="ui header" href="{{ i.url }}" style="color: #fff;">{{ i.title }}</h3>
+                                    </a>
+                                    <p>作者：{{ i.author }} / 出版社：{{ i.press }} / 评分：{{ i.score }} / 评分人数：{{ i.number }}</p>
+                                    <p>短评情感指数：{{ i.emotion }}</p>
+                                    <div class="extra">
+                                        {% for tag in i.label %}
+                                        <div class="ui brown label">
+                                            <a href="https://book.douban.com/tag/{{ tag }}">
+                                            {{ tag }}
+                                            </a>
+                                        </div>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="ui pagination menu">
+                        {% if all_info.has_previous %}
+                        <a class="active item" href="?page={{ all_info.previous_page_number }}"> < </a>
+                        {% endif %}
+                        <div class="disable item">
+                            page {{ all_info.number }} of {{ all_info.paginator.num_pages }}
+                        </div>
+                        {% if all_info.has_next %}
+                        <a class="item" href="?page={{ all_info.next_page_number }}"> > </a> 
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+</body>
+</html>
