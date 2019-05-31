@@ -113,6 +113,7 @@ def update_tag():
                     tag = 'Android'
                 if j in 'webWebWEB网页':
                     tag = 'Web'
+            if tag != None and tag != '':
 
-            all_info.update_many({'_id': i['_id']}, {'$set': {'programs': tag}})
+                all_info.update_many({'_id': i['_id']}, {'$set': {'program': tag}})
 update_tag()

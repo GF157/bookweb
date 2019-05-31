@@ -585,7 +585,10 @@ def index(request):
     return render(request, 'index.html', context)
 
 def programs(request):
+    info = Modouban.objects
+
     context = {
+        'computer': info,
         'program': program, #编程散点图
 
     }
