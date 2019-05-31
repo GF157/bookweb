@@ -26,10 +26,12 @@ from learn import views
 from django.urls import path
 from learn.views import index
 from learn.views import list
+from learn.views import programs
 urlpatterns = [
     # url(r'^$', views.index, name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^index/', index),
     url(r'^list/', list),
+    url(r'^programs/', programs),
 
 ]

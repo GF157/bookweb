@@ -122,7 +122,7 @@ for i in author_index:
             'name': i,
             'value': author_list.count(i),
         }
-        print(data)
+        # print(data)
 
 # for i in press_index:
 #     # 出版社top
@@ -337,6 +337,27 @@ prog = [data for data in get_pro()]
 # -------------------------------------评分详细信息折线图---------------------------------------------------
 
 def get_score(min, max):
+
+    # 评分
+    score_number= 0  #
+    score_high= 0  # 最高评分
+
+    nine= 0  # 9分以上
+    nine_time= 0  # 9分出版时间
+    nine_price= 0  # 9分价钱
+    nine_number= 0  # 9分评分人数
+    nine_page= 0  # 9分页数
+    nine_want= 0  # 九分想读
+    nine_read= 0  # 九分读过
+    nine_reading= 0  # 九分在读
+
+    nine_shor= 0  # 九分短评
+    nine_book= 0  # 九分书评
+    nine_note= 0  # 九分笔记
+
+
+    none_score= 0  # 暂无评分
+        
     for items in all_info.find():
         # 将没有评分的重置为0
         if items['score']:
@@ -352,38 +373,39 @@ def get_score(min, max):
         if items['pages']:
             # 评分分级
             score = float(items['score'])
-            if score > min and score < max:
-                datas['nine'] += 1
-                datas['nine_reading'] += int(items['reading'])
-                datas['nine_read'] += int(items['read'])
-                datas['nine_want'] += int(items['read_want'])
-                datas['nine_book'] += int(items['book_number'])
-                datas['nine_shor'] += int(items['short_number'])
+            if score >= min and score < max:
+                nine += 1
+                nine_reading += int(items['reading'])
+                nine_read += int(items['read'])
+                nine_want += int(items['read_want'])
+                nine_book += int(items['book_number'])
+                nine_shor += int(items['short_number'])
 
-                datas['nine_note'] += int(items['note_number'])
-                datas['nine_page'] += int(items['pages'])
-                datas['nine_number'] += int(items['number'])
+                nine_note += int(items['note_number'])
+                nine_page += int(items['pages'])
+                nine_number += int(items['number'])
 
-                try:
-                    price = re.findall('(\d\d)', items['price'])[0]
-                except:
-                    price = 0
-                datas['nine_price'] += int(price)
+                # try:
+                #     price = re.findall('(\d\d)', items['price'])[0]
+                # except:
+                #     price = 0
+                nine_price += int(items['price'])
     scores = {
-        'reading': xiaoshuo(datas['nine_reading'] / datas['nine']),
-        'read': xiaoshuo(datas['nine_read'] / datas['nine']),
-        'want': xiaoshuo(datas['nine_want'] / datas['nine']),
+        'reading': xiaoshuo(nine_reading / nine),
+        'read': xiaoshuo(nine_read / nine),
+        'want': xiaoshuo(nine_want / nine),
+        'number': xiaoshuo(nine_number / nine),
 
-        'book': xiaoshuo(datas['nine_book'] / datas['nine']),
-        'short': xiaoshuo(datas['nine_shor'] / datas['nine']),
-        'note': xiaoshuo(datas['nine_note'] / datas['nine']),
+        'book': xiaoshuo(nine_book / nine),
+        'short': xiaoshuo(nine_shor / nine),
+        'note': xiaoshuo(nine_note / nine),
 
-        'page': xiaoshuo(datas['nine_page'] / datas['nine']),
-        'number': xiaoshuo(datas['nine_number'] / datas['nine']),
-        'price': xiaoshuo(datas['nine_price'] / datas['nine']),
+        'page': xiaoshuo(nine_page / nine),
+        
+        'price': xiaoshuo(nine_price / nine),
     }
-    score_list = [scores['reading'], scores['read'], scores['want'], scores['book'],
-                  scores['short'], scores['note'], scores['page'], scores['number'], scores['price']]
+    score_list = [scores['reading'], scores['read'], scores['want'], scores['number'], scores['book'],
+                  scores['short'], scores['note'], scores['page'], scores['price']]
     return score_list
 
 # 获取评分对应的详细信息
@@ -398,8 +420,8 @@ def get_scores():
 
 
 def get_score_index():
-    basic_list = ['在读', '已读', '想读', '书评',
-                  '短评', '笔记', '页数', '评分人数', '价格']
+    basic_list = ['在读', '已读', '想读', '评分人数', '书评',
+                  '短评', '笔记', '页数', '价格']
     want_list = ['reading', 'read', 'want']
     book_list = ['book', 'short', 'note']
     basics_list = ['page', 'number', 'price']
@@ -415,7 +437,18 @@ def get_score_index():
 
 
 score_index = [data for data in get_score_index()]  # 评分对应基本详细信息
-print(score_index)
+
+def get_score_1():
+    score1_list = []
+    for i in range(0, 4):
+        yield(score_index[i])
+def get_score_2():
+    score1_list = []
+    for i in range(4, 9):
+        yield(score_index[i])
+
+score1 = [data for data in get_score_1()]
+score2 = [data for data in get_score_2()]
 # -------------------------------------评分详细信息折线图---------------------------------------------------
 
 
@@ -497,6 +530,21 @@ def get_nation_2():
 nation = [data for data in get_nation_2()]
 # -------------------------------------作者国籍-------------------------------------------------
 
+pip = [{'$match': {'number': {'$gte': 0}}}]
+count = 0
+for i in all_info.aggregate(pip):
+    count += 1
+
+
+# -------------------------------------编程散点图-------------------------------------------------
+def get_program():
+    pip = [
+        {'$project':{'_id':0, 'read': 1, 'read_want': 1, 'number': 1, 'score':1, 'want': 1, 'short_number': 1, 'pages': 1, 'programs': 1}},
+    ]
+    for i in all_info.aggregate(pip):
+        yield(i)
+
+program = [data for data in get_program()]
 # -------------------------------------views主程序-------------------------------------------------
 
 def index(request):
@@ -510,9 +558,10 @@ def index(request):
     page = request.GET.get('page', 1)
     loaded = paginatior.page(page)
     context = {
+        'computer': info,
         'for': [0, 1, 2, 3, 4, 5, 6],
         'all_info': loaded,
-        'counts': info.count(),
+        'counts': count,
         'Press_top': press,
         'author_top': author,
         'tag1': label1,
@@ -527,12 +576,20 @@ def index(request):
         'res': res,  # 其他标签
         'prog': prog,  # 编程语言柱状图
         'score_index': score_index,  # 评分详细信息
+        'score_index1': score1,  # 评分详细信息
+        'score_index2': score2,  # 评分详细信息
         'author_nation': author_nation, # 作者国籍饼图
         'nation': nation, #作者国籍详细信息
-
+        
     }
     return render(request, 'index.html', context)
 
+def programs(request):
+    context = {
+        'program': program, #编程散点图
+
+    }
+    return render(request, 'program.html', context)
 
 def list(request):
     info = Modouban.objects

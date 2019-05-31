@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+// Schema:
+// date,AQIindex,PM2.5,PM10,CO,NO2,SO2
+var schema = [
+    {name: 'AQIindex', index: 1, text: '已读'},
+    {name: 'PM25', index: 2, text: '想读'},
+    {name: 'PM10', index: 3, text: '评分人数'},
+    {name: 'CO', index: 4, text: '评分'},
+    {name: 'NO2', index: 5, text: '短评'},
+    {name: 'SO2', index: 6, text: '页数'},
+];
+
+var rawData = [
+    {% for i in program %}
+    [{{i.read}},{{i.read_want}},{{i.number}},{{i.score}},{{i.short_number}}, {{i.pages}},'{{i.programs}}'],
+    {% endfor %}
+   
+];
+
+var CATEGORY_DIM_COUNT = 6;
+var GAP = 1;
+var BASE_LEFT = 5;
+var BASE_TOP = 10;
+// var GRID_WIDTH = 220;
+// var GRID_HEIGHT = 220;
+var GRID_WIDTH = (100 - BASE_LEFT - GAP) / CATEGORY_DIM_COUNT - GAP;
+var GRID_HEIGHT = (100 - BASE_TOP - GAP) / CATEGORY_DIM_COUNT - GAP;
+var CATEGORY_DIM = 6;
+var SYMBOL_SIZE = 3;
+
+function retrieveScatterData(data, dimX, dimY) {
+    var result = [];
+    for (var i = 0; i < data.length; i++) {
+        var item = [data[i][dimX], data[i][dimY]];
+        item[CATEGORY_DIM] = data[i][CATEGORY_DIM];
+        result.push(item);
+    }
+    return result;
+}
+
+function generateGrids(option) {
+    var index = 0;
+
+    for (var i = 0; i < CATEGORY_DIM_COUNT; i++) {
+        for (var j = 0; j < CATEGORY_DIM_COUNT; j++) {
+            if (CATEGORY_DIM_COUNT - i + j >= CATEGORY_DIM_COUNT) {
+                continue;
+            }
+
+            option.grid.push({
+                left: BASE_LEFT + i * (GRID_WIDTH + GAP) + '%',
+                top: BASE_TOP + j * (GRID_HEIGHT + GAP) + '%',
+                width: GRID_WIDTH + '%',
+                height: GRID_HEIGHT + '%'
+            });
+
+            option.brush.xAxisIndex && option.brush.xAxisIndex.push(index);
+            option.brush.yAxisIndex && option.brush.yAxisIndex.push(index);
+
+            option.xAxis.push({
+                splitNumber: 3,
+                position: 'top',
+                axisLine: {
+                    show: j === 0,
+                    onZero: false
+                },
+                axisTick: {
+                    show: j === 0,
+                    inside: true
+                },
+                axisLabel: {
+                    show: j === 0
+                },
+                type: 'value',
+                gridIndex: index,
+                scale: true
+            });
+
+            option.yAxis.push({
+                splitNumber: 3,
+                position: 'right',
+                axisLine: {
+                    show: i === CATEGORY_DIM_COUNT - 1,
+                    onZero: false
+                },
+                axisTick: {
+                    show: i === CATEGORY_DIM_COUNT - 1,
+                    inside: true
+                },
+                axisLabel: {
+                    show: i === CATEGORY_DIM_COUNT - 1
+                },
+                type: 'value',
+                gridIndex: index,
+                scale: true
+            });
+
+            option.series.push({
+                type: 'scatter',
+                symbolSize: SYMBOL_SIZE,
+                xAxisIndex: index,
+                yAxisIndex: index,
+                data: retrieveScatterData(rawData, i, j)
+            });
+
+            option.visualMap.seriesIndex.push(option.series.length - 1);
+
+            index++;
+        }
+    }
+}
+
+
+var option = {
+    animation: false,
+    brush: {
+        brushLink: 'all',
+        xAxisIndex: [],
+        yAxisIndex: [],
+        inBrush: {
+            opacity: 1
+        }
+    },
+    visualMap: {
+        type: 'piecewise',
+        categories: ["Java", "C/C++", "Web"],
+        dimension: CATEGORY_DIM,
+        orient: 'horizontal',
+        top: 0,
+        left: 'center',
+        inRange: {
+            color: ['#c23531','#2f4554', '#61a0a8']
+        },
+        outOfRange: {
+            color: '#ddd'
+        },
+        seriesIndex: [0]
+    },
+    tooltip: {
+        trigger: 'item'
+    },
+    parallelAxis: [
+        {dim: 0, name: schema[0].text},
+        {dim: 1, name: schema[1].text},
+        {dim: 2, name: schema[2].text},
+        {dim: 3, name: schema[3].text},
+        {dim: 4, name: schema[4].text},
+        {dim: 5, name: schema[5].text},
+    ],
+    parallel: {
+        bottom: '5%',
+        left: '5%',
+        height: '31%',
+        width: '55%',
+        parallelAxisDefault: {
+            type: 'value',
+            name: 'AQI指数',
+            nameLocation: 'end',
+            nameGap: 20,
+            splitNumber: 3,
+            nameTextStyle: {
+                fontSize: 14
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#555'
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#555'
+                }
+            },
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
+                textStyle: {
+                    color: '#555'
+                }
+            }
+        }
+    },
+    grid: [],
+    xAxis: [],
+    yAxis: [],
+    series: [
+        {
+            name: 'parallel',
+            type: 'parallel',
+            smooth: true,
+            lineStyle: {
+                normal: {
+                    width: 1,
+                    opacity: 0.3
+                }
+            },
+            data: rawData
+        }
+    ]
+};
+
+generateGrids(option);;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

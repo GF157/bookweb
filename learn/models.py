@@ -112,5 +112,5 @@ class Modouban(Document):
 
 
 # 测试是否连接成功
-for i in Modouban.objects[:100]:  # [:10] 分片
-    print(i.author)
+# for i in Modouban.objects[:100]:  # [:10] 分片
+#     print(i.author)

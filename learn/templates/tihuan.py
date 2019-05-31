@@ -97,8 +97,9 @@ def update_tag():
     prog_list = []
     tag = ''
     for i in all_info.find():
+        # tag = ''
         if i['label']:
-            tag = i['label'][0]
+            
             for j in i['label']:
                 if j in 'javaJavaJAVA':
                     tag = 'Java'
@@ -113,5 +114,5 @@ def update_tag():
                 if j in 'webWebWEB网页':
                     tag = 'Web'
 
-            all_info.update_many({'_id': i['_id']}, {'$set': {'tag': tag}})
+            all_info.update_many({'_id': i['_id']}, {'$set': {'programs': tag}})
 update_tag()
