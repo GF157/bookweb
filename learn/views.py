@@ -145,7 +145,7 @@ def get_author():
                 'name': i,
                 'value': author_list.count(i),
             }
-            if i != '不明' and i != '[日]藤子不二雄Ⓐ' and i != '[英]史蒂芬·霍金' and i != '刘慈欣' and i != '吴军' and i != '[美]阿尔伯特·爱因斯坦' and i != '[日]东野圭吾':
+            if i != '不明' and i != '[日]藤子不二雄Ⓐ' and i != '[英]史蒂芬·霍金' and i != '刘慈欣' and i != '吴军' and i != '[美]阿尔伯特·爱因斯坦' and i != '[日]东野圭吾' and i != '藤子不二雄Ⓐ':
                 yield (data)
 # -------------------------------------作者词云-------------------------------------------------
 
@@ -207,7 +207,7 @@ def obtain_date(label):
                         if tag == label or label in tag:
                             time3 += 2
                     rest_list[3] += 1
-                if int(time) >= 2006 and int(time) <= 2009:
+                if int(time) >= 2006 and int(time) <= 2010:
                     for tag in i['label']:
                         if tag == label or label in tag:
                             time4 += 2
@@ -585,14 +585,20 @@ def index(request):
     return render(request, 'index.html', context)
 
 def programs(request):
-    info = Modouban.objects
 
     context = {
-        'computer': info,
+        
         'program': program, #编程散点图
 
     }
     return render(request, 'program.html', context)
+
+def score(request):
+    info = Modouban.objects
+    context = {
+        'computer': info,
+    }
+    return render(request, 'score.html', context)
 
 def list(request):
     info = Modouban.objects

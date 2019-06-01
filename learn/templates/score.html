@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%;background: rgba(239, 247, 250, 1);
+        border-radius: 10px;"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="../../static/js/walden.js"></script>
+    <script type="text/javascript" src="../../static/js/wordcloud.js"></script>
+       
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom, 'walden');
+var app = {};
+option = null;
+var option = {
+    title : {
+        text: "不同评分下评分人数与短评数",
+        x:'center'
+    },
+    grid: {
+        left: "3%",
+        right: "4%",
+        bottom: "3%",
+        containLabel: true
+    },
+    tooltip : {
+        show: true,
+        feature: {
+            saveAsImage: {show: true}
+        },
+        trigger: "item",
+        showDelay : 0,
+        formatter : function (params) {
+            if (params.value.length > 1) {
+                return params.seriesName + " :<br/>"
+                   + params.value[0] + "分"
+                   + params.value[1] + "人 ";
+            }
+            else {
+                return params.seriesName + " :<br/>"
+                   + params.name + " : "
+                   + params.value + "人";
+            }
+        },
+        axisPointer:{
+            show: true,
+            type : "cross",
+            lineStyle: {
+                type : "dashed",
+                width : 1
+            }
+        }
+    },
+    legend: {
+        data: ["评分人数", "想读"],
+        x: "left"
+    },
+    xAxis : [
+        {
+            type : "value",
+            scale:true,
+
+            
+            axisLabel : {
+                formatter: "{value}"
+            },
+            splitLine: {
+                lineStyle: {
+                    type: "dashed"
+                }
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : "value",
+            scale:true,
+            min: 0,
+            max: 100000,
+            axisLabel : {
+                formatter: "{value}"
+            },
+            splitLine: {
+                lineStyle: {
+                    type: "dashed"
+                }
+            }
+        }
+    ],
+    series : [
+        {
+            name:"评分人数",
+            type:"scatter",
+            data: [
+            {% for i in computer %}
+
+            [{{ i.score }}, {{i.number}}], 
+            {% endfor %}
+            ],
+            markPoint : {
+                data : [
+                    {type : "max", name: "最大值"},
+                    {type : "min", name: "最小值"}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : "average", name: "平均值"}
+                ]
+            }
+        },
+        {
+            name:"想读",
+            type:"scatter",
+            data: [
+            {% for i in computer %}
+
+            [{{ i.score }}, {{i.read}}], 
+            {% endfor %}
+            ],
+            markPoint : {
+                data : [
+                    {type : "max", name: "最大值"},
+                    {type : "min", name: "最小值"}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : "average", name: "平均值"}
+                ]
+            }
+        },
+        
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+      
+   </body>
+</html>
