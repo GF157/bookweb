@@ -145,7 +145,7 @@ def get_author():
                 'name': i,
                 'value': author_list.count(i),
             }
-            if i != '不明' and i != '[日]藤子不二雄Ⓐ' and i != '[英]史蒂芬·霍金' and i != '刘慈欣' and i != '吴军' and i != '[美]阿尔伯特·爱因斯坦' and i != '[日]东野圭吾' and i != '藤子不二雄Ⓐ':
+            if i != '不明' and i != '[日]藤子不二雄Ⓐ' and i != '[英]史蒂芬·霍金' and i != '刘慈欣' and i != '吴军' and i != '[美]阿尔伯特·爱因斯坦' and i != '[日]东野圭吾' and i != '藤子不二雄Ⓐ' and i != '[英]理查德·道金斯' and i != '[英]牛顿':
                 yield (data)
 # -------------------------------------作者词云-------------------------------------------------
 
@@ -305,14 +305,14 @@ def obtain_prog(labels):
                     # if int(time) >= 2000 and int(time) <= 2004:
                     #     pro_list[0] += 1
                     if int(time) >= 2006 and int(time) <= 2009:
-                        pro_list[0] += 4
+                        pro_list[0] += 3
                     if int(time) >= 2010 and int(time) <= 2014:
-                        pro_list[1] += 4
+                        pro_list[1] += 3
                     if int(time) >= 2015 and int(time) <= 2019:
-                        pro_list[2] += 4
+                        pro_list[2] += 3
     if labels == 'PHP':
         for i in range(0, 3):
-            pro_list[i] = pro_list[i] * 4
+            pro_list[i] = pro_list[i] * 1
     data = {
         'name': labels,
         'data': pro_list,
@@ -325,7 +325,7 @@ def get_pro():
     yield obtain_prog('Java')
     yield obtain_prog('C/C++')
     yield obtain_prog('PHP')
-    yield obtain_prog('Web')
+    yield obtain_prog('HTML')
 
 
 # 获取编程历年信息
@@ -422,9 +422,6 @@ def get_scores():
 def get_score_index():
     basic_list = ['在读', '已读', '想读', '评分人数', '书评',
                   '短评', '笔记', '页数', '价格']
-    want_list = ['reading', 'read', 'want']
-    book_list = ['book', 'short', 'note']
-    basics_list = ['page', 'number', 'price']
     score_index = [data for data in get_scores()]
     pd1 = pd.DataFrame(score_index)
     for i in range(0, 9):
@@ -539,7 +536,7 @@ for i in all_info.aggregate(pip):
 # -------------------------------------编程散点图-------------------------------------------------
 def get_program():
     pip = [
-        {'$project':{'_id':0, 'read': 1, 'read_want': 1, 'number': 1, 'score':1, 'want': 1, 'short_number': 1, 'pages': 1, 'programs': 1}},
+        {'$project':{'_id':0, 'read': 1, 'read_want': 1, 'number': 1, 'score':1, 'want': 1, 'short_number': 1, 'pages': 1, 'program': 1}},
     ]
     for i in all_info.aggregate(pip):
         yield(i)

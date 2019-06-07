@@ -116,4 +116,4 @@ def update_tag():
             if tag != None and tag != '':
 
                 all_info.update_many({'_id': i['_id']}, {'$set': {'program': tag}})
-update_tag()
+# update_tag()

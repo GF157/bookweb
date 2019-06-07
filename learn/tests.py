@@ -126,3 +126,75 @@ for i in mydoc:
 
         }
 	info.insert(data)
+
+
+
+
+
+
+
+
+    class RotateUserAgentMiddleware(UserAgentMiddleware):
+    def __int__(self, user_agent=''):
+        self.user_agent = user_agent
+
+    def process_request(self, request, spider):
+        ua = random.choice(self.user_agent_list)
+        if ua:
+            logging.info(ua)
+            request.headers.setdefault('User-Agent', ua)
+    user_agent_list = [
+        # user-agent列表信息
+    ]
+
+
+        DOWNLOADER_MIDDLEWARES = {
+            'books.middlewares.RotateUserAgentMiddleware': 125, 
+        }
+
+
+
+            try:
+                item['price'] = re.findall(r'定价:</span>(\d*.\d*)', base_info)[0]
+            except:
+                item['price'] = None
+
+
+            client = pymongo.MongoClient('localhost', 27017)
+            book = client['book']
+            all = book['computerY']
+
+            try:
+                nation = re.findall('\[(.*?)\]|\((.*?)\)|\【(.*?)\】|\（(.*?)\）', items['author'])[0] 
+            except:
+                nation = ['不明']
+            all.update_many({'_id': items['_id']}, {'$set': {'nation': nation}})
+
+
+
+            for j in old_info.find():
+                if j['score']:
+                    pass
+                else:
+                    j['score'] = 0
+                all_info.update({'_id': i['_id']}, {'$set': {'score': float(j['score'])}})
+
+
+def get_nation():
+    pip = [
+        {'$group':{
+            '_id': '$nation',
+            'count': {'$sum': 1},
+            'score': {'$avg': '$score'},
+            'want': {'$avg': '$read_want'},
+            'number': {'$avg': '$number'},
+            'read': {'$avg': '$read'},
+            }
+        },
+        {'$match':{
+            'count': {'$gte': 100}
+            },
+        }
+    ]
+    for i in all_info.aggregate(pip):
+        print(i)
