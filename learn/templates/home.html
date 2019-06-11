@@ -96,11 +96,12 @@
                     <h6 class="m-0">Users by device</h6>
                   </div>
                   <div class="card-body d-flex py-0">
-                    <canvas height="220" class="blog-users-by-device m-auto"></canvas>
+                    <div id="test" style="height: 200px;"></div>
+                    <!-- <canvas height="220" class="blog-users-by-device m-auto" id="test"></canvas> -->
                   </div>
                   <div class="card-footer border-top">
                     <div class="row">
-                      <div class="col">
+                      <div class="col"> 
                         <select class="custom-select custom-select-sm" style="max-width: 130px;">
                           <option selected>Last Week</option>
                           <option value="1">Today</option>
@@ -146,7 +147,7 @@
                     <h6 class="m-0">Users by device</h6>
                   </div>
                   <div class="card-body d-flex py-0">
-                    <canvas height="220" class="blog-users-by-device m-auto" id="test"></canvas>
+                    <canvas height="220" class="blog-users-by-device m-auto"></canvas>
                   </div>
                   <div class="card-footer border-top">
                     <div class="row">
@@ -236,7 +237,7 @@
     <script src="../../static/js/shards-dashboards.1.1.0.min.js"></script>
     <!-- <script src="../../static/js/app/app-blog-overview.1.1.0.js"></script> -->
     <script type="text/javascript">
-var dom = document.getElementById("test");
+var dom = document.getElementsByClassName("blog-overview-stats-small-1");
 var myChart = echarts.init(dom);
 var app = {};
 option = null;
@@ -282,6 +283,78 @@ option = {
             type:'line',
             barWidth: '60%',
             data:[10, 52, 200, 334, 390, 330, 220, 390, 330, 220, 330, 220, 390, 330, 220,]
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+       <script type="text/javascript">
+var dom = document.getElementById("test1");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+        text: '折线图堆叠'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一','周二','周三','周四','周五','周六','周日']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'邮件营销',
+            type:'line',
+            stack: '总量',
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'联盟广告',
+            type:'line',
+            stack: '总量',
+            data:[220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name:'视频广告',
+            type:'line',
+            stack: '总量',
+            data:[150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name:'直接访问',
+            type:'line',
+            stack: '总量',
+            data:[320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name:'搜索引擎',
+            type:'line',
+            stack: '总量',
+            data:[820, 932, 901, 934, 1290, 1330, 1320]
         }
     ]
 };

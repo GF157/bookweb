@@ -17,7 +17,7 @@ var app = {};
 option = null;
 var option = {
     title : {
-        text: "不同评分下评分人数与短评数",
+        text: "不同评分下评分人数与想读人次",
         x:'center'
     },
     grid: {
@@ -55,7 +55,7 @@ var option = {
         }
     },
     legend: {
-        data: ["评分人数", "想读"],
+        data: ["评分人数", "想读", "已读"],
         x: "left"
     },
     xAxis : [
@@ -114,6 +114,26 @@ var option = {
         },
         {
             name:"想读",
+            type:"scatter",
+            data: [
+            {% for i in computer %}
+
+            [{{ i.score }}, {{i.reading}}], 
+            {% endfor %}
+            ],
+            markPoint : {
+                data : [
+                    {type : "max", name: "最大值"},
+                    {type : "min", name: "最小值"}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : "average", name: "平均值"}
+                ]
+            }
+        },{
+            name:已读,
             type:"scatter",
             data: [
             {% for i in computer %}
